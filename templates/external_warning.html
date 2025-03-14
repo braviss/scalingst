@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Предупреждение о переходе{% endblock %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <h2>{% trans "You're leaving Scalingst" %}</h2>
+        <p>{% trans 'If you trust this link, click the go button' %}</p>
+        <p>{% trans 'Link' %}: {{ external_url }}</p>
+        <p>
+            <a href="{{ external_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                {% trans 'Go to link' %}
+            </a>
+        </p>
+    </div>
+{% endblock %}

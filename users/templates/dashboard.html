@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+    <style>
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        {% block dashboard_content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

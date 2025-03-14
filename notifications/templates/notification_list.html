@@ -1,0 +1,106 @@
+{% extends 'dashboard.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}Список уведомлений{% endblock %}
+
+{% block dashboard_content %}
+
+    <style>
+        .read-False td {
+            background-color: #ccc;
+        }
+    </style>
+
+    <div class="col-lg-3 border-end">
+        <div class="text-center">
+            <div class="position-relative d-inline-block">
+                {% if request.user.avatar %}
+                    <img src="{{ request.user.avatar.url }}" class="rounded-circle profile-pic"
+                         alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'icons/default-avatar.png' %}"
+                         class="rounded-circle profile-pic" alt="Profile Picture">
+                {% endif %}
+            </div>
+            <h3 class="mt-3 mb-2">{{ request.user.username }}</h3>
+
+        </div>
+        <div class="p-4">
+            <div class="nav flex-column nav-pills">
+                <a class="nav-link"
+                   href="{% url 'accounts:dashboard' request.user.username %}">
+                    <i class="fas fa-user me-2"></i>
+                    Personal Info
+                </a>
+                <a class="nav-link"
+                   href="{% url 'accounts:my_offers' %}">
+                    <i class="fas fa-grip me-2"></i>
+                    My offers
+                </a>
+                <a class="nav-link active" href="{% url 'notifications:notification_list' %}">
+                    <i class="fas fa-bell me-2"></i>
+                    Notifications
+                </a>
+
+                <a class="nav-link" href="{% url 'payments:history' %}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Payments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9">
+        <div class="p-4">
+            {% if notif %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">message</th>
+                        <th scope="col">created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for noti in notif %}
+                        <tr class="read-{{ noti.is_read }}">
+                            <td>{{ noti.message }}</td>
+                            <td>{{ noti.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {% if notif %}
+                    <a class="btn btn-primary float-end"
+                       href="{% url 'notifications:mark_as_read' %}">
+                        Отметить все как прочитанные
+                    </a>
+
+                    <a class="btn btn-danger float-end me-2"
+                       href="{% url 'notifications:notification_delete' %}">
+                        Удалить все
+                    </a>
+                {% endif %}
+
+                <div>
+                    {% if offers.has_previous %}
+                        <a href="?page=1">&laquo; Первая</a>
+                        <a href="?page={{ offers.previous_page_number }}">Предыдущая</a>
+                    {% endif %}
+
+                    Страница {{ offers.number }} из {{ offers.paginator.num_pages }}
+
+                    {% if offers.has_next %}
+                        <a href="?page={{ offers.next_page_number }}">Следующая</a>
+                        <a href="?page={{ offers.paginator.num_pages }}">Последняя &raquo;</a>
+                    {% endif %}
+                </div>
+
+            {% else %}
+                <p>You dont have Notifications</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

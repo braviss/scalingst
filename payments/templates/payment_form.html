@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+    <style>
+        .step-item {
+            position: relative;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-icon span {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .step-item::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            width: 30px;
+            height: 2px;
+            background-color: #dee2e6;
+            transform: translateY(-50%);
+        }
+
+        .step-item:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 767.98px) {
+            .step-item::after {
+                display: none;
+            }
+        }
+
+        .step-item i {
+            font-size: 34px;
+        }
+    </style>
+
+
+
+{#    <div class="table-responsive mb-4 w-50 mx-auto">#}
+{#        <table class="table text-center">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th style="width: 34%;"></th>#}
+{#                <th style="width: 22%;">Бесплатный</th>#}
+{#                <th style="width: 22%;">Премиум</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            <tr>#}
+{#                <th scope="row" class="text-start">Просмотр премиум ссылок пользователей</th>#}
+{#                <td><i class="fa-solid fa-xmark"></i></td>#}
+{#                <td><i class="fa-solid fa-check"></i></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th scope="row" class="text-start">Private</th>#}
+{#                <td><i class="fa-solid fa-xmark"></i></td>#}
+{#                <td><i class="fa-solid fa-check"></i></td>#}
+{#            </tr>#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+
+
+    <div class="row mb-4">
+        <div class="col-md-3 mb-4 mb-md-0">
+            <div class="step-item text-center">
+                <div class="step-icon mb-3">
+            <span class="bg-primary text-white rounded-circle d-inline-block p-3">
+              <i class="fa-solid fa-link"></i>
+            </span>
+                </div>
+                <h3 class="h5">{% trans 'Step' %} 1</h3>
+                <p class="text-muted">Перейти на сайт для оплаты по этой ссылке</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+            <div class="step-item text-center">
+                <div class="step-icon mb-3">
+            <span class="bg-success text-white rounded-circle d-inline-block p-3">
+              <i class="fa-solid fa-address-card"></i>
+            </span>
+                </div>
+                <h3 class="h5">{% trans 'Step' %} 2</h3>
+                <p class="text-muted">Пройти регистрацию и войти в аккаунт</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+            <div class="step-item text-center">
+                <div class="step-icon mb-3">
+            <span class="bg-info text-white rounded-circle d-inline-block p-3">
+              <i class="fa-solid fa-credit-card"></i>
+            </span>
+                </div>
+                <h3 class="h5">{% trans 'Step' %} 3</h3>
+                <p class="text-muted">Совершить оплату подписки на желаемый период</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="step-item text-center">
+                <div class="step-icon mb-3">
+            <span class="bg-warning text-white rounded-circle d-inline-block p-3">
+              <i class="fa-solid fa-pen"></i>
+            </span>
+                </div>
+                <h3 class="h5">{% trans 'Step' %} 4</h3>
+                <p class="text-muted">Заполнить форму ниже и предоставить скрин оплаты</p>
+            </div>
+        </div>
+    </div>
+
+
+    <form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% load view_breadcrumbs %}
+
+{% load social_share %}
+{% block content %}
+
+    <style>
+        .span-gold {
+            background-color: gold !important;
+            padding: 10px 20px;
+            color: #242424 !important;
+        }
+    </style>
+
+    {% render_breadcrumbs %}
+
+    <div class="row">
+        <div class="col-md-8 mb-3">
+            <div class="card h-100">
+                <img src="{{ object.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <p class="card-text">{{ object.body|safe }}</p>
+                    <p class="card-text"><small class="text-body-secondary">{{ object.created_at|timesince }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+
+                    {% if offer.is_premium == True %}
+                        <span class="mb-2 badge text-bg-success">
+                            {% trans 'Premium' %} <i class="fa-solid fa-star" style="color: gold"></i>
+                        </span>
+
+                    {% endif %}
+
+
+
+                    <p class="card-text">{% trans 'Country' %}: <span
+                            class="badge text-bg-primary">{{ offer.country.name }}</span></p>
+                    <p class="card-text">{% trans 'Category' %}: <span
+                            class="badge text-bg-primary">{{ object.category }}</span></p>
+                    <p class="card-text">{% trans 'Author' %}: <a
+                            href="{% url 'offers:user_offers' username=object.author.username %}"><span
+                            class="badge text-bg-primary">{{ object.author }}</span></a></p>
+
+
+                    <p class="card-text">
+                        <a href="{% url 'external_link_warning' %}?url={{ object.url }}" target="_blank"
+                           rel="noopener noreferrer" class="badge text-bg-primary">{% trans 'Author site' %} <i
+                                class="fa-solid fa-globe"></i></a>
+                    </p>
+                    {% if object.premium_url %}
+                        {% if request.user.is_premium %}
+                            <p class="card-text">
+                                <a href="{% url 'external_link_warning' %}?url={{ object.premium_url }}" target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="badge text-bg-primary span-gold">{% trans 'Premium url' %} <i
+                                        class="fa-solid fa-globe"></i></a>
+                            </p>
+                        {% endif %}
+                    {% endif %}
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        {% trans 'Share' %}
+                    </button>
+
+
+                    {% if object.author == request.user %}
+
+                        <a href="update/{{ object.slug }}" class="btn btn-primary my-4">{% trans 'Edit' %} <i
+                                class="fa-solid fa-pen"></i></a>
+                        <a href="delete/{{ offer.slug }}" class="btn btn-danger my-4">{% trans 'Delete' %}</a>
+
+                    {% else %}
+                        <a href="{% url 'offers:offer_complaint' slug=object.slug %}"
+                           class="btn btn-danger">{% trans 'Complain' %}</a>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{% trans 'Share' %}: {{ object.title }}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-2">
+                            <label for="exampleInputEmail1">Share link</label>
+{#                            <input type="email" class="form-control" id="exampleInputEmail1"#}
+{#                                   aria-describedby="emailHelp"#}
+{#                                   value="https://scalingst{{ object.get_absolute_url }}">#}
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="shareLink"
+                                       value="https://scalingst{{ object.get_absolute_url }}" readonly>
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                        onclick="copyToClipboard()">Скопировать
+                                </button>
+                            </div>
+                        </div>
+                        {% post_to_facebook object.title "Share to FaceBock" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+    function copyToClipboard() {
+        let copyText = document.getElementById("shareLink");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            alert("Ссылка скопирована!");
+        }).catch(err => {
+            console.error('Ошибка копирования: ', err);
+        });
+    }
+</script>
+{% endblock %}

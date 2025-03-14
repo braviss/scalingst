@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Список предложений{% endblock %}
+
+{% load view_breadcrumbs %}
+
+{% block content %}
+
+    {% render_breadcrumbs %}
+
+
+    <div id="categoryContainer" class="row row-cols-1 row-cols-md-4">
+        {% for category in categories %}
+
+
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ category.image.url }}" alt="">
+                        <h5 class="card-title">{{ category.name }}</h5>
+                        <p class="card-text">{{ category.description }}</p>
+                        <a href="/offer/list?category={{ category.slug }}" class="btn btn-primary">Просмотреть</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="Первая">
+                        <span aria-hidden="true">&laquo; Первая</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
+                        <span aria-hidden="true">Предыдущая</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            <!-- Отображение номеров страниц -->
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+                        <span aria-hidden="true">Следующая</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
+                        <span aria-hidden="true">Последняя &raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-12 11:46+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: offers/models.py:39 offers/templates/offer_form.html:45
+#: publication/models.py:40
+msgid "Title"
+msgstr "Title"
+
+#: offers/models.py:111
+msgid "Complaint text"
+msgstr "Complaint text"
+
+#: offers/models.py:113
+msgid "Admin Comment"
+msgstr "Admin Comment"
+
+#: offers/templates/offer_detail.html:39 offers/templates/offer_list.html:97
+#: offers/templates/user_offer_list.html:26 templates/base.html:68
+#: users/templates/proffile_offers_list.html:70
+#: users/templates/profile_view.html:66
+msgid "Premium"
+msgstr "Premium"
+
+#: offers/templates/offer_detail.html:46 offers/templates/offer_form.html:187
+msgid "Country"
+msgstr "Country"
+
+#: offers/templates/offer_detail.html:48 offers/templates/offer_form.html:172
+#: offers/templates/offer_list.html:33
+msgid "Category"
+msgstr "Category"
+
+#: offers/templates/offer_detail.html:50
+msgid "Author"
+msgstr "Author"
+
+#: offers/templates/offer_detail.html:57
+msgid "Author site"
+msgstr "Author site"
+
+#: offers/templates/offer_detail.html:65 offers/templates/offer_form.html:217
+msgid "Premium url"
+msgstr "Premium url"
+
+#: offers/templates/offer_detail.html:72 offers/templates/offer_detail.html:97
+msgid "Share"
+msgstr "Share"
+
+#: offers/templates/offer_detail.html:78
+msgid "Edit"
+msgstr "Edit"
+
+#: offers/templates/offer_detail.html:80
+msgid "Delete"
+msgstr "Delete"
+
+#: offers/templates/offer_detail.html:84
+msgid "Complain"
+msgstr "Complaint text"
+
+#: offers/templates/offer_detail.html:111
+msgid "Close"
+msgstr "Close"
+
+#: offers/templates/offer_form.html:47
+msgid "This text will be the title of your offer"
+msgstr "This text will be the title of your offer"
+
+#: offers/templates/offer_form.html:60
+msgid "Text"
+msgstr "Text"
+
+#: offers/templates/offer_form.html:157
+msgid "Image"
+msgstr "Image"
+
+#: offers/templates/offer_form.html:167
+#, fuzzy
+#| msgid "Upload an image. Supported formats: JPG, PNG."
+msgid "Upload an image. Supported formats: JPG, PNG, GIF."
+msgstr "Upload an image. Supported formats: JPG, PNG."
+
+#: offers/templates/offer_form.html:182
+msgid "The ad will be shown in this category."
+msgstr "The ad will be shown in this category."
+
+#: offers/templates/offer_form.html:197
+msgid "Specify the country in which the services (product) are provided."
+msgstr "Specify the country in which the services (product) are provided."
+
+#: offers/templates/offer_form.html:202
+msgid "Url"
+msgstr "Url"
+
+#: offers/templates/offer_form.html:212
+msgid "Please provide a link to your website (social networks)."
+msgstr "Please provide a link to your website (social networks)."
+
+#: offers/templates/offer_form.html:227
+msgid "Provide a link for premium users with an exclusive offer."
+msgstr "Provide a link for premium users with an exclusive offer."
+
+#: offers/templates/offer_form.html:234
+msgid "Save"
+msgstr "Save"
+
+#: offers/templates/offer_list.html:28 offers/templates/user_offer_list.html:16
+#: users/templates/proffile_offers_list.html:60
+msgid "Create"
+msgstr "Create"
+
+#: offers/templates/offer_list.html:49
+msgid "Reset"
+msgstr "Reset"
+
+#: offers/templates/offer_list.html:54 offers/templates/offer_list.html:58
+msgid "Search"
+msgstr "Search"
+
+#: payments/templates/payment_form.html:90
+#: payments/templates/payment_form.html:101
+#: payments/templates/payment_form.html:112
+#: payments/templates/payment_form.html:123
+msgid "Step"
+msgstr "Step"
+
+#: publication/models.py:36
+msgid "Article"
+msgstr "Article"
+
+#: publication/models.py:37
+msgid "Page"
+msgstr "Page"
+
+#: templates/base.html:62 templates/base.html:208
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html:65 templates/base.html:210
+msgid "Offers"
+msgstr "Offers"
+
+#: templates/base.html:72 templates/base.html:213
+msgid "Articles"
+msgstr "Articles"
+
+#: templates/base.html:120 templates/base.html:168
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/base.html:136
+msgid "Mark all as read"
+msgstr "Mark all as read"
+
+#: templates/base.html:141 templates/base.html:149
+msgid "View notification history"
+msgstr "View notification history"
+
+#: templates/base.html:146
+msgid "No new notifications"
+msgstr "No new notifications"
+
+#: templates/base.html:164
+msgid "Account"
+msgstr "Account"
+
+#: templates/base.html:176
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/base.html:186
+msgid "Signin"
+msgstr "Signin"
+
+#: templates/base.html:188 users/templates/login.html:58
+msgid "Signup"
+msgstr "Signup"
+
+#: templates/external_warning.html:7
+msgid "You're leaving Scalingst"
+msgstr "You're leaving Scalingst"
+
+#: templates/external_warning.html:8
+msgid "If you trust this link, click the go button"
+msgstr "If you trust this link, click the go button"
+
+#: templates/external_warning.html:9
+msgid "Link"
+msgstr "Link"
+
+#: templates/external_warning.html:12
+msgid "Go to link"
+msgstr "Go to link"
+
+#~ msgid "My offers"
+#~ msgstr "My offers"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Change Language"
+#~ msgstr "Change Language"

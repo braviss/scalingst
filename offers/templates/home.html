@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Главная{% endblock %}
+
+{% load view_breadcrumbs %}
+
+
+{% block content %}
+
+
+
+    {% render_breadcrumbs %}
+
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">Масштабирования
+            продаж</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Это инструмент увеличения объемов продаж вашего продукта. Это процесс, когда вы
+                переходите от мелких продаж к более крупным, расширяете свою клиентскую базу и увеличиваете доходы от
+                продаж.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'offers:offer_create' %}" class="btn btn-primary btn-lg px-4 gap-3">Создать первий оффер</a>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">О нас</button>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

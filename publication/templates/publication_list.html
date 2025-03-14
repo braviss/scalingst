@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Список предложений{% endblock %}
+
+{% load view_breadcrumbs %}
+
+{% block content %}
+
+    {% render_breadcrumbs %}
+
+    <style>
+        .bg-pu {
+            background-color: green !important;
+        }
+
+        .bg-pe {
+            background-color: gray !important;
+        }
+
+        .bg-re {
+            background-color: red !important;
+        }
+
+    </style>
+
+
+    <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
+        {% for article in articles %}
+            <div class="col mb-4 offer-item">
+                <div class="card h-100 position-relative">
+                    <img src="{{ article.image.url }}" class="card-img-top offer-image" alt="...">
+                    <div class="card-body">
+{#                        <a href="{% url 'publication:list' slug=offer.slug %}">#}
+{#                            <h5 class="card-title">{{ article.title }}</h5>#}
+{#                        </a>#}
+                        <p class="card-text">{{ article.body|striptags|truncatewords:10 }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ article.created_at|timesince }}</small>
+                            <small class="text-body-secondary">| {{ article.country.name }} </small><small class="text-body-secondary">| {{ article.category }} </small><small class="text-body-secondary">| {{ article.author }}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="Первая">
+                        <span aria-hidden="true">&laquo; Первая</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
+                        <span aria-hidden="true">Предыдущая</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+                        <span aria-hidden="true">Следующая</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
+                        <span aria-hidden="true">Последняя &raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+
+{% endblock %}
+
+
+
+
+

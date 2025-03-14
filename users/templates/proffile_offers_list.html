@@ -1,0 +1,155 @@
+{% extends 'dashboard.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}Список уведомлений{% endblock %}
+
+{% block dashboard_content %}
+
+    <style>
+        .read-False td {
+            background-color: #ccc;
+        }
+    </style>
+
+    <div class="col-lg-3 border-end">
+        <div class="text-center">
+            <div class="position-relative d-inline-block">
+                {% if request.user.avatar %}
+                    <img src="{{ request.user.avatar.url }}" class="rounded-circle profile-pic"
+                         alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'icons/default-avatar.png' %}"
+                         class="rounded-circle profile-pic" alt="Profile Picture">
+                {% endif %}
+            </div>
+            <h3 class="mt-3 mb-2">{{ request.user.username }}</h3>
+
+        </div>
+        <div class="p-4">
+            <div class="nav flex-column nav-pills">
+                <a class="nav-link"
+                   href="{% url 'accounts:dashboard' request.user.username %}">
+                    <i class="fas fa-user me-2"></i>
+                    Personal Info
+                </a>
+                <a class="nav-link active"
+                   href="{% url 'accounts:my_offers' %}">
+                    <i class="fas fa-grip me-2"></i>
+                    My offers
+                </a>
+                <a class="nav-link" href="{% url 'notifications:notification_list' %}">
+                    <i class="fas fa-bell me-2"></i>
+                    Notifications
+                </a>
+
+                <a class="nav-link" href="{% url 'payments:history' %}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Payments
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-9">
+        <div class="p-4">
+
+            {% if offers %}
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">{% trans 'Create' %}</a>
+                    </div>
+                </div>
+
+                <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
+                    {% for offer in offers %}
+                        <div class="col mb-4 offer-item">
+                            <div class="card h-100 position-relative">
+                                {% if offer.is_premium == True %}
+                                    <span class="position-absolute mt-2 mx-2 badge text-bg-success">
+                            {% trans 'Premium' %} <i class="fa-solid fa-star" style="color: gold"></i>
+                        </span>
+
+                                {% endif %}
+
+                                {% if request.user == offer.author %}
+                                    <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
+                                {% endif %}
+                                <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
+                                <div class="card-body">
+                                    <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
+                                        <h5 class="card-title">{{ offer.title }}</h5>
+                                    </a>
+                                    <p class="card-text">{{ offer.category }}</p>
+                                    <p class="card-text">{{ offer.body|striptags|truncatewords:10 }}</p>
+                                    <p class="card-text"><small
+                                            class="text-body-secondary">{{ offer.created_at|timesince }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1" aria-label="Первая">
+                                    <span aria-hidden="true">&laquo; Первая</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+                                   aria-label="Предыдущая">
+                                    <span aria-hidden="true">Предыдущая</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num == page_obj.number %}
+                                <li class="page-item active" aria-current="page">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+                                   aria-label="Следующая">
+                                    <span aria-hidden="true">Следующая</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"
+                                   aria-label="Последняя">
+                                    <span aria-hidden="true">Последняя &raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+            {% else %}
+                <p>You dont have Offers</p>
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">Create you first
+                            offer</a>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

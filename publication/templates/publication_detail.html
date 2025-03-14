@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% load view_breadcrumbs %}
+
+{% load social_share %}
+{% block content %}
+
+    {% render_breadcrumbs %}
+
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="card h-100 border border-0">
+                <div class="card-body px-0">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <p class="card-text">{{ object.body|safe }}</p>
+                    <p class="card-text"><small class="text-body-secondary">{{ object.created_at|timesince }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load view_breadcrumbs %}
+
+{% block content %}
+    {% render_breadcrumbs %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="{{ form.text.id_for_label }}" class="form-label">Body</label>
+            {{ form.text|add_class:"form-control" }}
+            {% if form.text.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.text.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+
+    <script src="https://cdn.tiny.cloud/1/iupejpp6f30m38vza1a1zlz8b6anc1tj9952ooabjqm3yx3k/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',  // это применяет TinyMCE ко всем <textarea> на странице
+            plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen',
+            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image | code'
+        });
+    </script>
+
+{% endblock %}

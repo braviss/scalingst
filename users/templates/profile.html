@@ -1,0 +1,64 @@
+{% extends 'dashboard.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}Список уведомлений{% endblock %}
+{% block dashboard_content %}
+
+    <div class="col-lg-3 border-end">
+        <div class="text-center">
+            <div class="position-relative d-inline-block">
+                {% if request.user.avatar %}
+                    <img src="{{ request.user.avatar.url }}" class="rounded-circle profile-pic"
+                         alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'icons/default-avatar.png' %}"
+                         class="rounded-circle profile-pic" alt="Profile Picture">
+                {% endif %}
+            </div>
+            <h3 class="mt-3 mb-2">{{ username }}</h3>
+        </div>
+        <div class="p-4">
+            <div class="nav flex-column nav-pills">
+                <a class="nav-link active"
+                   href="{% url 'accounts:dashboard' request.user.username %}"><i
+                        class="fas fa-user me-2"></i>Personal
+                    Info</a>
+                <a class="nav-link"
+                   href="{% url 'accounts:my_offers' %}"><i
+                        class="fas fa-grip me-2"></i>My offers</a>
+                <a class="nav-link" href="{% url 'notifications:notification_list' %}"><i
+                        class="fas fa-bell me-2"></i>Notifications</a>
+
+                <a class="nav-link" href="{% url 'payments:history' %}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Payments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9">
+        <div class="p-4">
+
+            <div class="col-12 mb-4">
+                <div class="mb-4">
+                    <a class="btn btn-primary mb-2" href="{% url 'accounts:edit_profile' %}">
+                        <i class="fa-solid fa-user-pen"></i> Edit
+                    </a>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="id_first_name">First Name: {{ user.first_name }}</label>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="id_last_name">Last Name: {{ user.last_name }}</label>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="id_email">Email: {{ user.email }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
