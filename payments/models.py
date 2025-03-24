@@ -14,6 +14,7 @@ class Payment(models.Model):
         related_name="payments",
         verbose_name="User"
     )
+
     payment_details = models.TextField(
         verbose_name="Payment details"
     )
@@ -28,6 +29,12 @@ class Payment(models.Model):
         choices=STATUS_CHOICES,
         default="pending",
         verbose_name="Status"
+    )
+    invite_code = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name="Invite Code"
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

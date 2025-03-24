@@ -7,6 +7,9 @@ from django.views.generic import (
     DeleteView
 )
 from django.contrib.auth.models import User
+from django_countries import countries
+from users.utils import get_country_from_ip
+from django.conf import settings
 from users.models import CustomUser
 from django.shortcuts import get_object_or_404
 from offers.models import (
@@ -36,9 +39,7 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
 
-class OfferListView(CustomLoginRequiredMixin,
-                      ListBreadcrumbMixin,
-                      ListView):
+class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
     model = Offer
     template_name = 'offer_list.html'
     context_object_name = 'offers'
@@ -52,11 +53,9 @@ class OfferListView(CustomLoginRequiredMixin,
             'created_at'
         )
 
-
         category_slug = self.request.GET.get('category')
         if category_slug:
             queryset = queryset.filter(category__slug=category_slug)
-
 
         search = self.request.GET.get('search', '')
         if search:
@@ -65,13 +64,17 @@ class OfferListView(CustomLoginRequiredMixin,
                 Q(body__icontains=search),
             )
 
-        return queryset
+        country_code = self.request.GET.get('country', get_country_from_ip(self.request))
+        if country_code:
+            queryset = queryset.filter(country=country_code)
 
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['categories'] = Category.objects.all()
+        context['countries'] = countries
+
         return context
 
 
@@ -109,6 +112,11 @@ class OfferCreateView(CustomLoginRequiredMixin,
         messages.success(self.request,
                          'Ваш офер добавлен, после подтверждения модератора он появиться в списке!')
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['TINYMCE_API_KEY'] = settings.TINYMCE_API_KEY  # Добавляем API-ключ в контекст
+        return context
 
 
 

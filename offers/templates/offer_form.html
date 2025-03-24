@@ -72,90 +72,6 @@
 
 
 
-{#                <div class="row">#}
-{#                    <div class="col-md-8">#}
-{##}
-{#                        <div class="mb-3">#}
-{#                            <label for="{{ form.image.id_for_label }}" class="form-label">{% trans 'Image' %}</label>#}
-{#                            {{ form.image|add_class:"form-control" }}#}
-{##}
-{#                            {% if form.image.errors %}#}
-{#                                <div class="invalid-feedback">#}
-{#                                    {% for error in form.image.errors %}#}
-{#                                        <p>{{ error }}</p>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{##}
-{##}
-{#                        <div class="mb-3">#}
-{#                            <label for="{{ form.category.id_for_label }}"#}
-{#                                   class="form-label">{% trans 'Category' %}</label>#}
-{#                            {{ form.category|add_class:"form-control" }}#}
-{#                            {% if form.category.errors %}#}
-{#                                <div class="invalid-feedback">#}
-{#                                    {% for error in form.category.errors %}#}
-{#                                        <p>{{ error }}</p>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                        <div class="mb-3">#}
-{#                            <label for="{{ form.country.id_for_label }}"#}
-{#                                   class="form-label">{% trans 'Country' %}</label>#}
-{#                            {{ form.country|add_class:"form-control" }}#}
-{#                            {% if form.country.errors %}#}
-{#                                <div class="invalid-feedback">#}
-{#                                    {% for error in form.country.errors %}#}
-{#                                        <p>{{ error }}</p>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                        <div class="mb-3">#}
-{#                            <label for="{{ form.url.id_for_label }}" class="form-label">{% trans 'Url' %}</label>#}
-{#                            {{ form.url|add_class:"form-control" }}#}
-{#                            {% if form.url.errors %}#}
-{#                                <div class="invalid-feedback">#}
-{#                                    {% for error in form.url.errors %}#}
-{#                                        <p>{{ error }}</p>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                        <div class="mb-3">#}
-{#                            <label for="{{ form.premium_url.id_for_label }}"#}
-{#                                   class="form-label">{% trans 'Premium url' %}</label>#}
-{#                            {{ form.premium_url|add_class:"form-control" }}#}
-{#                            {% if form.premium_url.errors %}#}
-{#                                <div class="invalid-feedback">#}
-{#                                    {% for error in form.premium_url.errors %}#}
-{#                                        <p>{{ error }}</p>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-md-4">#}
-{#                        <div class="col-md-6 d-flex align-items-center">#}
-{#                            <p class="mb-0 text-muted">{% trans 'Upload an image. Supported formats: JPG, PNG, GIF.' %}</p>#}
-{#                        </div>#}
-{#                        <div class="col-md-6 d-flex align-items-center">#}
-{#                            <p class="mb-0 text-muted">{% trans 'The ad will be shown in this category.' %}</p>#}
-{#                        </div>#}
-{#                        <div class="col-md-6 d-flex align-items-center">#}
-{#                            <p class="mb-0 text-muted">{% trans 'Specify the country in which the services (product) are provided.' %}</p>#}
-{#                        </div>#}
-{#                        <div class="col-md-6 d-flex align-items-center">#}
-{#                            <p class="mb-0 text-muted">{% trans 'Please provide a link to your website (social networks).' %}</p>#}
-{#                        </div>#}
-{#                        <div class="col-md-6 d-flex align-items-center">#}
-{#                            <p class="mb-0 text-muted">{% trans 'Provide a link for premium users with an exclusive offer.' %}</p>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-
 
                                 <table class="table">
                                     <tbody>
@@ -245,14 +161,14 @@
         </div>
     </div>
 
-    <script src="https://cdn.tiny.cloud/1/iupejpp6f30m38vza1a1zlz8b6anc1tj9952ooabjqm3yx3k/tinymce/5/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/{{ TINYMCE_API_KEY }}/tinymce/5/tinymce.min.js"
             referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-            selector: 'textarea',  // это применяет TinyMCE ко всем <textarea> на странице
+            selector: 'textarea',
             plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen',
             toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image | code',
-            height: 300,      // Устанавливает начальную высоту
+            height: 300,
             max_height: 500
         });
     </script>

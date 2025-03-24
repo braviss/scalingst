@@ -32,10 +32,14 @@
                         class="fas fa-user me-2"></i>Personal
                     Info</a>
                 <a class="nav-link"
-                   href="{% url 'offers:user_offers' username=request.user.username %}"><i
+                   href="{% url 'accounts:my_offers' %}"><i
                         class="fas fa-grip me-2"></i>My offers</a>
                 <a class="nav-link" href="{% url 'notifications:notification_list' %}"><i
                         class="fas fa-bell me-2"></i>Notifications</a>
+                <a class="nav-link" href="{% url 'payments:history' %}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Payments
+                </a>
             </div>
         </div>
     </div>
@@ -69,7 +73,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
             </form>
-
+            <a href="{% url 'accounts:delete_account' %}" class="btn btn-danger mt-2">Удалить аккаунт</a>
         </div>
     </div>
 

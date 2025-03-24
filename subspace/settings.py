@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-y)zdw&q$*7c@8d9x(b&7k^6*!&0lyoyn2a7*9p58mq3tsuotyx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['185.25.116.210', 'localhost', '127.0.0.1']
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -149,10 +151,8 @@ LOCALE_PATHS = [
 ]
 
 # reCaptcha
-RECAPTCHA_PUBLIC_KEY = '6LfqdWUpAAAAADGzN5KlTd1g7ZjvXFMLQNiDL6yT'
-RECAPTCHA_PRIVATE_KEY = '6LfqdWUpAAAAADUWWWu-wqH3zW2H-lF7qAUmjYZ8'
-
-
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -186,6 +186,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
+TINYMCE_API_KEY = config('TINYMCE_API_KEY', default='')
+
 TINYMCE_DEFAULT_CONFIG = {
 
     "menubar": "file edit view insert format tools table help",
@@ -197,6 +199,15 @@ TINYMCE_DEFAULT_CONFIG = {
     "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
     "a11ycheck ltr rtl | showcomments addcomment code",
     "custom_undo_redo_levels": 10,
-    "language": "es_ES",  # To force a specific language instead of the Django current language.
+    "language": "es_ES",
 }
 
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "yayadance530@gmail.com"
+EMAIL_HOST_PASSWORD = "gdri ytoa sybv jlrn"
+
+GEOIP_PATH = '/path/to/your/GeoLite2-Country.mmdb'

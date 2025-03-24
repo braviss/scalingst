@@ -21,10 +21,37 @@
             background-color: red !important;
         }
 
+        .card-footer {
+            margin-top: auto;
+        }
+
+        .offer-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .offer-item a {
+            text-decoration: none; /* Убирает подчеркивание для всех ссылок */
+            cursor: pointer;
+        }
+
+        .card-body a,
+        .card-footer a {
+            text-decoration: none; /* Убирает подчеркивание для ссылок внутри card-body и card-footer */
+        }
+
+        .card-body a:hover,
+        .card-footer a:hover {
+            text-decoration: none; /* Убирает подчеркивание при наведении */
+        }
+        .card-footer {
+            background-color: transparent;
+        }
     </style>
 
-    <div class="d-flex justify-content-between mb-4">
-        <div class="d-flex align-items-center">
+    <div class="d-flex flex-wrap justify-content-between mb-4">
+        <div class="d-flex flex-wrap align-items-center">
             <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">{% trans 'Create' %}</a>
 
             <div class="dropdown me-2">
@@ -43,11 +70,34 @@
                             </a>
                         </li>
                     {% endfor %}
-                <li>
-                    <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">All category</a>
-                </li>
+                    <li>
+                        <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">All category</a>
+                    </li>
                 </ul>
             </div>
+
+            <div class="dropdown me-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    {% trans 'Country' %}
+                </button>
+                <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
+                    <li>
+                        <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                    </li>
+                    <div class="dropdown-columns">
+                        {% for code, name in countries %}
+                            <li>
+                                <a class="dropdown-item {% if code == user_country %}active{% endif %}"
+                                   href="{% url 'offers:offer_list' %}?country={{ code }}">
+                                    {{ name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+
 
             <a href="{% url 'offers:offer_list' %}" class="btn btn-secondary me-2">{% trans 'Reset' %} <i
                     class="fa-solid fa-delete-left"></i></a>
@@ -94,28 +144,36 @@
     <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
         {% for offer in offers %}
             <div class="col mb-4 offer-item">
-                <div class="card h-100 position-relative">
-                    {% if offer.is_premium == True %}
-                        <span class="position-absolute mt-2 mx-2 badge text-bg-success">
+                <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
+                    <div class="card h-100 position-relative">
+                        {% if offer.is_premium == True %}
+                            <span class="position-absolute mt-2 mx-2 badge text-bg-success">
                             {% trans 'Premium' %} <i class="fa-solid fa-star" style="color: gold"></i>
                         </span>
 
-                    {% endif %}
+                        {% endif %}
 
-                    {% if request.user == offer.author %}
-                        <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
-                    {% endif %}
-                    <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
-                    <div class="card-body">
-                        <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
+                        {% if request.user == offer.author %}
+                            <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
+                        {% endif %}
+                        <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
+                        <div class="card-body">
+
                             <h5 class="card-title">{{ offer.title }}</h5>
-                        </a>
-                        <p class="card-text">{{ offer.body|striptags|truncatewords:10 }}</p>
-                        <p class="card-text"><small class="text-body-secondary">{{ offer.created_at|timesince }}</small>
-                            <small class="text-body-secondary">| {{ offer.country.name }} </small><small class="text-body-secondary">| {{ offer.category }} </small><small class="text-body-secondary">| {{ offer.author }}</small>
-                        </p>
+
+                            <p class="card-text">{{ offer.body|striptags|truncatewords:10 }}</p>
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <small class="text-body-secondary">{{ offer.created_at|timesince }}</small>
+                                    <small class="text-body-secondary">| {{ offer.country.name }}</small>
+                                    <small class="text-body-secondary">| {{ offer.category }}</small>
+                                    <small class="text-body-secondary">| {{ offer.author }}</small>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
+
             </div>
         {% endfor %}
     </div>

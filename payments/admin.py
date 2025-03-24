@@ -26,7 +26,7 @@ from django.contrib.auth import get_user_model
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "status", "created_at", "confirmed_by", "confirmed_at")
+    list_display = ("id", "user", "status", "created_at", "confirmed_by", "confirmed_at", "invite_code")
     list_filter = ("status", "created_at")
     search_fields = ("user__username", "confirmed_by__username")
     readonly_fields = ("created_at", "confirmed_at", "confirmed_by")

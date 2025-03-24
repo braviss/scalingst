@@ -25,7 +25,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ object.title }}</h5>
                     <p class="card-text">{{ object.body|safe }}</p>
-                    <p class="card-text"><small class="text-body-secondary">{{ object.created_at|timesince }}</small>
+                    <p class="card-text border-top">
+                        <small class="text-body-secondary">{{ object.created_at|timesince }}</small>
+                        <small class="text-body-secondary">{{ object.id }}</small>
+
                     </p>
                 </div>
             </div>

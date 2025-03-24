@@ -23,3 +23,13 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', 'avatar']
+
+
+class EmailVerificationForm(forms.Form):
+    code = forms.CharField(max_length=6, required=True, label="Введите код")
+
+    def clean_code(self):
+        code = self.cleaned_data.get('code')
+        if not code:
+            raise forms.ValidationError("Пожалуйста, введите код подтверждения.")
+        return code

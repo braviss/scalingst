@@ -6,6 +6,13 @@
 
 {% block content %}
 <div class="container mt-5">
+{% if messages %}
+    <div class="alert alert-danger">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
     {% if user.is_authenticated %}
         <h2 class="text-center mt-3">Вы уже авторизованы</h2>
     {% else %}
@@ -56,6 +63,7 @@
                     <div class="d-flex justify-content-between mt-3">
 {#                        <a href="{% url 'accounts:password_reset' %}" class="text-decoration-none">Забыли пароль?</a>#}
                         <a href="{% url 'accounts:signup' %}" class="text-decoration-none">{% trans 'Signup' %}</a>
+                        <a href="{% url 'accounts:password_reset' %}" class="text-decoration-none">Забыл пароль ?</a>
                     </div>
                 </form>
             </div>

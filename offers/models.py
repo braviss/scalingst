@@ -35,7 +35,6 @@ class Offer(BaseModel):
         ("re", "Rejected"),
     ]
 
-
     title = models.CharField(verbose_name=_('Title'),
                              max_length=100,
                              unique=True)
@@ -64,7 +63,6 @@ class Offer(BaseModel):
         db_table_comment = "Offer table braviss"
         get_latest_by = 'created_at'
 
-
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(translit(self.title, 'ru', reversed=True))
@@ -79,11 +77,22 @@ class Offer(BaseModel):
 
 
 class Category(BaseModel):
-    name = models.CharField(max_length=30, unique=True)
-    slug = models.SlugField(max_length=30, blank=True)
+    """
+    Model for storing offer category data
+    """
+    name = models.CharField(
+        max_length=30,
+        unique=True
+    )
+    slug = models.SlugField(
+        max_length=30,
+        blank=True
+    )
     description = models.TextField(max_length=200)
-    image = models.ImageField(upload_to='category_img',
-                              null=True, blank=True)
+    image = models.ImageField(
+        upload_to='category_img',
+        null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Category"
