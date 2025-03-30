@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-
+{% extends 'base_2.html' %}
+{% load static %}
 
 {% block title %}Главная{% endblock %}
 
@@ -12,19 +12,62 @@
 
     {% render_breadcrumbs %}
 
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold text-body-emphasis">Масштабирования
-            продаж</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Это инструмент увеличения объемов продаж вашего продукта. Это процесс, когда вы
-                переходите от мелких продаж к более крупным, расширяете свою клиентскую базу и увеличиваете доходы от
-                продаж.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="{% url 'offers:offer_create' %}" class="btn btn-primary btn-lg px-4 gap-3">Создать первий оффер</a>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">О нас</button>
+    <div class="text-light"
+         style="background-image: url('{% static 'entrepreneur-analyzes-economic-and-financial-growt-2024-12-06-07-11-59-utc1.jpg' %}')">
+
+
+        <div class="text-center" style="padding: 70px 0">
+            <img class="d-block mx-auto mb-4" src="{% static 'MP-logo-1-150x150-transparent (1).png' %}" alt=""
+                 width="100" height="100">
+            <h1 class="display-5 fw-bold text-light">Масштабирования
+                продаж</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Это инструмент увеличения объемов продаж вашего продукта. Это процесс, когда вы
+                    переходите от мелких продаж к более крупным, расширяете свою клиентскую базу и увеличиваете доходы
+                    от
+                    продаж.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{% url 'offers:offer_create' %}" class="btn btn-primary btn-lg px-4 gap-3">Создать первий
+                        оффер</a>
+                    <a href="http://127.0.0.1:8000/ru/page/about/" class="btn btn-outline-light btn-lg px-4">О нас</a>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+        <div class="feature col text-center">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-4 rounded">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Кабинет</h3>
+            <p>У каждого подписчика есть свой личный кабинет</p>
+        </div>
+        <div class="feature col text-center">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-4 rounded">
+                <i class="fa-solid fa-shop"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Удобство</h3>
+            <p>Автоматизация процесса покупки, экономия времени</p>
+        </div>
+        <div class="feature col text-center">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-4 rounded">
+                <i class="fa-regular fa-gem"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Эксклюзивность</h3>
+            <p>Доступ к эксклюзивным продуктам, услугам и контенту</p>
+        </div>
+        <div class="feature col text-center">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-4 rounded">
+                <i class="fa-regular fa-thumbs-up"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Гарантии качества</h3>
+            <p>Гарантия качества и удобные условия возврата</p>
+        </div>
+    </div>
+
 
 
 {% endblock %}

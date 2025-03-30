@@ -21,32 +21,35 @@
         .dropdown-toggle::after {
             display: none !important;
         }
+
+        .btn-primary {
+            background-color: #118ce6;
+            color: white;
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: #118ce6;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b71be;
+            color: white;
+        }
+
+
+        nav[aria-label="breadcrumb"] {
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            justify-content: center;
+        }
+
+         ol[class="breadcrumb"] {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
-
-{#<nav class="navbar navbar-expand-lg navbar-light bg-light">#}
-{#    <form action="{% url 'set_language' %}" method="post" class="form-inline my-2 my-lg-0 ml-auto">#}
-{#        {% csrf_token %}#}
-{#        <input name="next" type="hidden" value="{{ redirect_to }}">#}
-{#        <div class="input-group">#}
-{#            <select name="language" class="custom-select">#}
-{#                {% get_current_language as LANGUAGE_CODE %}#}
-{#                {% get_available_languages as LANGUAGES %}#}
-{#                {% get_language_info_list for LANGUAGES as languages %}#}
-{#                {% for language in languages %}#}
-{#                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>#}
-{#                        {{ language.name_local }} ({{ language.code }})#}
-{#                    </option>#}
-{#                {% endfor %}#}
-{#            </select>#}
-{#            <div class="input-group-append">#}
-{#                <button class="btn btn-outline-secondary" type="submit">{% trans 'Change Language' %}</button>#}
-{#            </div>#}
-{#        </div>#}
-{#    </form>#}
-{#</nav>#}
-
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
@@ -69,7 +72,7 @@
                             class="fa-solid fa-star" style="color: gold"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">{% trans 'Articles' %}</a>
+                    <a class="nav-link" href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

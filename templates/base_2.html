@@ -1,0 +1,686 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Index - iLanding Bootstrap Template</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: iLanding
+    * Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
+    * Updated: Nov 12 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body class="index-page">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Scalingst</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'offers:offer_list' %}">{% trans 'Offers' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'payments:create' %}">{% trans 'Premium' %} <i
+                            class="fa-solid fa-star" style="color: gold"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <button id="theme-toggle" class="nav-link border-0">
+                        <i id="light-icon" class="fa-solid fa-sun"></i>
+                        <i id="dark-icon" class="fa-solid fa-moon" style="display: none;"></i>
+                    </button>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="height: 35px;" href="#" id="navbarDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if request.LANGUAGE_CODE == 'uk' %}
+                            <span>Uk</span>
+                        {% elif request.LANGUAGE_CODE == 'en' %}
+                            <span>Us</span>
+                        {% else %}
+                            <span>Ru</span>
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <button type="submit" name="language" value="{{ language.code }}"
+                                            class="{% if language.code == LANGUAGE_CODE %}selected{% else %}demo-text-black{% endif %} dropdown-item">
+                                        {{ language.name_local }}
+                                    </button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            🔔 {% trans 'Notifications' %} <span
+                                class="badge bg-danger">{{ notifications|length }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                            {% if notifications %}
+                                {% for notification in notifications %}
+
+                                    <li><a class="dropdown-item" href="#">{{ notification.message }}</a></li>
+
+                                {% endfor %}
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-center text-primary"
+                                       href="{% url 'notifications:mark_as_read' %}">
+                                        {% trans 'Mark all as read' %}
+                                    </a>
+
+                                    <a href="{% url 'notifications:notification_list' %}"
+                                       class="dropdown-item text-center text-primary">
+                                        {% trans 'View notification history' %}
+                                    </a>
+
+                                </li>
+                            {% else %}
+                                <li><span class="dropdown-item text-muted">{% trans 'No new notifications' %}</span>
+                                </li>
+                                <li><span class="dropdown-item text-muted"><a
+                                        href="{% url 'notifications:notification_list' %}">{% trans 'View notification history' %}</a></span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                {{ request.user.username }}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{% url 'accounts:dashboard' request.user.username %}">{% trans 'Account' %}</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{% url 'notifications:notification_list' %}">{% trans 'Notifications' %}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form method="post" action="{% url 'accounts:logout' %}">
+                                        {% csrf_token %}
+                                        <input type="submit" value="{% trans 'Logout' %}" class="dropdown-item">
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                {% else %}
+                    <a href="{% url 'accounts:signin' %}" class="btn btn-primary me-2"><i
+                            class="fa-solid fa-right-to-bracket"></i> {% trans 'Signin' %}</a>
+                    <a href="{% url 'accounts:signup' %}" class="btn btn-primary"><i
+                            class="fa-solid fa-user-plus"></i> {% trans 'Signup' %}</a>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+{#<header id="header" class="header d-flex align-items-center fixed-top">#}
+{#    <div class="header-container container-fluid position-relative d-flex align-items-center justify-content-between">#}
+{##}
+{#        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">#}
+{#            <!-- Uncomment the line below if you also wish to use an image logo -->#}
+{#            <!-- <img src="assets/img/logo.png" alt=""> -->#}
+{#            <h1 class="sitename">iLanding</h1>#}
+{#        </a>#}
+{##}
+{#        <nav id="navmenu" class="navmenu">#}
+{#            <ul>#}
+{#                <li><a href="#hero" class="active">Home</a></li>#}
+{#                <li><a href="#about">About</a></li>#}
+{#                <li><a href="#features">Features</a></li>#}
+{#                <li><a href="#services">Services</a></li>#}
+{#                <li><a href="#pricing">Pricing</a></li>#}
+{#                <li class="dropdown"><a href="#"><span>Dropdown</span> <i#}
+{#                        class="bi bi-chevron-down toggle-dropdown"></i></a>#}
+{#                    <ul>#}
+{#                        <li><a href="#">Dropdown 1</a></li>#}
+{#                        <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i#}
+{#                                class="bi bi-chevron-down toggle-dropdown"></i></a>#}
+{#                            <ul>#}
+{#                                <li><a href="#">Deep Dropdown 1</a></li>#}
+{#                                <li><a href="#">Deep Dropdown 2</a></li>#}
+{#                                <li><a href="#">Deep Dropdown 3</a></li>#}
+{#                                <li><a href="#">Deep Dropdown 4</a></li>#}
+{#                                <li><a href="#">Deep Dropdown 5</a></li>#}
+{#                            </ul>#}
+{#                        </li>#}
+{#                        <li><a href="#">Dropdown 2</a></li>#}
+{#                        <li><a href="#">Dropdown 3</a></li>#}
+{#                        <li><a href="#">Dropdown 4</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li><a href="#contact">Contact</a></li>#}
+{#            </ul>#}
+{#            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>#}
+{#        </nav>#}
+{##}
+{#        <a class="btn-getstarted" href="index.html#about">Get Started</a>#}
+{##}
+{#    </div>#}
+{#</header>#}
+
+<main class="main">
+
+    <section id="hero" class="hero section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+
+                        <h1 class="mb-4">
+                            Маштабирование
+                            <span class="accent-text">продаж</span>
+                        </h1>
+
+                        <p class="mb-4 mb-md-5">
+                            Это инструмент увеличения объемов продаж вашего продукта.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-0 me-sm-2 mx-1">Создать
+                                первий
+                                оффер</a>
+                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                               class="btn btn-link mt-2 mt-sm-0 glightbox">
+                                <i class="bi bi-info-circle"></i>
+                                О нас
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+                        <img src="{% static 'img/illustration-1.webp' %}" alt="Hero Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Кабинет</h4>
+                            <p class="mb-0">У каждого подписчика есть свой личный кабинет</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-shop"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Удобство</h4>
+                            <p class="mb-0">Автоматизация процесса покупки, экономия времени</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-gem"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Эксклюзивность</h4>
+                            <p class="mb-0">Доступ к эксклюзивным продуктам, услугам</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Гарантии</h4>
+                            <p class="mb-0">Гарантия качества и удобные условия возврата</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /Hero Section -->
+
+    <section id="about" class="about section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4 align-items-center justify-content-between">
+
+                <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+                    <span class="about-meta">Подробнее о нас</span>
+                    <h2 class="about-title">Масштабирования продаж (МП)</h2>
+                    <p class="about-description">Это инструмент увеличения объемов продаж вашего продукта. Это процесс,
+                        когда вы
+                        переходите от мелких продаж к более крупным, расширяете свою клиентскую базу и увеличиваете
+                        доходы
+                        от продаж.</p>
+
+                    <div class="row feature-list-wrapper">
+                        <div class="col-md-6">
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Увеличить продажи</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Отследить статистику</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Снизить затраты</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Получать скидки</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Привлечь партнеров</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Публиковать предложения</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="image-wrapper">
+                        <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                            <img src="{% static 'img/about-5.webp' %}" alt="Business Meeting"
+                                 class="img-fluid main-image rounded-4">
+                            <img src="{% static 'img/about-2.webp' %}" alt="Team Discussion"
+                                 class="img-fluid small-image rounded-4">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /About Section -->
+
+    <section id="pricing" class="pricing section light-background">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Цены</h2>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- Basic Plan -->
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card">
+                        <h3>Базовый план</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">Бесплатно</span>
+                            <span class="period">/ год</span>
+                        </div>
+                        <p class="description">Базовый аккаунт для пользователей доступен после регистрации в системе.</p>
+
+                        <h4>Включает:</h4>
+                        <ul class="features-list">
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Доступ к поисковой системе
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Публикацию предложений
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Просмотр предложений пользователей
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn btn-primary">
+                            Оформить
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Популярный</div>
+                        <h3>Премиум план</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">15.0</span>
+                            <span class="period">/ год</span>
+                        </div>
+                        <p class="description">Премиум аккаунт станет доступен после оформления подписки в личном кабинете системы.</p>
+
+                        <h4>Включает:</h4>
+                        <ul class="features-list">
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Доступ к поисковой системе
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Публикацию предложений
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Просмотр предложений пользователей
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Доступ к премиум предложениям
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn btn-light">
+                            Оформить
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section><!-- /Pricing Section -->
+
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="tab-pane fade active show" id="features-tab-1">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <span class="features-meta">Для кого?</span>
+                            <h3>Только для подписчиков на МП</h3>
+                            <p class="fst-italic">
+                                В закрытой части у каждого зарегистрированного подписчика есть свой личный кабинет,
+                                который служит для информирования о всех новостях и обновлениях, необходимых для
+                                успешного развития вашего бизнеса. Там же и международная поисковая система для покупок
+                                по низкой цене МП и оформление заявок на точки с разнообразием товаров и услуг для
+                                публикации в поисковой системе.
+                            </p>
+
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center">
+                            <img src="{% static 'img/features-illustration-1.webp' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Features Section -->
+
+
+
+    <section class="faq-9 faq section light-background" id="faq">
+
+        <div class="container">
+            <div class="row">
+
+                {#                <div class="col-lg-5" data-aos="fade-up">#}
+                {#                    <h2 class="faq-title">Have a question? Check out the FAQ</h2>#}
+                {#                    <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero#}
+                {#                        sit amet adipiscing sem neque sed ipsum.</p>#}
+                {#                    <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">#}
+                {#                        <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"#}
+                {#                             xmlns="http://www.w3.org/2000/svg">#}
+                {#                            <path d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z"#}
+                {#                                  fill="currentColor"></path>#}
+                {#                        </svg>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="faq-title">Для потребителей</h2>
+                    <div class="faq-container">
+
+                        <div class="faq-item faq-active">
+                            <h3>Экономия</h3>
+                            <div class="faq-content">
+                                <p>Самая очевидная мотивация – возможность приобретать товары и услуги по более низким
+                                    ценам. Подписка часто дает доступ к эксклюзивным скидкам, акциям и специальным
+                                    предложениям.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Удобство</h3>
+                            <div class="faq-content">
+                                <p>Подписка позволяет автоматизировать процесс покупки, экономить время на поиск лучших
+                                    предложений. Многие сервисы предлагают доставку прямо на дом или в удобное
+                                    место.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Эксклюзивность</h3>
+                            <div class="faq-content">
+                                <p>Подписчики часто получают доступ к эксклюзивным продуктам, услугам или контенту,
+                                    который недоступен другим покупателям.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Гарантии качества</h3>
+                            <div class="faq-content">
+                                <p>Многие компании, предлагающие подписки, гарантируют качество своих товаров и услуг, а
+                                    также предоставляют удобные условия возврата или обмена.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Социальное доказательство</h3>
+                            <div class="faq-content">
+                                <p>Принадлежность к сообществу подписчиков может повысить самооценку и престиж
+                                    потребителя.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="faq-title">Для продавцов</h2>
+                    <div class="faq-container">
+
+                        <div class="faq-item faq-active">
+                            <h3>Стабильный поток дохода</h3>
+                            <div class="faq-content">
+                                <p>Подписка обеспечивает предсказуемый доход, что позволяет планировать бизнес более
+                                    эффективно.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Увеличение лояльности клиентов</h3>
+                            <div class="faq-content">
+                                <p>Подписчики, как правило, более лояльны к бренду и совершают повторные покупки.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Сбор данных о клиентах</h3>
+                            <div class="faq-content">
+                                <p>Подписка позволяет собирать ценную информацию о поведении клиентов, что помогает
+                                    улучшать продукты и услуги.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Возможность персонализации предложения</h3>
+                            <div class="faq-content">
+                                <p>На основе данных о предпочтениях подписчиков можно создавать персонализированные
+                                    предложения, увеличивая эффективность маркетинговых кампаний.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>Масштабирование бизнеса</h3>
+                            <div class="faq-content">
+                                <p>Подписочная модель позволяет легко масштабировать бизнес и привлекать новых
+                                    клиентов.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /Faq Section -->
+
+</main>
+
+<footer id="footer" class="footer">
+
+    <div class="container footer-top">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6 footer-about">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <span class="sitename">Scalingst</span>
+                </a>
+                <div class="social-links d-flex mt-4">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3">
+                <a href="{% url 'home' %}"><h4>{% trans 'Home' %}</h4></a>
+            </div>
+
+            <div class="col-lg-2 col-md-3">
+                <a href="{% url 'offers:offer_list' %}"><h4>{% trans 'Offers' %}</h4></a>
+            </div>
+
+            <div class="col-lg-2 col-md-3">
+                <a href="{% url 'payments:create' %}"><h4>{% trans 'Premium' %}</h4></a>
+            </div>
+
+            <div class="col-lg-2 col-md-3">
+                <a href="{% url 'publication:article_list' %}"><h4>{% trans 'Articles' %}</h4></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Scalingst</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+
+<!-- Main JS File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

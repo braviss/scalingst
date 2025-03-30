@@ -1,15 +1,12 @@
+# В publication/urls.py
 from django.urls import path
 from publication import views
 
 app_name = "publication"
 
 urlpatterns = [
-    path('list/',
-         views.ArticleListView.as_view(),
-         name='article_list'),
+    path('blog/', views.ArticleListView.as_view(), name='article_list'),
+    path('<slug:slug>/', views.ArticleDetailView.as_view(), name='article_detail'),
 
-
-    path('page/<slug:slug>',
-         views.ArticleDetailView.as_view(),
-         name='article_detail'),
+    # path('<slug:slug>/', views.PageDetailView.as_view(), name='page_detail'),
 ]

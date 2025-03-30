@@ -46,9 +46,9 @@ urlpatterns += i18n_patterns(
          include(('payments.urls', 'payments'),
                  namespace='payments')),
 
-    path('publication/',
-         include(('publication.urls', 'publications'),
-                 namespace='publications')),
+    path('page/',
+         include(('publication.urls', 'publication'),
+                 namespace='publication')),
 
 
 

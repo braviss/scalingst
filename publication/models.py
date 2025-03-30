@@ -18,9 +18,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-    @abstractmethod
-    def get_absolute_url(self):
-        pass
+
 
 
 class Article(BaseModel):
@@ -67,9 +65,10 @@ class Article(BaseModel):
             self.slug = slugify(translit(self.title, 'ru', reversed=True))
         super().save(*args, **kwargs)
 
+
     def get_absolute_url(self):
-        return reverse('blog:article_detail',
-                       kwargs={'slug': self.slug})
+        return reverse('publication:article_detail', kwargs={'slug': self.slug})
+
 
     def __str__(self):
         return self.title

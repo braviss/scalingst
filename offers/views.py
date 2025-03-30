@@ -68,12 +68,20 @@ class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
         if country_code:
             queryset = queryset.filter(country=country_code)
 
+        offer_type = self.request.GET.get('type')  # Например, ?type=premium
+
+        if offer_type == 'premium':
+            queryset = queryset.filter(is_premium=True)
+        elif offer_type == 'regular':
+            queryset = queryset.filter(is_premium=False)
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['countries'] = countries
+        context['offer_type'] = self.request.GET.get('type', 'all')
 
         return context
 

@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    {% render_breadcrumbs %}
+
 
     <style>
         .bg-pu {
@@ -21,6 +21,21 @@
             background-color: red !important;
         }
 
+        .sidebar_right {
+            background-color: #f5f5f5;
+        }
+
+        .create-btn {
+            background-color: #118ce6;
+            color: white;
+        }
+
+        .create-btn:hover {
+            background-color: #0b71be;
+            color: white;
+        }
+
+
         .card-footer {
             margin-top: auto;
         }
@@ -32,102 +47,24 @@
         }
 
         .offer-item a {
-            text-decoration: none; /* Убирает подчеркивание для всех ссылок */
+            text-decoration: none;
             cursor: pointer;
         }
 
         .card-body a,
         .card-footer a {
-            text-decoration: none; /* Убирает подчеркивание для ссылок внутри card-body и card-footer */
+            text-decoration: none;
         }
 
         .card-body a:hover,
         .card-footer a:hover {
-            text-decoration: none; /* Убирает подчеркивание при наведении */
+            text-decoration: none;
         }
+
         .card-footer {
             background-color: transparent;
         }
     </style>
-
-    <div class="d-flex flex-wrap justify-content-between mb-4">
-        <div class="d-flex flex-wrap align-items-center">
-            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">{% trans 'Create' %}</a>
-
-            <div class="dropdown me-2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    {% trans 'Category' %}
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
-                    </li>
-                    {% for cat in categories %}
-                        <li>
-                            <a class="dropdown-item" href="{% url 'offers:offer_list' %}?category={{ cat.slug }}">
-                                {{ cat.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                    <li>
-                        <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">All category</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="dropdown me-2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    {% trans 'Country' %}
-                </button>
-                <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
-                    <li>
-                        <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
-                    </li>
-                    <div class="dropdown-columns">
-                        {% for code, name in countries %}
-                            <li>
-                                <a class="dropdown-item {% if code == user_country %}active{% endif %}"
-                                   href="{% url 'offers:offer_list' %}?country={{ code }}">
-                                    {{ name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </div>
-                </ul>
-            </div>
-
-
-            <a href="{% url 'offers:offer_list' %}" class="btn btn-secondary me-2">{% trans 'Reset' %} <i
-                    class="fa-solid fa-delete-left"></i></a>
-
-            <form method="get" class="me-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="search"
-                           value="{{ request.GET.search }}">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary rounded-end" style="border-radius: 0;" type="submit">
-                            {% trans 'Search' %}
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="d-flex align-items-center">
-            <button id="gridView" class="btn btn-secondary me-2" onclick="toggleView('grid')"><i
-                    class="fa-solid fa-border-all"></i></button>
-            <button id="listView" class="btn btn-secondary" onclick="toggleView('list')"><i
-                    class="fa-solid fa-grip-lines"></i></button>
-        </div>
-    </div>
-
-
-
-
-
-
 
     {% if messages %}
         {% for message in messages %}
@@ -139,90 +76,213 @@
     {% endif %}
 
 
+    <div class="row">
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between mb-4 rounded sidebar_right d-flex align-center p-2">
+
+                {% render_breadcrumbs %}
+
+                <div class="d-flex">
+                    <button id="gridView" class="btn btn-secondary me-2" onclick="toggleView('grid')"><i
+                            class="fa-solid fa-border-all"></i></button>
+                    <button id="listView" class="btn btn-secondary" onclick="toggleView('list')"><i
+                            class="fa-solid fa-grip-lines"></i></button>
+                </div>
+            </div>
 
 
-    <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
-        {% for offer in offers %}
-            <div class="col mb-4 offer-item">
-                <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
-                    <div class="card h-100 position-relative">
-                        {% if offer.is_premium == True %}
-                            <span class="position-absolute mt-2 mx-2 badge text-bg-success">
+            <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
+                {% for offer in offers %}
+                    <div class="col mb-4 offer-item">
+                        <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
+                            <div class="card h-100 position-relative">
+                                {% if offer.is_premium == True %}
+                                    <span class="position-absolute mt-2 mx-2 badge text-bg-success">
                             {% trans 'Premium' %} <i class="fa-solid fa-star" style="color: gold"></i>
                         </span>
 
-                        {% endif %}
+                                {% endif %}
 
-                        {% if request.user == offer.author %}
-                            <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
-                        {% endif %}
-                        <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
-                        <div class="card-body">
+                                {% if request.user == offer.author %}
+                                    <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
+                                {% endif %}
+                                <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
+                                <div class="card-body">
 
-                            <h5 class="card-title">{{ offer.title }}</h5>
+                                    <h5 class="card-title text-dark">{{ offer.title }}</h5>
 
-                            <p class="card-text">{{ offer.body|striptags|truncatewords:10 }}</p>
-                            <div class="card-footer">
-                                <p class="card-text">
-                                    <small class="text-body-secondary">{{ offer.created_at|timesince }}</small>
-                                    <small class="text-body-secondary">| {{ offer.country.name }}</small>
-                                    <small class="text-body-secondary">| {{ offer.category }}</small>
-                                    <small class="text-body-secondary">| {{ offer.author }}</small>
-                                </p>
+                                    <p class="card-text pb-2 text-dark">{{ offer.body|striptags|truncatewords:10 }}</p>
+                                    <div class="card-footer px-0">
+                                        <p class="card-text">
+                                            <small class="text-body-secondary"><i
+                                                    class="fa-solid fa-clock"></i> {{ offer.created_at|timesince }}
+                                            </small>
+                                            <small class="text-body-secondary">| <i
+                                                    class="fa-solid fa-flag"></i> {{ offer.country.name }}</small>
+                                            <small class="text-body-secondary">| <i
+                                                    class="fa-solid fa-list"></i> {{ offer.category }}</small>
+                                            <small class="text-body-secondary">| <a
+                                                    href="{% url 'offers:user_offers' username=offer.author.username %}"><i
+                                                    class="fa-solid fa-at"></i> {{ offer.author }}</a></small>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
+                        </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1" aria-label="Первая">
+                                <span aria-hidden="true">&laquo; Первая</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+                               aria-label="Предыдущая">
+                                <span aria-hidden="true">Предыдущая</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num == page_obj.number %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+                                <span aria-hidden="true">Следующая</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
+                                <span aria-hidden="true">Последняя &raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'offers:offer_create' %}" class="btn create-btn btn-lg mb-4 w-100">{% trans 'Create' %}</a>
+
+
+            <div class="d-flex flex-column gap-3 sidebar_right p-4 rounded shadow-sm">
+
+
+                <h5><span><i class="fa-solid fa-filter"></i></span> Поиск и фильтры</h5>
+
+                <form method="get" class="me-2 w-100 mb-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="search"
+                               value="{{ request.GET.search }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-end" style="border-radius: 0;" type="submit">
+                                {% trans 'Search' %}
+                            </button>
                         </div>
                     </div>
-                </a>
+                </form>
+
+                <div class="d-flex flex-wrap">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            {% trans 'Category' %}<i class="fa fa-arrow-down ms-2"></i>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                            </li>
+                            {% for cat in categories %}
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{% url 'offers:offer_list' %}?category={{ cat.slug }}">
+                                        {{ cat.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">All category</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="dropdown me-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            {% trans 'Country' %}<i class="fa fa-arrow-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                            </li>
+                            <div class="dropdown-columns">
+                                {% for code, name in countries %}
+                                    <li>
+                                        <a class="dropdown-item {% if code == user_country %}active{% endif %}"
+                                           href="{% url 'offers:offer_list' %}?country={{ code }}">
+                                            {{ name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    </div>
+
+                <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        {% if offer_type == 'premium' %}
+            Премиум
+        {% elif offer_type == 'regular' %}
+            Обычные
+        {% else %}
+            Все
+        {% endif %}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
+        <li>
+            <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=premium">Премиум</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=regular">Обычные</a>
+        </li>
+    </ul>
+</div>
+                </div>
+
+
+                <a href="{% url 'offers:offer_list' %}" class="btn btn-secondary me-2">{% trans 'Reset' %} <i
+                        class="fa-solid fa-delete-left"></i></a>
+
 
             </div>
-        {% endfor %}
+            <div class="sidebar_right mt-4 p-4 rounded">
+                <h5><i class="fa-solid fa-chart-simple"></i> Статистика</h5>
+                <p>Всего публикаций: <span class="badge text-bg-primary">{{ offers|length }}</span></p>
+            </div>
+
+
+        </div>
     </div>
-
-
-
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page=1" aria-label="Первая">
-                        <span aria-hidden="true">&laquo; Первая</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
-                        <span aria-hidden="true">Предыдущая</span>
-                    </a>
-                </li>
-            {% endif %}
-
-            {% for num in page_obj.paginator.page_range %}
-                {% if num == page_obj.number %}
-                    <li class="page-item active" aria-current="page">
-                        <span class="page-link">{{ num }}</span>
-                    </li>
-                {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-
-            {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
-                        <span aria-hidden="true">Следующая</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
-                        <span aria-hidden="true">Последняя &raquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-
 
 
     <script>
@@ -232,14 +292,13 @@
             const offerImages = document.querySelectorAll('.offer-image');
 
             if (view === 'grid') {
-                // Включаем видимость изображений в сетке
                 offerImages.forEach(img => img.style.display = 'block');
 
                 offersContainer.classList.remove('row-cols-1');
                 offersContainer.classList.add('row-cols-md-4');
                 offerItems.forEach(item => {
                     item.classList.remove('col-12');
-                    item.classList.add('col-md-3');
+                    item.classList.add('col-md-6');
                 });
                 document.getElementById('gridView').classList.add('btn-primary');
                 document.getElementById('listView').classList.remove('btn-primary');
@@ -251,7 +310,7 @@
                 offersContainer.classList.remove('row-cols-md-4');
                 offersContainer.classList.add('row-cols-1');
                 offerItems.forEach(item => {
-                    item.classList.remove('col-md-3');
+                    item.classList.remove('col-md-6');
                     item.classList.add('col-12');
                 });
                 document.getElementById('listView').classList.add('btn-primary');
