@@ -2,27 +2,8 @@
 {% load i18n %}
 {% block title %}Список предложений{% endblock %}
 
-{% load view_breadcrumbs %}
 
 {% block content %}
-
-    {% render_breadcrumbs %}
-
-    <style>
-        .bg-pu {
-            background-color: green !important;
-        }
-
-        .bg-pe {
-            background-color: gray !important;
-        }
-
-        .bg-re {
-            background-color: red !important;
-        }
-
-    </style>
-
 
 
     <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
@@ -35,8 +16,9 @@
                             <h5 class="card-title">{{ article.title }}</h5>
                         </a>
                         <p class="card-text">{{ article.body|striptags|truncatewords:10 }}</p>
-                        <p class="card-text"><small class="text-body-secondary">{{ article.created_at|timesince }}</small>
-                            <small class="text-body-secondary">| {{ article.country.name }} </small><small class="text-body-secondary">| {{ article.category }} </small><small class="text-body-secondary">| {{ article.author }}</small>
+                        <p class="card-text">
+                            <small class="text-body-secondary">{{ article.created_at|timesince }}</small>
+                            <small class="text-body-secondary">| {{ article.author }}</small>
                         </p>
                     </div>
                 </div>

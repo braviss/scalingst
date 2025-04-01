@@ -17,12 +17,21 @@
         .sidebar_right {
             background-color: #f5f5f5;
         }
+
+        .bc-wrapper {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
     </style>
 
-    {% render_breadcrumbs %}
 
     <div class="row">
         <div class="col-md-8 mb-3">
+            <div class="bc-wrapper">
+                {% render_breadcrumbs %}
+            </div>
             <div class="card h-100">
                 <img src="{{ object.image.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -30,8 +39,6 @@
                     <p class="card-text">{{ object.body|safe }}</p>
                     <p class="card-text border-top">
                         <small class="text-body-secondary">{{ object.created_at|timesince }}</small>
-                        <small class="text-body-secondary">{{ object.id }}</small>
-
                     </p>
                 </div>
             </div>

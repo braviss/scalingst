@@ -2,6 +2,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from offers.models import Offer, Complaint
 from notifications.models import Notification
+from payments.models import Payment
+from users.models import CustomUser
+
 
 @receiver(post_save, sender=Offer)
 def notify_user_on_status_change(sender, instance, created, **kwargs):
@@ -20,3 +23,4 @@ def notify_user_on_status_change(sender, instance, created, **kwargs):
             user=instance.user,
             message=f"Ваша жалоба обработана. Ответ администратора: {instance.admin_comment}."
         )
+

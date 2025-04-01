@@ -11,6 +11,13 @@ class CustomUser(AbstractUser):
     premium_since = models.DateTimeField(null=True, blank=True)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default='default-avatar.png')
     is_email_verified = models.BooleanField(default=False)
+    my_invite_code = models.CharField(
+        max_length=20,
+        unique=True,
+        null=True,
+        blank=True,
+        verbose_name="My Invite Code"
+    )
 
     def __str__(self):
         return self.username
