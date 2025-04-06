@@ -73,6 +73,7 @@ class UserAccountView(LoginRequiredMixin, TemplateView, BaseBreadcrumbMixin):
         context['email'] = user.email
         context['is_premium'] = user.is_premium
         context['premium_since'] = user.premium_since
+        context['referred_users'] = user.referred_users()
         return context
 
 
@@ -85,6 +86,18 @@ class MyOffersListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Offer.objects.filter(author=self.request.user).order_by('-created_at')
 
+
+
+class ReferredUsersView(LoginRequiredMixin, TemplateView):
+    template_name = 'referred_users.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        context['referred_users'] = user.referred_users()
+
+        return context
 
 
 
@@ -120,7 +133,7 @@ def send_verification_email(user):
     send_mail(
         "Подтверждение почты",
         f"Ваш код подтверждения: {code.code}",
-        "noreply@example.com",
+        "noreply@scalingst.com",
         [user.email],
         fail_silently=False,
     )
@@ -141,6 +154,7 @@ class VerifyEmailView(FormView):
 
         if verification and not verification.is_expired():
             self.user.is_active = True
+            self.user.is_email_verified = True
             self.user.save()
             verification.delete()
             login(self.request, self.user)

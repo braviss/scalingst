@@ -1,15 +1,11 @@
 {% extends 'dashboard.html' %}
 {% load i18n %}
 {% load static %}
+{% load widget_tweaks %}
 {% block title %}Список уведомлений{% endblock %}
 
 {% block dashboard_content %}
 
-    <style>
-        .read-False td {
-            background-color: #ccc;
-        }
-    </style>
 
     <div class="col-lg-3 border-end">
         <div class="text-center">
@@ -28,57 +24,53 @@
         <div class="p-4">
             <div class="nav flex-column nav-pills">
                 <a class="nav-link"
-                   href="{% url 'accounts:dashboard' request.user.username %}">
-                    <i class="fas fa-user me-2"></i>
-                    Personal Info
-                </a>
+                   href="{% url 'accounts:dashboard' request.user.username %}"><i
+                        class="fas fa-user me-2"></i>Personal
+                    Info</a>
                 <a class="nav-link"
-                   href="{% url 'accounts:my_offers' %}">
-                    <i class="fas fa-grip me-2"></i>
-                    My offers
-                </a>
-                <a class="nav-link" href="{% url 'notifications:notification_list' %}">
-                    <i class="fas fa-bell me-2"></i>
-                    Notifications
-                </a>
-
-                <a class="nav-link active" href="{% url 'payments:history' %}">
+                   href="{% url 'accounts:my_offers' %}"><i
+                        class="fas fa-grip me-2"></i>My offers</a>
+                <a class="nav-link" href="{% url 'notifications:notification_list' %}"><i
+                        class="fas fa-bell me-2"></i>Notifications</a>
+                <a class="nav-link" href="{% url 'payments:history' %}">
                     <i class="fa-solid fa-cart-shopping"></i>
                     Payments
                 </a>
-                <a class="nav-link" href="{% url 'accounts:referred_users' %}">
+                  <a class="nav-link active" href="{% url 'accounts:referred_users' %}">
                     <i class="fa-solid fa-users"></i> {% trans 'Referrals' %}</a>
+
             </div>
         </div>
     </div>
 
     <div class="col-lg-9">
         <div class="p-4">
-            <a href="{% url 'payments:create' %}" class="btn btn-primary float-right mb-2">Купить премиум</a>
-            {% if payments %}
+
+
+            <h3>Users who referred by you:</h3>
+            {% if referred_users %}
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Payment at</th>
-                        <th scope="col">status</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Status</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for payment in payments %}
-                        <tr>
-                            <td>{{ payment.confirmed_at }}</td>
-                            <td>{{ payment.status.title }}</td>
-                        </tr>
+                    {% for payment in referred_users %}
+                    <tr>
+                        <td><a href="{% url 'offers:user_offers' username=payment.user.username %}">{{ payment.user.username }}</a></td>
+                        <td>{{ payment.status }}</td>
+                    </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-
             {% else %}
-                <p>You dont have Payments</p>
-                <a href="{% url 'payments:create' %}" class="btn btn-primary me-2">Buy premium</a>
+                <p>No users have referred by you.</p>
             {% endif %}
 
         </div>
     </div>
+
 
 {% endblock %}

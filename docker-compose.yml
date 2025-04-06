@@ -27,14 +27,3 @@ services:
       timeout: 5s
       retries: 5
       start_period: 5s
-
-
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-    ports:
-      - "80:80"
-    depends_on:
-      - web
-

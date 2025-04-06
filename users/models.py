@@ -5,6 +5,9 @@ from django.utils.timezone import now
 import random
 import string
 
+from payments.models import Payment
+
+
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     is_premium = models.BooleanField(default=False)
@@ -18,6 +21,10 @@ class CustomUser(AbstractUser):
         blank=True,
         verbose_name="My Invite Code"
     )
+
+    def referred_users(self):
+        # Возвращаем всех пользователей, которые указали этот invite код при оплате
+        return Payment.objects.filter(invite_code=self.my_invite_code)
 
     def __str__(self):
         return self.username

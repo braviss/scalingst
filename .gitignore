@@ -1,31 +1,80 @@
 # Python
 *.pyc
 *.pyo
-*.egg-info
+*.pyd
 __pycache__/
+*.egg
+*.egg-info/
+dist/
+build/
+develop-eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
 *.log
-*.pot
-*.db
-*.sqlite3
 
 # Django
 *.log
 *.pot
-*.egg-info
+*.pyc
+*.pyo
+__pycache__/
+local_settings.py
 db.sqlite3
 media/
+staticfiles/
+*.mo
+
+# Environment variables
+.env
+.env.*
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# pipenv
+Pipfile.lock
 
 # Virtual environment
 venv/
-*.virtualenv/
+ENV/
+env/
+.venv/
 pyvenv.cfg
 
 # IDE - PyCharm
 .idea/
 *.iml
 
+# VSCode
+.vscode/
+
 # OS files
 .DS_Store
 *.swp
 *~
 Thumbs.db
+
+# Others
+*.sqlite3
+*.db

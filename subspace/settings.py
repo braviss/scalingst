@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y)zdw&q$*7c@8d9x(b&7k^6*!&0lyoyn2a7*9p58mq3tsuotyx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['185.25.116.210', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['185.25.116.210', 'localhost', '127.0.0.1', 'scalingst.com', 'www.scalingst.com']
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -203,11 +203,18 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "yayadance530@gmail.com"
-EMAIL_HOST_PASSWORD = "gdri ytoa sybv jlrn"
+
+
+EMAIL_BACKEND = config("EMAIL_BACKEND")
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
+EMAIL_USE_SSL = config("EMAIL_USE_SSL", cast=bool)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+
+
+
 
 GEOIP_PATH = '/path/to/your/GeoLite2-Country.mmdb'
