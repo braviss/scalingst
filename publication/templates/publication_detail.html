@@ -10,7 +10,11 @@
         <div class="col-md-12 mb-3">
 
             <div class="card">
-                <img src="{{ object.image.url }}" alt="">
+
+                {% if object.image %}
+                    <img src="{{ object.image.url }}" alt="">
+                {% endif %}
+
                 <div class="card-body">
                     <h5 class="card-title">{{ object.title }}</h5>
                     <p class="card-text">{{ object.body|safe }}</p>

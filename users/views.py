@@ -40,9 +40,9 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
 
-        # if not user.is_email_verified:
-        #     messages.error(self.request, "Пожалуйста, подтвердите ваш email.")
-        #     return redirect('accounts:verify_email', user_id=user.id)  # Переадресация на страницу подтверждения почты
+        if not user.is_email_verified:
+            messages.error(self.request, "Пожалуйста, подтвердите ваш email.")
+            return redirect('accounts:verify_email', user_id=user.id)
 
         return super().form_valid(form)
 
@@ -160,7 +160,6 @@ class VerifyEmailView(FormView):
             login(self.request, self.user)
             return super().form_valid(form)
         else:
-            send_verification_email(self.user)
             messages.error(self.request, "Неверный или просроченный код. Новый код был отправлен на ваш email.")
             return self.form_invalid(form)
 
