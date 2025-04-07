@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y)zdw&q$*7c@8d9x(b&7k^6*!&0lyoyn2a7*9p58mq3tsuotyx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['185.25.116.210', 'localhost', '127.0.0.1', 'scalingst.com', 'www.scalingst.com']
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_recaptcha',
     'users',
+    'location',
     'widget_tweaks',
     'view_breadcrumbs',
     'tinymce',
@@ -163,7 +164,6 @@ RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -180,8 +180,10 @@ REST_FRAMEWORK = {
 }
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -194,17 +196,13 @@ LOGOUT_REDIRECT_URL = '/'
 TINYMCE_API_KEY = config('TINYMCE_API_KEY', default='')
 
 TINYMCE_DEFAULT_CONFIG = {
-
-    "menubar": "file edit view insert format tools table help",
-    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
-    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
-    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
-    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
-    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
-    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
-    "a11ycheck ltr rtl | showcomments addcomment code",
-    "custom_undo_redo_levels": 10,
-    "language": "es_ES",
+    "menubar": False,  # Убираем верхнее меню, если не нужно
+    "plugins": "link lists",
+    "toolbar": "formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link",
+    "block_formats": "Заголовок 1=h1; Заголовок 2=h2; Заголовок 3=h3; Абзац=p",
+    "language": "uk",  # Или 'ru', если хочешь русский
+    "height": 300,
+    "branding": False,  # Убирает надпись "Powered by TinyMCE"
 }
 
 

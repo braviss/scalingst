@@ -34,6 +34,7 @@ from django.db.models import Q
 from offers.mixins import CustomLoginRequiredMixin
 from django.http import Http404
 from django.shortcuts import render
+from location.models import Locality, Region
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -68,6 +69,26 @@ class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
         if country_code:
             queryset = queryset.filter(country=country_code)
 
+
+        # Locations
+
+        region_slug = self.request.GET.get('region')
+        if region_slug:
+            # Получаем регион по slug
+            region = Region.objects.get(slug=region_slug)
+            queryset = queryset.filter(region=region)  # Фильтрация по региону
+
+        city_slug = self.request.GET.get('city')
+        if city_slug:
+            # Получаем город по slug в выбранном регионе
+            locality = Locality.objects.get(slug=city_slug, region=region)
+            queryset = queryset.filter(locality=locality)  # Фильтрация по городу
+
+
+
+
+
+
         offer_type = self.request.GET.get('type')  # Например, ?type=premium
 
         if offer_type == 'premium':
@@ -81,6 +102,8 @@ class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['countries'] = countries
+        context['regions'] = Region.objects.all()
+        context['localities'] = Locality.objects.all()
         context['offer_type'] = self.request.GET.get('type', 'all')
 
         return context

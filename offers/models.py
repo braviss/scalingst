@@ -11,6 +11,8 @@ from django_countries.fields import CountryField
 from django.urls import reverse
 from django.conf import settings
 
+from location.models import Region, Locality
+
 
 class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -43,6 +45,22 @@ class Offer(BaseModel):
     category = models.ForeignKey('Category',
                                  on_delete=models.SET_NULL,
                                  null=True, blank=True)
+    region = models.ForeignKey(
+        Region,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Область",
+        related_name='offers'
+    )
+    locality = models.ForeignKey(
+        Locality,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Населённый пункт",
+        related_name='offers'
+    )
     image = models.ImageField(upload_to='offer_img',
                               null=True, blank=True,
                               default='media/default_offer.png')

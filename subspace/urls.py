@@ -50,6 +50,7 @@ urlpatterns += i18n_patterns(
          include(('publication.urls', 'publication'),
                  namespace='publication')),
 
+    path('location/', include('location.urls')),
 
 
     path('i18n/',

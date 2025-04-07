@@ -26,6 +26,8 @@ class OfferAdmin(admin.ModelAdmin):
               'status',
               'author',
               'country',
+              'region',
+              'locality',
               'url',
               'is_premium',
               'premium_at',

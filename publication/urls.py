@@ -7,6 +7,4 @@ app_name = "publication"
 urlpatterns = [
     path('blog/', views.ArticleListView.as_view(), name='article_list'),
     path('<slug:slug>/', views.ArticleDetailView.as_view(), name='article_detail'),
-
-    # path('<slug:slug>/', views.PageDetailView.as_view(), name='page_detail'),
 ]

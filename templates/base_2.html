@@ -7,13 +7,12 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - iLanding Bootstrap Template</title>
+    <title>Scalingst - {% trans 'Subscription business' %}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{% static 'icons/favicon/favicon.ico' %}" rel="icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -31,13 +30,18 @@
     <!-- Main CSS File -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: iLanding
-    * Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
-    * Updated: Nov 12 2024 with Bootstrap v5.3.3
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+    <style>
+        .signin-btn {
+            margin: 0 10px;
+        }
+
+        @media (max-width: 991px) {
+            .signin-btn {
+                margin: 0 0 10px 0;
+            }
+        }
+
+    </style>
 </head>
 
 <body class="index-page">
@@ -87,7 +91,7 @@
                             <span>RU</span>
                         {% endif %}
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end mb-2" aria-labelledby="navbarDropdown">
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as LANGUAGES %}
                         {% get_language_info_list for LANGUAGES as languages %}
@@ -176,7 +180,7 @@
                     </li>
 
                 {% else %}
-                    <a href="{% url 'accounts:signin' %}" class="btn btn-primary me-2"><i
+                    <a href="{% url 'accounts:signin' %}" class="btn btn-primary signin-btn"><i
                             class="fa-solid fa-right-to-bracket"></i> {% trans 'Signin' %}</a>
                     <a href="{% url 'accounts:signup' %}" class="btn btn-primary"><i
                             class="fa-solid fa-user-plus"></i> {% trans 'Signup' %}</a>

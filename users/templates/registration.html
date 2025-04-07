@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}Регистрация{% endblock %}
+{% block title %}{% trans 'Signup' %}{% endblock %}
 
-{% block page_title %}Регистрация{% endblock %}
+{% block page_title %}{% trans 'Signup' %}{% endblock %}
 
 {% block content %}
     <div class="container mt-5">
@@ -62,38 +62,44 @@
 
                     <input type="hidden" name="{{ form.is_premium.name }}" value="False">
 
+
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreeTerms">
+                        <label class="form-check-label" for="agreeTerms">
+                            {% trans 'I agree with' %} <a href="https://scalingst.com/page/rules/"
+                                                          target="_blank">{% trans 'service rules' %}</a>
+                        </label>
+                    </div>
+
                     {% if form.captcha %}
                         <div class="mb-3">
                             {{ form.captcha }}
                         </div>
                     {% endif %}
 
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="agreeTerms">
-                        <label class="form-check-label" for="agreeTerms">
-                            Я согласен с <a href="https://scalingst.com/page/rules/" target="_blank">правилами сервиса</a>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100" id="submitBtn" disabled>{% trans 'Signup' %}</button>
+                    <button type="submit" class="btn btn-primary w-100" id="submitBtn"
+                            disabled>{% trans 'Signup' %}</button>
                 </form>
+
 
                 <div class="d-flex justify-content-between mt-3">
                     <a href="{% url 'accounts:signin' %}" class="text-decoration-none">{% trans 'Signin' %}</a>
-                    <a href="{% url 'accounts:password_reset' %}" class="text-decoration-none">Забыл пароль ?</a>
+                    <a href="{% url 'accounts:password_reset' %}"
+                       class="text-decoration-none">{% trans 'Forgot password?' %}</a>
                 </div>
             </div>
         </div>
     </div>
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let checkbox = document.getElementById("agreeTerms");
-        let submitBtn = document.getElementById("submitBtn");
+        document.addEventListener("DOMContentLoaded", function () {
+            let checkbox = document.getElementById("agreeTerms");
+            let submitBtn = document.getElementById("submitBtn");
 
-        checkbox.addEventListener("change", function () {
-            submitBtn.disabled = !checkbox.checked;
+            checkbox.addEventListener("change", function () {
+                submitBtn.disabled = !checkbox.checked;
+            });
         });
-    });
-</script>
+    </script>
 
 {% endblock %}

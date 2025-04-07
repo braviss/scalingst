@@ -6,192 +6,262 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-12 11:46+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-04-07 20:01+0300\n"
+"PO-Revision-Date: 2025-04-06 15:45+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
-#: offers/models.py:39 offers/templates/offer_form.html:45
-#: publication/models.py:40
+#: location/models.py:9 offers/templates/offer_detail.html:58
+#: offers/templates/offer_form.html:116 offers/templates/offer_list.html:229
+msgid "Country"
+msgstr "Country"
+
+#: location/models.py:10 location/models.py:13
+#: offers/templates/offer_form.html:132
+msgid "Region"
+msgstr "Region"
+
+#: location/models.py:14
+msgid "Regions"
+msgstr "Regions"
+
+#: location/models.py:23
+msgid "City"
+msgstr "City"
+
+#: location/models.py:24
+msgid "Town"
+msgstr "Town"
+
+#: location/models.py:25
+msgid "Village"
+msgstr "Village"
+
+#: location/models.py:28
+msgid "Name"
+msgstr "Name"
+
+#: location/models.py:29
+msgid "Type"
+msgstr "Type"
+
+#: location/models.py:32 offers/templates/offer_form.html:148
+msgid "Locality"
+msgstr "Locality"
+
+#: location/models.py:33
+msgid "Localities"
+msgstr "Localities"
+
+#: notifications/templates/notification_list.html:50
+#: offers/templates/offer_form.html:40 payments/templates/payment_list.html:50
+#: users/templates/proffile_offers_list.html:50 users/templates/profile.html:38
+#: users/templates/referred_users.html:40
+msgid "Referrals"
+msgstr "Referrals"
+
+#: offers/models.py:40 offers/templates/offer_form.html:53
+#: publication/models.py:38
 msgid "Title"
 msgstr "Title"
 
-#: offers/models.py:111
+#: offers/models.py:141
 msgid "Complaint text"
 msgstr "Complaint text"
 
-#: offers/models.py:113
+#: offers/models.py:143
 msgid "Admin Comment"
 msgstr "Admin Comment"
 
-#: offers/templates/offer_detail.html:39 offers/templates/offer_list.html:97
-#: offers/templates/user_offer_list.html:26 templates/base.html:68
-#: users/templates/proffile_offers_list.html:70
+#: offers/templates/offer_detail.html:50 offers/templates/offer_list.html:101
+#: offers/templates/user_offer_list.html:26 templates/base.html:86
+#: templates/base_2.html:66 templates/base_2.html:595
+#: users/templates/proffile_offers_list.html:72
 #: users/templates/profile_view.html:66
 msgid "Premium"
 msgstr "Premium"
 
-#: offers/templates/offer_detail.html:46 offers/templates/offer_form.html:187
-msgid "Country"
-msgstr "Country"
-
-#: offers/templates/offer_detail.html:48 offers/templates/offer_form.html:172
-#: offers/templates/offer_list.html:33
+#: offers/templates/offer_detail.html:60 offers/templates/offer_form.html:100
+#: offers/templates/offer_list.html:204
 msgid "Category"
 msgstr "Category"
 
-#: offers/templates/offer_detail.html:50
+#: offers/templates/offer_detail.html:62
 msgid "Author"
 msgstr "Author"
 
-#: offers/templates/offer_detail.html:57
+#: offers/templates/offer_detail.html:71
 msgid "Author site"
 msgstr "Author site"
 
-#: offers/templates/offer_detail.html:65 offers/templates/offer_form.html:217
+#: offers/templates/offer_detail.html:79 offers/templates/offer_form.html:180
 msgid "Premium url"
 msgstr "Premium url"
 
-#: offers/templates/offer_detail.html:72 offers/templates/offer_detail.html:97
+#: offers/templates/offer_detail.html:89 offers/templates/offer_detail.html:111
 msgid "Share"
 msgstr "Share"
 
-#: offers/templates/offer_detail.html:78
+#: offers/templates/offer_detail.html:92
 msgid "Edit"
 msgstr "Edit"
 
-#: offers/templates/offer_detail.html:80
+#: offers/templates/offer_detail.html:94
 msgid "Delete"
 msgstr "Delete"
 
-#: offers/templates/offer_detail.html:84
+#: offers/templates/offer_detail.html:99
 msgid "Complain"
 msgstr "Complaint text"
 
-#: offers/templates/offer_detail.html:111
+#: offers/templates/offer_detail.html:133
 msgid "Close"
 msgstr "Close"
 
-#: offers/templates/offer_form.html:47
+#: offers/templates/offer_form.html:55
 msgid "This text will be the title of your offer"
 msgstr "This text will be the title of your offer"
 
-#: offers/templates/offer_form.html:60
+#: offers/templates/offer_form.html:68
 msgid "Text"
 msgstr "Text"
 
-#: offers/templates/offer_form.html:157
+#: offers/templates/offer_form.html:84
 msgid "Image"
 msgstr "Image"
 
-#: offers/templates/offer_form.html:167
-#, fuzzy
-#| msgid "Upload an image. Supported formats: JPG, PNG."
+#: offers/templates/offer_form.html:94
 msgid "Upload an image. Supported formats: JPG, PNG, GIF."
-msgstr "Upload an image. Supported formats: JPG, PNG."
+msgstr "Upload an image. Supported formats: JPG, PNG, GIF"
 
-#: offers/templates/offer_form.html:182
+#: offers/templates/offer_form.html:110
 msgid "The ad will be shown in this category."
 msgstr "The ad will be shown in this category."
 
-#: offers/templates/offer_form.html:197
+#: offers/templates/offer_form.html:126
 msgid "Specify the country in which the services (product) are provided."
 msgstr "Specify the country in which the services (product) are provided."
 
-#: offers/templates/offer_form.html:202
+#: offers/templates/offer_form.html:142
+msgid "Select the region within the chosen country."
+msgstr "Select the region within the chosen country."
+
+#: offers/templates/offer_form.html:158
+msgid "Select the locality within the chosen region."
+msgstr "Select the locality within the chosen region."
+
+#: offers/templates/offer_form.html:164
 msgid "Url"
 msgstr "Url"
 
-#: offers/templates/offer_form.html:212
+#: offers/templates/offer_form.html:174
 msgid "Please provide a link to your website (social networks)."
 msgstr "Please provide a link to your website (social networks)."
 
-#: offers/templates/offer_form.html:227
+#: offers/templates/offer_form.html:190
 msgid "Provide a link for premium users with an exclusive offer."
 msgstr "Provide a link for premium users with an exclusive offer."
 
-#: offers/templates/offer_form.html:234
+#: offers/templates/offer_form.html:196
 msgid "Save"
 msgstr "Save"
 
-#: offers/templates/offer_list.html:28 offers/templates/user_offer_list.html:16
-#: users/templates/proffile_offers_list.html:60
+#: offers/templates/offer_list.html:180
+#: offers/templates/user_offer_list.html:16
+#: users/templates/proffile_offers_list.html:62
 msgid "Create"
 msgstr "Create"
 
-#: offers/templates/offer_list.html:49
-msgid "Reset"
-msgstr "Reset"
-
-#: offers/templates/offer_list.html:54 offers/templates/offer_list.html:58
+#: offers/templates/offer_list.html:190 offers/templates/offer_list.html:194
 msgid "Search"
 msgstr "Search"
 
-#: payments/templates/payment_form.html:90
-#: payments/templates/payment_form.html:101
-#: payments/templates/payment_form.html:112
-#: payments/templates/payment_form.html:123
+#: offers/templates/offer_list.html:273
+msgid "Reset"
+msgstr "Reset"
+
+#: payments/templates/payment_form.html:63
+#: payments/templates/payment_form.html:75
+#: payments/templates/payment_form.html:86
+#: payments/templates/payment_form.html:97
 msgid "Step"
 msgstr "Step"
 
-#: publication/models.py:36
+#: publication/models.py:34
 msgid "Article"
 msgstr "Article"
 
-#: publication/models.py:37
+#: publication/models.py:35
 msgid "Page"
 msgstr "Page"
 
-#: templates/base.html:62 templates/base.html:208
+#: templates/base.html:80 templates/base.html:226 templates/base_2.html:60
+#: templates/base_2.html:593 templates/base_2.html:602
 msgid "Home"
 msgstr "Home"
 
-#: templates/base.html:65 templates/base.html:210
+#: templates/base.html:83 templates/base.html:228 templates/base_2.html:63
+#: templates/base_2.html:594
 msgid "Offers"
 msgstr "Offers"
 
-#: templates/base.html:72 templates/base.html:213
+#: templates/base.html:90 templates/base.html:231 templates/base_2.html:70
+#: templates/base_2.html:618
 msgid "Articles"
 msgstr "Articles"
 
-#: templates/base.html:120 templates/base.html:168
+#: templates/base.html:138 templates/base.html:186 templates/base_2.html:118
+#: templates/base_2.html:166
 msgid "Notifications"
 msgstr "Notifications"
 
-#: templates/base.html:136
+#: templates/base.html:154 templates/base_2.html:134
 msgid "Mark all as read"
 msgstr "Mark all as read"
 
-#: templates/base.html:141 templates/base.html:149
+#: templates/base.html:159 templates/base.html:167 templates/base_2.html:139
+#: templates/base_2.html:147
 msgid "View notification history"
 msgstr "View notification history"
 
-#: templates/base.html:146
+#: templates/base.html:164 templates/base_2.html:144
 msgid "No new notifications"
 msgstr "No new notifications"
 
-#: templates/base.html:164
+#: templates/base.html:182 templates/base_2.html:162
 msgid "Account"
 msgstr "Account"
 
-#: templates/base.html:176
+#: templates/base.html:194 templates/base_2.html:174
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:186
+#: templates/base.html:204 templates/base_2.html:184
+#: users/templates/login.html:3 users/templates/login.html:5
+#: users/templates/login.html:21 users/templates/login.html:61
+#: users/templates/password_reset_form.html:17
+#: users/templates/registration.html:82
 msgid "Signin"
 msgstr "Signin"
 
-#: templates/base.html:188 users/templates/login.html:58
+#: templates/base.html:206 templates/base_2.html:186
+#: users/templates/login.html:64 users/templates/password_reset_form.html:18
+#: users/templates/registration.html:3 users/templates/registration.html:5
+#: users/templates/registration.html:11 users/templates/registration.html:78
 msgid "Signup"
 msgstr "Signup"
+
+#: templates/base_2.html:10
+msgid "Subscription business"
+msgstr "Subscription business"
 
 #: templates/external_warning.html:7
 msgid "You're leaving Scalingst"
@@ -208,6 +278,96 @@ msgstr "Link"
 #: templates/external_warning.html:12
 msgid "Go to link"
 msgstr "Go to link"
+
+#: users/templates/login.html:17
+msgid "You are already logged in"
+msgstr "You are already logged in"
+
+#: users/templates/login.html:34 users/templates/registration.html:16
+msgid "Username"
+msgstr "Username"
+
+#: users/templates/login.html:45 users/templates/registration.html:41
+msgid "Password"
+msgstr "Password"
+
+#: users/templates/login.html:65
+msgid "Forgot password"
+msgstr "Forgot password"
+
+#: users/templates/password_reset_complete.html:7
+msgid "Password Reset Complete"
+msgstr "Password Reset Complete"
+
+#: users/templates/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "Your password has been set. You may go ahead and log in now."
+
+#: users/templates/password_reset_complete.html:9
+msgid "Log in"
+msgstr "Log in"
+
+#: users/templates/password_reset_confirm.html:7
+msgid "Enter New Password"
+msgstr "Enter New Password"
+
+#: users/templates/password_reset_confirm.html:14
+msgid "Reset my password"
+msgstr "Reset my password"
+
+#: users/templates/password_reset_done.html:7
+msgid "Password Reset Sent"
+msgstr "Password Reset Sent"
+
+#: users/templates/password_reset_done.html:8
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+
+#: users/templates/password_reset_done.html:9
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+
+#: users/templates/password_reset_form.html:7
+msgid "Password Reset"
+msgstr "Password Reset"
+
+#: users/templates/password_reset_form.html:8
+msgid ""
+"Enter your email address and we will send you a link to reset your password."
+msgstr ""
+"Enter your email address and we will send you a link to reset your password."
+
+#: users/templates/password_reset_form.html:13
+msgid "Send"
+msgstr "Send"
+
+#: users/templates/registration.html:28
+msgid "Email"
+msgstr "Email"
+
+#: users/templates/registration.html:53
+msgid "Re-password"
+msgstr "Re-password"
+
+#: users/templates/registration.html:74
+msgid "I agree with"
+msgstr "I agree with"
+
+#: users/templates/registration.html:74
+msgid "service rules"
+msgstr "service rules"
+
+#: users/templates/registration.html:83
+msgid "Forgot password?"
+msgstr "Forgot password?"
 
 #~ msgid "My offers"
 #~ msgstr "My offers"

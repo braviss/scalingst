@@ -6,193 +6,263 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-12 11:46+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-04-07 20:01+0300\n"
+"PO-Revision-Date: 2025-04-06 15:50+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
-"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
-"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
-"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.6\n"
 
-#: offers/models.py:39 offers/templates/offer_form.html:45
-#: publication/models.py:40
+#: location/models.py:9 offers/templates/offer_detail.html:58
+#: offers/templates/offer_form.html:116 offers/templates/offer_list.html:229
+msgid "Country"
+msgstr "Країна"
+
+#: location/models.py:10 location/models.py:13
+#: offers/templates/offer_form.html:132
+msgid "Region"
+msgstr "Регіон"
+
+#: location/models.py:14
+msgid "Regions"
+msgstr "Регіони"
+
+#: location/models.py:23
+msgid "City"
+msgstr "Місто"
+
+#: location/models.py:24
+msgid "Town"
+msgstr "містечко"
+
+#: location/models.py:25
+msgid "Village"
+msgstr "Село"
+
+#: location/models.py:28
+msgid "Name"
+msgstr "Ім'я"
+
+#: location/models.py:29
+msgid "Type"
+msgstr "Тип"
+
+#: location/models.py:32 offers/templates/offer_form.html:148
+msgid "Locality"
+msgstr "Місцевість"
+
+#: location/models.py:33
+msgid "Localities"
+msgstr "Населені пункти"
+
+#: notifications/templates/notification_list.html:50
+#: offers/templates/offer_form.html:40 payments/templates/payment_list.html:50
+#: users/templates/proffile_offers_list.html:50 users/templates/profile.html:38
+#: users/templates/referred_users.html:40
+msgid "Referrals"
+msgstr "Реферали"
+
+#: offers/models.py:40 offers/templates/offer_form.html:53
+#: publication/models.py:38
 msgid "Title"
 msgstr "Заголовок"
 
-#: offers/models.py:111
+#: offers/models.py:141
 msgid "Complaint text"
 msgstr "Текст скарги"
 
-#: offers/models.py:113
+#: offers/models.py:143
 msgid "Admin Comment"
 msgstr "Коментар адміністратора"
 
-#: offers/templates/offer_detail.html:39 offers/templates/offer_list.html:97
-#: offers/templates/user_offer_list.html:26 templates/base.html:68
-#: users/templates/proffile_offers_list.html:70
+#: offers/templates/offer_detail.html:50 offers/templates/offer_list.html:101
+#: offers/templates/user_offer_list.html:26 templates/base.html:86
+#: templates/base_2.html:66 templates/base_2.html:595
+#: users/templates/proffile_offers_list.html:72
 #: users/templates/profile_view.html:66
 msgid "Premium"
 msgstr "Преміум"
 
-#: offers/templates/offer_detail.html:46 offers/templates/offer_form.html:187
-msgid "Country"
-msgstr "Країна"
-
-#: offers/templates/offer_detail.html:48 offers/templates/offer_form.html:172
-#: offers/templates/offer_list.html:33
+#: offers/templates/offer_detail.html:60 offers/templates/offer_form.html:100
+#: offers/templates/offer_list.html:204
 msgid "Category"
 msgstr "Котегорія"
 
-#: offers/templates/offer_detail.html:50
+#: offers/templates/offer_detail.html:62
 msgid "Author"
 msgstr "Автор"
 
-#: offers/templates/offer_detail.html:57
+#: offers/templates/offer_detail.html:71
 msgid "Author site"
 msgstr "Сайт автора"
 
-#: offers/templates/offer_detail.html:65 offers/templates/offer_form.html:217
+#: offers/templates/offer_detail.html:79 offers/templates/offer_form.html:180
 msgid "Premium url"
 msgstr "Преміум посилання"
 
-#: offers/templates/offer_detail.html:72 offers/templates/offer_detail.html:97
+#: offers/templates/offer_detail.html:89 offers/templates/offer_detail.html:111
 msgid "Share"
 msgstr "Поділитись"
 
-#: offers/templates/offer_detail.html:78
+#: offers/templates/offer_detail.html:92
 msgid "Edit"
 msgstr "Редагувати"
 
-#: offers/templates/offer_detail.html:80
+#: offers/templates/offer_detail.html:94
 msgid "Delete"
 msgstr "Видалити"
 
-#: offers/templates/offer_detail.html:84
+#: offers/templates/offer_detail.html:99
 msgid "Complain"
 msgstr "Поскаржитись"
 
-#: offers/templates/offer_detail.html:111
+#: offers/templates/offer_detail.html:133
 msgid "Close"
 msgstr "Закрити"
 
-#: offers/templates/offer_form.html:47
+#: offers/templates/offer_form.html:55
 msgid "This text will be the title of your offer"
 msgstr "Цей текст буде заголовком вашого оффера"
 
-#: offers/templates/offer_form.html:60
+#: offers/templates/offer_form.html:68
 msgid "Text"
 msgstr "Текст"
 
-#: offers/templates/offer_form.html:157
+#: offers/templates/offer_form.html:84
 msgid "Image"
 msgstr "Зображення"
 
-#: offers/templates/offer_form.html:167
+#: offers/templates/offer_form.html:94
 msgid "Upload an image. Supported formats: JPG, PNG, GIF."
 msgstr "Завантажте зображення. Підтримувані формати: JPG, PNG."
 
-#: offers/templates/offer_form.html:182
+#: offers/templates/offer_form.html:110
 msgid "The ad will be shown in this category."
 msgstr "Оголошення буде показано в цій категорії."
 
-#: offers/templates/offer_form.html:197
+#: offers/templates/offer_form.html:126
 msgid "Specify the country in which the services (product) are provided."
 msgstr "Вкажіть країну, в якій надаються послуги (продукт)."
 
-#: offers/templates/offer_form.html:202
+#: offers/templates/offer_form.html:142
+msgid "Select the region within the chosen country."
+msgstr "Виберіть регіон у вибраній країні."
+
+#: offers/templates/offer_form.html:158
+msgid "Select the locality within the chosen region."
+msgstr "Виберіть населений пункт у вибраному регіоні."
+
+#: offers/templates/offer_form.html:164
 msgid "Url"
 msgstr "Посилання"
 
-#: offers/templates/offer_form.html:212
+#: offers/templates/offer_form.html:174
 msgid "Please provide a link to your website (social networks)."
 msgstr "Будь ласка, надайте посилання на ваш сайт (соціальні мережі)."
 
-#: offers/templates/offer_form.html:227
+#: offers/templates/offer_form.html:190
 msgid "Provide a link for premium users with an exclusive offer."
 msgstr "Надайте посилання для преміум-користувачів з ексклюзивною пропозицією."
 
-#: offers/templates/offer_form.html:234
+#: offers/templates/offer_form.html:196
 msgid "Save"
 msgstr "Зберегти"
 
-#: offers/templates/offer_list.html:28 offers/templates/user_offer_list.html:16
-#: users/templates/proffile_offers_list.html:60
+#: offers/templates/offer_list.html:180
+#: offers/templates/user_offer_list.html:16
+#: users/templates/proffile_offers_list.html:62
 msgid "Create"
 msgstr "Створити"
 
-#: offers/templates/offer_list.html:49
-msgid "Reset"
-msgstr "Скинути"
-
-#: offers/templates/offer_list.html:54 offers/templates/offer_list.html:58
+#: offers/templates/offer_list.html:190 offers/templates/offer_list.html:194
 msgid "Search"
 msgstr "Пошук"
 
-#: payments/templates/payment_form.html:90
-#: payments/templates/payment_form.html:101
-#: payments/templates/payment_form.html:112
-#: payments/templates/payment_form.html:123
+#: offers/templates/offer_list.html:273
+msgid "Reset"
+msgstr "Скинути"
+
+#: payments/templates/payment_form.html:63
+#: payments/templates/payment_form.html:75
+#: payments/templates/payment_form.html:86
+#: payments/templates/payment_form.html:97
 msgid "Step"
 msgstr "Крок"
 
-#: publication/models.py:36
+#: publication/models.py:34
 msgid "Article"
 msgstr "Публікація"
 
-#: publication/models.py:37
+#: publication/models.py:35
 msgid "Page"
 msgstr "Сторінка"
 
-#: templates/base.html:62 templates/base.html:208
+#: templates/base.html:80 templates/base.html:226 templates/base_2.html:60
+#: templates/base_2.html:593 templates/base_2.html:602
 msgid "Home"
 msgstr "Головна"
 
-#: templates/base.html:65 templates/base.html:210
+#: templates/base.html:83 templates/base.html:228 templates/base_2.html:63
+#: templates/base_2.html:594
 msgid "Offers"
 msgstr "Оффери"
 
-#: templates/base.html:72 templates/base.html:213
+#: templates/base.html:90 templates/base.html:231 templates/base_2.html:70
+#: templates/base_2.html:618
 msgid "Articles"
 msgstr "Публікації"
 
-#: templates/base.html:120 templates/base.html:168
+#: templates/base.html:138 templates/base.html:186 templates/base_2.html:118
+#: templates/base_2.html:166
 msgid "Notifications"
 msgstr "Сповіщення"
 
-#: templates/base.html:136
+#: templates/base.html:154 templates/base_2.html:134
 msgid "Mark all as read"
 msgstr "Відмітити всі як прочитані"
 
-#: templates/base.html:141 templates/base.html:149
+#: templates/base.html:159 templates/base.html:167 templates/base_2.html:139
+#: templates/base_2.html:147
 msgid "View notification history"
 msgstr "Переглянути сповіщення"
 
-#: templates/base.html:146
+#: templates/base.html:164 templates/base_2.html:144
 msgid "No new notifications"
 msgstr "Немає нових сповіщень"
 
-#: templates/base.html:164
+#: templates/base.html:182 templates/base_2.html:162
 msgid "Account"
 msgstr "Обліковий запис"
 
-#: templates/base.html:176
+#: templates/base.html:194 templates/base_2.html:174
 msgid "Logout"
 msgstr "Вийти"
 
-#: templates/base.html:186
+#: templates/base.html:204 templates/base_2.html:184
+#: users/templates/login.html:3 users/templates/login.html:5
+#: users/templates/login.html:21 users/templates/login.html:61
+#: users/templates/password_reset_form.html:17
+#: users/templates/registration.html:82
 msgid "Signin"
 msgstr "Увійти"
 
-#: templates/base.html:188 users/templates/login.html:58
+#: templates/base.html:206 templates/base_2.html:186
+#: users/templates/login.html:64 users/templates/password_reset_form.html:18
+#: users/templates/registration.html:3 users/templates/registration.html:5
+#: users/templates/registration.html:11 users/templates/registration.html:78
 msgid "Signup"
 msgstr "Зареєструватись"
+
+#: templates/base_2.html:10
+msgid "Subscription business"
+msgstr "Бізнес за підпискою"
 
 #: templates/external_warning.html:7
 msgid "You're leaving Scalingst"
@@ -209,6 +279,98 @@ msgstr "Посилання"
 #: templates/external_warning.html:12
 msgid "Go to link"
 msgstr "Перейти за посиланням"
+
+#: users/templates/login.html:17
+msgid "You are already logged in"
+msgstr "Ви вже ввійшли"
+
+#: users/templates/login.html:34 users/templates/registration.html:16
+msgid "Username"
+msgstr "ім'я користувача"
+
+#: users/templates/login.html:45 users/templates/registration.html:41
+msgid "Password"
+msgstr "Пароль"
+
+#: users/templates/login.html:65
+msgid "Forgot password"
+msgstr "Відновити пароль"
+
+#: users/templates/password_reset_complete.html:7
+msgid "Password Reset Complete"
+msgstr "Скидання пароля завершено"
+
+#: users/templates/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "Ваш пароль встановлено. Ви можете продовжити та увійти зараз."
+
+#: users/templates/password_reset_complete.html:9
+msgid "Log in"
+msgstr "авторизуватися"
+
+#: users/templates/password_reset_confirm.html:7
+msgid "Enter New Password"
+msgstr "Введіть новий пароль"
+
+#: users/templates/password_reset_confirm.html:14
+msgid "Reset my password"
+msgstr "Скинути мій пароль"
+
+#: users/templates/password_reset_done.html:7
+msgid "Password Reset Sent"
+msgstr "Скидання пароля надіслано"
+
+#: users/templates/password_reset_done.html:8
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Ми надіслали вам електронною поштою інструкції щодо встановлення пароля, "
+"якщо існує обліковий запис із вказаною вами електронною поштою. Ви повинні "
+"отримати їх найближчим часом."
+
+#: users/templates/password_reset_done.html:9
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Якщо ви не отримали електронний лист, будь ласка, переконайтеся, що ви ввели "
+"адресу, яку ви зареєстрували, і перевірте папку зі спамом."
+
+#: users/templates/password_reset_form.html:7
+msgid "Password Reset"
+msgstr "Скидання пароля"
+
+#: users/templates/password_reset_form.html:8
+msgid ""
+"Enter your email address and we will send you a link to reset your password."
+msgstr ""
+"Введіть свою адресу електронної пошти, і ми надішлемо вам посилання для "
+"зміни пароля."
+
+#: users/templates/password_reset_form.html:13
+msgid "Send"
+msgstr "Надіслати"
+
+#: users/templates/registration.html:28
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: users/templates/registration.html:53
+msgid "Re-password"
+msgstr "Повторний пароль"
+
+#: users/templates/registration.html:74
+msgid "I agree with"
+msgstr "Я згоден з"
+
+#: users/templates/registration.html:74
+msgid "service rules"
+msgstr "правилами сервісу"
+
+#: users/templates/registration.html:83
+msgid "Forgot password?"
+msgstr "Забули пароль?"
 
 #~ msgid "My offers"
 #~ msgstr "Мої оффери"

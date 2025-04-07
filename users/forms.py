@@ -7,6 +7,9 @@ from django.contrib.auth.forms import AuthenticationForm
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox,
+    )
 
     class Meta:
         model = CustomUser
