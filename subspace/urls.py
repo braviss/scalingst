@@ -21,12 +21,14 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from offers.views import HomePageView
 from offers.views import external_link_warning
+from offers.views import get_cities
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('tinymce/', include('tinymce.urls')),
+    path('get_cities/<str:country_code>/', get_cities, name='get_cities'),
 ]+ static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)
 
@@ -50,14 +52,13 @@ urlpatterns += i18n_patterns(
          include(('publication.urls', 'publication'),
                  namespace='publication')),
 
-    path('location/', include('location.urls')),
-
 
     path('i18n/',
          include('django.conf.urls.i18n')),
     path("external-link/",
          external_link_warning,
          name="external_link_warning"),
+
 
 ) + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)

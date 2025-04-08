@@ -127,9 +127,10 @@
                     </tr>
 
 
-                    <tr>
+                    <tr id="city-field" class="d-none">
                         <td>
-                            <label for="{{ form.region.id_for_label }}" class="form-label">{% trans 'Region' %}</label>
+                            <label for="{{ form.region.id_for_label }}"
+                                   class="form-label">{% trans 'Region' %}</label>
                             {{ form.region|add_class:"form-control" }}
                             {% if form.region.errors %}
                                 <div class="invalid-feedback">
@@ -139,23 +140,7 @@
                                 </div>
                             {% endif %}
                         </td>
-                        <td class="align-middle text-muted">{% trans 'Select the region within the chosen country.' %}</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <label for="{{ form.locality.id_for_label }}"
-                                   class="form-label">{% trans 'Locality' %}</label>
-                            {{ form.locality|add_class:"form-control" }}
-                            {% if form.locality.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.locality.errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </td>
-                        <td class="align-middle text-muted">{% trans 'Select the locality within the chosen region.' %}</td>
+                        <td class="align-middle text-muted">{% trans 'Specify the locality (city) in which the services (product) are provided.' %}</td>
                     </tr>
 
 
@@ -226,37 +211,26 @@
     </script>
 
     <script>
-        // Обновление списка регионов в зависимости от выбранной страны
-        document.getElementById('id_country').addEventListener('change', function () {
-            let country_id = this.value;
-            let regionSelect = document.getElementById('id_region');
+        document.addEventListener("DOMContentLoaded", function () {
+            const countrySelect = document.querySelector('select[name="country"]');
+            const cityField = document.getElementById('city-field');
 
-            // Отправляем AJAX-запрос на сервер для получения списка регионов
-            fetch(`/location/get_regions/${country_id}/`)
-                .then(response => response.json())
-                .then(data => {
-                    regionSelect.innerHTML = "<option value=''>---------</option>";
-                    data.regions.forEach(region => {
-                        regionSelect.innerHTML += `<option value="${region.id}">${region.name}</option>`;
-                    });
-                });
-        });
+            function toggleCityField(countryCode) {
+                if (countryCode === 'UA') {
+                    cityField.classList.remove('d-none');
+                } else {
+                    cityField.classList.add('d-none');
+                }
+            }
 
-        // Обновление списка населенных пунктов в зависимости от выбранного региона
-        document.getElementById('id_region').addEventListener('change', function () {
-            let region_id = this.value;
-            let localitySelect = document.getElementById('id_locality');
+            toggleCityField(countrySelect.value);
 
-            // Отправляем AJAX-запрос на сервер для получения списка населенных пунктов
-            fetch(`/location/get_localities/${region_id}/`)
-                .then(response => response.json())
-                .then(data => {
-                    localitySelect.innerHTML = "<option value=''>---------</option>";
-                    data.localities.forEach(locality => {
-                        localitySelect.innerHTML += `<option value="${locality.id}">${locality.name}</option>`;
-                    });
-                });
+            countrySelect.addEventListener('change', function () {
+                toggleCityField(countrySelect.value);
+            });
         });
     </script>
+
+
 
 {% endblock %}

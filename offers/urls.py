@@ -1,6 +1,7 @@
 from django.urls import path
 from offers import views
 
+
 urlpatterns = [
     path('list',
          views.OfferListView.as_view(),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('category/',
          views.CategoryListView.as_view(),
          name='category_list'),
+
 ]

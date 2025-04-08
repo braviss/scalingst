@@ -197,8 +197,8 @@
                     </div>
                 </form>
 
-                <div class="d-flex flex-wrap">
-                    <div class="dropdown me-2">
+                <div class="d-flex flex-wrap justify-content-between">
+                    <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                             {% trans 'Category' %}<i class="fa fa-arrow-down ms-2"></i>
@@ -223,7 +223,7 @@
                     </div>
 
 
-                    <div class="dropdown me-2">
+                    <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                             {% trans 'Country' %}<i class="fa fa-arrow-down ms-2"></i>
@@ -245,28 +245,52 @@
                         </ul>
                     </div>
 
-                <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        {% if offer_type == 'premium' %}
-            Премиум
-        {% elif offer_type == 'regular' %}
-            Обычные
-        {% else %}
-            Все
-        {% endif %}
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
-        <li>
-            <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=premium">Премиум</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=regular">Обычные</a>
-        </li>
-    </ul>
-</div>
+                    {#                locale#}
+                    <div class="dropdown flex-grow-1 mb-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            {% trans 'Region' %}<i class="fa fa-arrow-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                            </li>
+                            <div class="dropdown-columns">
+                                {% for region in regions %}
+                                    <li>
+                                        <a class="dropdown-item {% if request.GET.region == region.slug %}active{% endif %}"
+                                           href="{% url 'offers:offer_list' %}?region={{ region.slug }}&country={{ request.GET.country }}">
+                                            {{ region.name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown flex-grow-1 mb-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if offer_type == 'premium' %}
+                                Премиум
+                            {% elif offer_type == 'regular' %}
+                                Обычные
+                            {% else %}
+                                Все
+                            {% endif %}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=premium">Премиум</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=regular">Обычные</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
 

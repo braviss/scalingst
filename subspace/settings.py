@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_recaptcha',
     'users',
-    'location',
+    'cities_light',
     'widget_tweaks',
     'view_breadcrumbs',
     'tinymce',
@@ -218,6 +218,6 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 
-
-
-GEOIP_PATH = '/path/to/your/GeoLite2-Country.mmdb'
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['uk', 'en']  # Языки, на которых будут переведены данные
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['UA']  # Для Украины
+CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT']

@@ -34,7 +34,9 @@ from django.db.models import Q
 from offers.mixins import CustomLoginRequiredMixin
 from django.http import Http404
 from django.shortcuts import render
-from location.models import Locality, Region
+
+from cities_light.models import City, Region
+from django.http import JsonResponse
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -70,22 +72,11 @@ class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
             queryset = queryset.filter(country=country_code)
 
 
-        # Locations
+        # locale
 
         region_slug = self.request.GET.get('region')
         if region_slug:
-            # Получаем регион по slug
-            region = Region.objects.get(slug=region_slug)
-            queryset = queryset.filter(region=region)  # Фильтрация по региону
-
-        city_slug = self.request.GET.get('city')
-        if city_slug:
-            # Получаем город по slug в выбранном регионе
-            locality = Locality.objects.get(slug=city_slug, region=region)
-            queryset = queryset.filter(locality=locality)  # Фильтрация по городу
-
-
-
+            queryset = queryset.filter(region__slug=region_slug)
 
 
 
@@ -103,7 +94,6 @@ class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
         context['categories'] = Category.objects.all()
         context['countries'] = countries
         context['regions'] = Region.objects.all()
-        context['localities'] = Locality.objects.all()
         context['offer_type'] = self.request.GET.get('type', 'all')
 
         return context
@@ -235,3 +225,15 @@ class CategoryListView(CustomLoginRequiredMixin,
 def external_link_warning(request):
     external_url = request.GET.get("url", "")
     return render(request, "external_warning.html", {"external_url": external_url})
+
+
+
+def get_cities(request, country_code):
+    print(f"Получен код страны: {country_code}")
+    if country_code == '1':
+        # Оптимизируем запрос с помощью select_related
+        cities = City.objects.select_related('region__country').filter(region__country__id='1')
+        print(f"Найдено {len(cities)} городов.")
+        city_data = [{'id': city.id, 'name': city.name} for city in cities]
+        return JsonResponse({'cities': city_data})
+    return JsonResponse({'cities': []})

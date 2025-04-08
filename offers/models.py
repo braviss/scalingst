@@ -10,8 +10,7 @@ from transliterate import translit
 from django_countries.fields import CountryField
 from django.urls import reverse
 from django.conf import settings
-
-from location.models import Region, Locality
+from cities_light.models import City, Region
 
 
 class BaseModel(models.Model):
@@ -45,6 +44,14 @@ class Offer(BaseModel):
     category = models.ForeignKey('Category',
                                  on_delete=models.SET_NULL,
                                  null=True, blank=True)
+    image = models.ImageField(upload_to='offer_img',
+                              null=True, blank=True,
+                              default='media/default_offer.png')
+    status = models.CharField(max_length=2,
+                              choices=STATUS_OFFER_CHOICES,
+                              default='pe')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    country = CountryField(blank_label='Select country', null=True, blank=True)
     region = models.ForeignKey(
         Region,
         null=True,
@@ -54,21 +61,13 @@ class Offer(BaseModel):
         related_name='offers'
     )
     locality = models.ForeignKey(
-        Locality,
+        City,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         verbose_name="Населённый пункт",
         related_name='offers'
     )
-    image = models.ImageField(upload_to='offer_img',
-                              null=True, blank=True,
-                              default='media/default_offer.png')
-    status = models.CharField(max_length=2,
-                              choices=STATUS_OFFER_CHOICES,
-                              default='pe')
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    country = CountryField(blank_label='Select country', null=True, blank=True)
     url = models.URLField(max_length=200, null=True, blank=True)
     premium_url = models.URLField(max_length=200, null=True, blank=True)
 
