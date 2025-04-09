@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
-  <h1>Are you sure you want to delete your account?</h1>
+  <h1>{% trans 'Are you sure you want to delete your account?' %}</h1>
   <form method="post">
     {% csrf_token %}
-    <button type="submit">Yes, delete my account</button>
-    <a href="{% url 'home' %}">Cancel</a>
+    <button type="submit">{% trans 'Yes, delete my account' %}</button>
+    <a href="{% url 'home' %}">{% trans 'Cancel' %}</a>
   </form>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Список предложений{% endblock %}
+{% block title %}{% trans 'Category list' %}{% endblock %}
 
 {% load view_breadcrumbs %}
 
@@ -19,7 +19,7 @@
                         <img src="{{ category.image.url }}" alt="">
                         <h5 class="card-title">{{ category.name }}</h5>
                         <p class="card-text">{{ category.description }}</p>
-                        <a href="/offer/list?category={{ category.slug }}" class="btn btn-primary">Просмотреть</a>
+                        <a href="/offer/list?category={{ category.slug }}" class="btn btn-primary">{% trans 'View' %}</a>
                     </div>
                 </div>
             </div>
@@ -36,12 +36,12 @@
             {% if page_obj.has_previous %}
                 <li class="page-item">
                     <a class="page-link" href="?page=1" aria-label="Первая">
-                        <span aria-hidden="true">&laquo; Первая</span>
+                        <span aria-hidden="true">&laquo; {% trans 'First' %}</span>
                     </a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
-                        <span aria-hidden="true">Предыдущая</span>
+                        <span aria-hidden="true">{% trans 'Previous' %}</span>
                     </a>
                 </li>
             {% endif %}
@@ -62,12 +62,12 @@
             {% if page_obj.has_next %}
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
-                        <span aria-hidden="true">Следующая</span>
+                        <span aria-hidden="true">{% trans 'Next' %}</span>
                     </a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
-                        <span aria-hidden="true">Последняя &raquo;</span>
+                        <span aria-hidden="true">{% trans 'Last' %} &raquo;</span>
                     </a>
                 </li>
             {% endif %}

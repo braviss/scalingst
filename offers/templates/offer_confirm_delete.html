@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 
     <div class="text-center">
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{% url 'offers:offer_detail' object.slug %}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-danger">{% trans 'Delete' %}</button>
+            <a href="{% url 'offers:offer_detail' object.slug %}" class="btn btn-secondary">{% trans 'Сancel' %}</a>
         </form>
     </div>
 

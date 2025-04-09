@@ -202,22 +202,20 @@
                     <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
 
                         <h1 class="mb-4">
-                            Маштабирование
-                            <span class="accent-text">продаж</span>
+                            {% trans 'Sales' %}
+                            <span class="accent-text">{% trans 'scaling' %}</span>
                         </h1>
 
                         <p class="mb-4 mb-md-5">
-                            Это инструмент увеличения объемов продаж вашего продукта.
+                            {% trans 'This is a tool to increase sales of your product' %}
                         </p>
 
                         <div class="hero-buttons">
-                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-0 me-sm-2 mx-1">Создать
-                                первий
-                                оффер</a>
+                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-0 me-sm-2 mx-1">{% trans 'Create first offer' %}</a>
                             <a href="https://scalingst.com/"
                                class="btn btn-link mt-2 mt-sm-0">
                                 <i class="bi bi-info-circle"></i>
-                                О нас
+                                {% trans 'About Us' %}
                             </a>
                         </div>
                     </div>
@@ -237,8 +235,8 @@
                             <i class="bi bi-person"></i>
                         </div>
                         <div class="stat-content">
-                            <h4>Кабинет</h4>
-                            <p class="mb-0">У каждого подписчика есть свой личный кабинет</p>
+                            <h4>{% trans 'Cabinet' %}</h4>
+                            <p class="mb-0">{% trans 'Each subscriber has their own personal account' %}</p>
                         </div>
                     </div>
                 </div>
@@ -248,8 +246,8 @@
                             <i class="bi bi-shop"></i>
                         </div>
                         <div class="stat-content">
-                            <h4>Удобство</h4>
-                            <p class="mb-0">Автоматизация процесса покупки, экономия времени</p>
+                            <h4>{% trans 'Convenience' %}</h4>
+                            <p class="mb-0">{% trans 'Automate the purchasing process, save time' %}</p>
                         </div>
                     </div>
                 </div>
@@ -259,8 +257,8 @@
                             <i class="bi bi-gem"></i>
                         </div>
                         <div class="stat-content">
-                            <h4>Эксклюзивность</h4>
-                            <p class="mb-0">Доступ к эксклюзивным продуктам, услугам</p>
+                            <h4>{% trans 'Exclusivity' %}</h4>
+                            <p class="mb-0">{% trans 'Access to exclusive products, services' %}</p>
                         </div>
                     </div>
                 </div>
@@ -270,8 +268,8 @@
                             <i class="bi bi-star"></i>
                         </div>
                         <div class="stat-content">
-                            <h4>Гарантии</h4>
-                            <p class="mb-0">Гарантия качества и удобные условия возврата</p>
+                            <h4>{% trans 'Guarantees' %}</h4>
+                            <p class="mb-0">{% trans 'Quality guarantee and convenient return conditions' %}</p>
                         </div>
                     </div>
                 </div>
@@ -288,27 +286,23 @@
             <div class="row gy-4 align-items-center justify-content-between">
 
                 <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                    <span class="about-meta">Подробнее о нас</span>
-                    <h2 class="about-title">Масштабирования продаж (МП)</h2>
-                    <p class="about-description">Это инструмент увеличения объемов продаж вашего продукта. Это процесс,
-                        когда вы
-                        переходите от мелких продаж к более крупным, расширяете свою клиентскую базу и увеличиваете
-                        доходы
-                        от продаж.</p>
+                    <span class="about-meta">{% trans 'More about us' %}</span>
+                    <h2 class="about-title">{% trans 'Sales scaling (MS)' %}</h2>
+                    <p class="about-description">{% trans 'It is a tool to increase the sales volume of your product. It is the process where you go from small sales to larger ones, expand your customer base and increase your sales revenue.' %}</p>
 
                     <div class="row feature-list-wrapper">
                         <div class="col-md-6">
                             <ul class="feature-list">
-                                <li><i class="bi bi-check-circle-fill"></i> Увеличить продажи</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Отследить статистику</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Снизить затраты</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Increase sales' %}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Track statistics' %}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Reduce costs' %}</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="feature-list">
-                                <li><i class="bi bi-check-circle-fill"></i> Получать скидки</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Привлечь партнеров</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Публиковать предложения</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Receive discounts' %}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Attract partners' %}</li>
+                                <li><i class="bi bi-check-circle-fill"></i> {% trans 'Attract Partners' %}</li>
                             </ul>
                         </div>
                     </div>
@@ -336,7 +330,7 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Цены</h2>
+            <h2>{% trans 'Prices' %}</h2>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -346,33 +340,32 @@
                 <!-- Basic Plan -->
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="pricing-card">
-                        <h3>Базовый план</h3>
+                        <h3>{% trans 'Basic plan' %}</h3>
                         <div class="price">
                             <span class="currency">$</span>
-                            <span class="amount">Бесплатно</span>
-                            <span class="period">/ год</span>
+                            <span class="amount">{% trans 'Free' %}</span>
+                            <span class="period">/ {% trans 'year' %}</span>
                         </div>
-                        <p class="description">Базовый аккаунт для пользователей доступен после регистрации в
-                            системе.</p>
+                        <p class="description">{% trans 'A basic account for users is available after registration in the system.' %}</p>
 
-                        <h4>Включает:</h4>
+                        <h4>{% trans 'Includes' %}:</h4>
                         <ul class="features-list">
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Доступ к поисковой системе
+                                {% trans 'Access to the search engine' %}
                             </li>
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Публикацию предложений
+                                {% trans 'Publication of proposals' %}
                             </li>
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Просмотр предложений пользователей
+                                {% trans 'View user suggestions' %}
                             </li>
                         </ul>
 
                         <a href="#" class="btn btn-primary">
-                            Оформить
+                            {% trans 'Design' %}
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -381,38 +374,37 @@
                 <!-- Standard Plan -->
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="pricing-card popular">
-                        <div class="popular-badge">Популярный</div>
-                        <h3>Премиум план</h3>
+                        <div class="popular-badge">{% trans 'Popular' %}</div>
+                        <h3>{% trans 'Premium plan' %}</h3>
                         <div class="price">
                             <span class="currency">$</span>
                             <span class="amount">15.0</span>
-                            <span class="period">/ год</span>
+                            <span class="period">/ {% trans 'year' %}</span>
                         </div>
-                        <p class="description">Премиум аккаунт станет доступен после оформления подписки в личном
-                            кабинете системы.</p>
+                        <p class="description">{% trans 'A premium account will become available after you subscribe in your personal account in the system.' %}</p>
 
-                        <h4>Включает:</h4>
+                        <h4>{% trans 'Includes' %}:</h4>
                         <ul class="features-list">
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Доступ к поисковой системе
+                                {% trans 'Access to the search engine' %}
                             </li>
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Публикацию предложений
+                                {% trans 'Publication of proposals' %}
                             </li>
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Просмотр предложений пользователей
+                                {% trans 'View user suggestions' %}
                             </li>
                             <li>
                                 <i class="bi bi-check-circle-fill"></i>
-                                Доступ к премиум предложениям
+                                {% trans 'Access to premium offers' %}
                             </li>
                         </ul>
 
                         <a href="#" class="btn btn-light">
-                            Оформить
+                            {% trans 'Design' %}
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -431,14 +423,10 @@
                 <div class="tab-pane fade active show" id="features-tab-1">
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                            <span class="features-meta">Для кого?</span>
-                            <h3>Только для подписчиков на МП</h3>
+                            <span class="features-meta">{% trans 'For whom?' %}</span>
+                            <h3>{% trans 'For MP subscribers only' %}</h3>
                             <p class="fst-italic">
-                                В закрытой части у каждого зарегистрированного подписчика есть свой личный кабинет,
-                                который служит для информирования о всех новостях и обновлениях, необходимых для
-                                успешного развития вашего бизнеса. Там же и международная поисковая система для покупок
-                                по низкой цене МП и оформление заявок на точки с разнообразием товаров и услуг для
-                                публикации в поисковой системе.
+                                {% trans 'In the private section, each registered subscriber has their own personal account, which serves to provide information about all the news and updates necessary for the successful development of your business. It also includes an international search engine for low-price purchases and the ability to submit applications for points offering a variety of goods and services to be published in the search system.' %}
                             </p>
 
                         </div>
@@ -461,52 +449,45 @@
             <div class="row">
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="faq-title">Для потребителей</h2>
+                    <h2 class="faq-title">{% trans 'For consumers' %}</h2>
                     <div class="faq-container">
 
                         <div class="faq-item faq-active">
                             <h3>Экономия</h3>
                             <div class="faq-content">
-                                <p>Самая очевидная мотивация – возможность приобретать товары и услуги по более низким
-                                    ценам. Подписка часто дает доступ к эксклюзивным скидкам, акциям и специальным
-                                    предложениям.</p>
+                                <p>{% trans 'The most obvious motivation is the ability to purchase goods and services at lower prices. Subscriptions often provide access to exclusive discounts, promotions, and special offers.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Удобство</h3>
+                            <h3>{% trans 'Convenience' %}</h3>
                             <div class="faq-content">
-                                <p>Подписка позволяет автоматизировать процесс покупки, экономить время на поиск лучших
-                                    предложений. Многие сервисы предлагают доставку прямо на дом или в удобное
-                                    место.</p>
+                                <p>{% trans 'Subscription allows you to automate the purchasing process, saving time on searching for the best offers. Many services offer delivery directly to your home or to a convenient location.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Эксклюзивность</h3>
+                            <h3>{% trans 'Exclusivity' %}</h3>
                             <div class="faq-content">
-                                <p>Подписчики часто получают доступ к эксклюзивным продуктам, услугам или контенту,
-                                    который недоступен другим покупателям.</p>
+                                <p>{% trans 'Subscribers often get access to exclusive products, services or content that is not available to other customers.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Гарантии качества</h3>
+                            <h3>{% trans 'Quality guarantees' %}</h3>
                             <div class="faq-content">
-                                <p>Многие компании, предлагающие подписки, гарантируют качество своих товаров и услуг, а
-                                    также предоставляют удобные условия возврата или обмена.</p>
+                                <p>{% trans 'Many subscription companies guarantee the quality of their products and services, and also provide convenient return or exchange conditions.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Социальное доказательство</h3>
+                            <h3>{% trans 'Social proof' %}</h3>
                             <div class="faq-content">
-                                <p>Принадлежность к сообществу подписчиков может повысить самооценку и престиж
-                                    потребителя.</p>
+                                <p>{% trans 'Belonging to a community of subscribers can increase the self-esteem and prestige of the consumer.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
@@ -515,49 +496,45 @@
                 </div>
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="faq-title">Для продавцов</h2>
+                    <h2 class="faq-title">{% trans 'For sellers' %}</h2>
                     <div class="faq-container">
 
                         <div class="faq-item faq-active">
-                            <h3>Стабильный поток дохода</h3>
+                            <h3>{% trans 'Stable income stream' %}</h3>
                             <div class="faq-content">
-                                <p>Подписка обеспечивает предсказуемый доход, что позволяет планировать бизнес более
-                                    эффективно.</p>
+                                <p>{% trans 'Subscription provides predictable income, which allows you to plan your business more effectively.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Увеличение лояльности клиентов</h3>
+                            <h3>{% trans 'Increased customer loyalty' %}</h3>
                             <div class="faq-content">
-                                <p>Подписчики, как правило, более лояльны к бренду и совершают повторные покупки.</p>
+                                <p>{% trans 'Subscribers tend to be more loyal to the brand and make repeat purchases.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Сбор данных о клиентах</h3>
+                            <h3>{% trans 'Collecting customer data' %}</h3>
                             <div class="faq-content">
-                                <p>Подписка позволяет собирать ценную информацию о поведении клиентов, что помогает
-                                    улучшать продукты и услуги.</p>
+                                <p>{% trans 'Subscription allows you to collect valuable information about customer behavior, which helps improve products and services.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Возможность персонализации предложения</h3>
+                            <h3>{% trans 'Possibility to personalize the offer' %}</h3>
                             <div class="faq-content">
-                                <p>На основе данных о предпочтениях подписчиков можно создавать персонализированные
-                                    предложения, увеличивая эффективность маркетинговых кампаний.</p>
+                                <p>{% trans 'Based on subscriber preference data, you can create personalized offers, increasing the effectiveness of marketing campaigns.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Масштабирование бизнеса</h3>
+                            <h3>{% trans 'Scaling your business' %}</h3>
                             <div class="faq-content">
-                                <p>Подписочная модель позволяет легко масштабировать бизнес и привлекать новых
-                                    клиентов.</p>
+                                <p>{% trans 'The subscription model makes it easy to scale your business and attract new customers.' %}</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
@@ -588,7 +565,7 @@
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Общие</h4>
+                <h4>{% trans 'General' %}</h4>
                 <ul>
                     <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
                     <li><a href="{% url 'offers:offer_list' %}">{% trans 'Offers' %}</a></li>
@@ -597,23 +574,23 @@
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>О нас</h4>
+                <h4>{% trans 'About Us' %}</h4>
                 <ul>
-                    <li><a href="{% trans 'Home' %}">Контакты</a></li>
+                    <li><a href="{% trans 'Home' %}">{% trans 'Contacts' %}</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Информация</h4>
+                <h4>{% trans 'Information' %}</h4>
                 <ul>
-                    <li><a href="">Правила сервиса</a></li>
-                    <li><a href="">Публичная оферта</a></li>
-                    <li><a href="">Финансовая информация</a></li>
+                    <li><a href="">{% trans 'Service rules' %}</a></li>
+                    <li><a href="">{% trans 'Public offer' %}</a></li>
+                    <li><a href="">{% trans 'Financial information' %}</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Медиа</h4>
+                <h4>{% trans 'Media' %}</h4>
                 <ul>
                     <li><a href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a></li>
                 </ul>
@@ -624,7 +601,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Scalingst</strong> <span>All Rights Reserved</span>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Scalingst</strong> <span>{% trans 'Al Rygnts Reserved' %}</span>
         </p>
     </div>
 

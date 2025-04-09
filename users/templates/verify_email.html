@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 <div class="container">
-    <h2>Подтверждение email</h2>
-    <p>Введите код, который мы отправили на вашу почту.</p>
+    <h2>{% trans 'Confirmation email' %}</h2>
+    <p>{% trans 'Enter the code we sent to your email.' %}</p>
 
     <form method="post">
         {% csrf_token %}
 
         <div class="mb-3">
-            <label for="{{ form.code.id_for_label }}" class="form-label">Код подтверждения</label>
+            <label for="{{ form.code.id_for_label }}" class="form-label">{% trans 'Verification code' %}</label>
             {{ form.code }}
         </div>
 
@@ -21,22 +21,20 @@
             </div>
         {% endif %}
 
-        <button type="submit" class="btn btn-primary">Подтвердить</button>
+        <button type="submit" class="btn btn-primary">{% trans 'Confirm' %}</button>
     </form>
 
-    <!-- Кнопка повторной отправки кода -->
     <div id="resend-container" class="mt-3">
-        <button id="resend-btn" class="btn btn-secondary" onclick="resendCode()" disabled>Отправить повторно</button>
+        <button id="resend-btn" class="btn btn-secondary" onclick="resendCode()" disabled>{% trans 'Resend' %}</button>
         <span id="timer">2:00</span>
     </div>
 </div>
 
 <script>
-    let resendTimer = 120; // 2 минуты в секундах
+    let resendTimer = 120;
     let resendButton = document.getElementById('resend-btn');
     let timerDisplay = document.getElementById('timer');
 
-    // Таймер для кнопки повторной отправки
     function startResendTimer() {
         resendButton.disabled = true;
 
@@ -55,10 +53,8 @@
         }, 1000);
     }
 
-    // Функция для отправки нового кода
     function resendCode() {
-        // Запрос к серверу для отправки нового кода (например, через AJAX)
-        fetch('/send-verification-code/', { // Укажите свой путь для обработки запроса
+        fetch('/send-verification-code/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,12 +74,10 @@
         })
         .catch(error => console.error('Ошибка:', error));
 
-        // Перезапускаем таймер после отправки нового кода
         resendTimer = 120;
         startResendTimer();
     }
 
-    // Начинаем отсчёт сразу при загрузке страницы
     startResendTimer();
 </script>
 

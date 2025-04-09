@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}Главная{% endblock %}
+{% block title %}{% trans 'Profile view' %}{% endblock %}
 
 {% block content %}
     <style>
@@ -45,7 +45,7 @@
                              {% if user_profile.is_premium %}<span class="badge rounded-pill text-bg-primary mb-4 span-gold">Premium</span>{% endif %}
                                 <div class="d-flex justify-content-center gap-2 mb-4">
                                     <a class="btn btn-outline-primary disabled" role="button" aria-disabled="true"><i
-                                            class="fas fa-envelope me-2"></i>Message</a>
+                                            class="fas fa-envelope me-2"></i>{% trans 'Message' %}</a>
 
                                 </div>
                             </div>
@@ -94,14 +94,14 @@
                                             {% if page_obj.has_previous %}
                                                 <li class="page-item">
                                                     <a class="page-link" href="?page=1" aria-label="Первая">
-                                                        <span aria-hidden="true">&laquo; Первая</span>
+                                                        <span aria-hidden="true">&laquo; {% trans 'First' %}</span>
                                                     </a>
                                                 </li>
                                                 <li class="page-item">
                                                     <a class="page-link"
                                                        href="?page={{ page_obj.previous_page_number }}"
                                                        aria-label="Предыдущая">
-                                                        <span aria-hidden="true">Предыдущая</span>
+                                                        <span aria-hidden="true">{% trans 'Previous' %}</span>
                                                     </a>
                                                 </li>
                                             {% endif %}
@@ -122,13 +122,13 @@
                                                 <li class="page-item">
                                                     <a class="page-link" href="?page={{ page_obj.next_page_number }}"
                                                        aria-label="Следующая">
-                                                        <span aria-hidden="true">Следующая</span>
+                                                        <span aria-hidden="true">{% trans 'Next' %}</span>
                                                     </a>
                                                 </li>
                                                 <li class="page-item">
                                                     <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"
                                                        aria-label="Последняя">
-                                                        <span aria-hidden="true">Последняя &raquo;</span>
+                                                        <span aria-hidden="true">{% trans 'Last' %} &raquo;</span>
                                                     </a>
                                                 </li>
                                             {% endif %}
@@ -137,11 +137,10 @@
 
 
                                 {% else %}
-                                    <p>You dont have Offers</p>
+                                    <p>{% trans 'You dont have Offers' %}</p>
                                     <div class="d-flex justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">Create
-                                                you first offer</a>
+                                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">{% trans 'Create you first offer' %}</a>
                                         </div>
                                     </div>
                                 {% endif %}

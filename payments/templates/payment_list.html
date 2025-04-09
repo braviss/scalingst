@@ -1,7 +1,7 @@
 {% extends 'dashboard.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}Список уведомлений{% endblock %}
+{% block title %}{% trans 'Payments' %}{% endblock %}
 
 {% block dashboard_content %}
 
@@ -30,21 +30,21 @@
                 <a class="nav-link"
                    href="{% url 'accounts:dashboard' request.user.username %}">
                     <i class="fas fa-user me-2"></i>
-                    Personal Info
+                    {% trans 'Personal info' %}
                 </a>
                 <a class="nav-link"
                    href="{% url 'accounts:my_offers' %}">
                     <i class="fas fa-grip me-2"></i>
-                    My offers
+                    {% trans 'My offers' %}
                 </a>
                 <a class="nav-link" href="{% url 'notifications:notification_list' %}">
                     <i class="fas fa-bell me-2"></i>
-                    Notifications
+                    {% trans 'Notifications' %}
                 </a>
 
                 <a class="nav-link active" href="{% url 'payments:history' %}">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    Payments
+                    {% trans 'Payments' %}
                 </a>
                 <a class="nav-link" href="{% url 'accounts:referred_users' %}">
                     <i class="fa-solid fa-users"></i> {% trans 'Referrals' %}</a>
@@ -54,13 +54,13 @@
 
     <div class="col-lg-9">
         <div class="p-4">
-            <a href="{% url 'payments:create' %}" class="btn btn-primary float-right mb-2">Купить премиум</a>
+            <a href="{% url 'payments:create' %}" class="btn btn-primary float-right mb-2">{% trans 'Buy premium' %}</a>
             {% if payments %}
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Payment at</th>
-                        <th scope="col">status</th>
+                        <th scope="col">{% trans 'Payment at' %}</th>
+                        <th scope="col">{% trans 'Status' %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,8 +74,8 @@
                 </table>
 
             {% else %}
-                <p>You dont have Payments</p>
-                <a href="{% url 'payments:create' %}" class="btn btn-primary me-2">Buy premium</a>
+                <p>{% trans 'You dont have Payments' %}</p>
+                <a href="{% url 'payments:create' %}" class="btn btn-primary me-2">{% trans 'Buy premium' %}</a>
             {% endif %}
 
         </div>

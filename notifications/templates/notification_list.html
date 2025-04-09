@@ -1,7 +1,7 @@
 {% extends 'dashboard.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}Список уведомлений{% endblock %}
+{% block title %}{% trans 'List notifications' %}{% endblock %}
 
 {% block dashboard_content %}
 
@@ -30,21 +30,21 @@
                 <a class="nav-link"
                    href="{% url 'accounts:dashboard' request.user.username %}">
                     <i class="fas fa-user me-2"></i>
-                    Personal Info
+                    {% trans 'Personal info' %}
                 </a>
                 <a class="nav-link"
                    href="{% url 'accounts:my_offers' %}">
                     <i class="fas fa-grip me-2"></i>
-                    My offers
+                    {% trans 'My offers' %}
                 </a>
                 <a class="nav-link active" href="{% url 'notifications:notification_list' %}">
                     <i class="fas fa-bell me-2"></i>
-                    Notifications
+                    {% trans 'Notifications' %}
                 </a>
 
                 <a class="nav-link" href="{% url 'payments:history' %}">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    Payments
+                    {% trans 'Payments' %}
                 </a>
                 <a class="nav-link" href="{% url 'accounts:referred_users' %}">
                     <i class="fa-solid fa-users"></i> {% trans 'Referrals' %}</a>
@@ -58,8 +58,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">message</th>
-                        <th scope="col">created at</th>
+                        <th scope="col">{% trans 'message' %}</th>
+                        <th scope="col">{% trans 'created at' %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,31 +75,31 @@
                 {% if notif %}
                     <a class="btn btn-primary float-end"
                        href="{% url 'notifications:mark_as_read' %}">
-                        Отметить все как прочитанные
+                        {% trans 'Mark all as read' %}
                     </a>
 
                     <a class="btn btn-danger float-end me-2"
                        href="{% url 'notifications:notification_delete' %}">
-                        Удалить все
+                        {% trans 'Delete all' %}
                     </a>
                 {% endif %}
 
                 <div>
                     {% if offers.has_previous %}
-                        <a href="?page=1">&laquo; Первая</a>
-                        <a href="?page={{ offers.previous_page_number }}">Предыдущая</a>
+                        <a href="?page=1">&laquo; {% trans 'First' %}</a>
+                        <a href="?page={{ offers.previous_page_number }}">{% trans 'Previous' %}</a>
                     {% endif %}
 
                     Страница {{ offers.number }} из {{ offers.paginator.num_pages }}
 
                     {% if offers.has_next %}
-                        <a href="?page={{ offers.next_page_number }}">Следующая</a>
-                        <a href="?page={{ offers.paginator.num_pages }}">Последняя &raquo;</a>
+                        <a href="?page={{ offers.next_page_number }}">{% trans 'Next' %}</a>
+                        <a href="?page={{ offers.paginator.num_pages }}">{% trans 'Last' %} &raquo;</a>
                     {% endif %}
                 </div>
 
             {% else %}
-                <p>You dont have Notifications</p>
+                <p>{% trans 'You dont have notifications' %}</p>
             {% endif %}
 
         </div>

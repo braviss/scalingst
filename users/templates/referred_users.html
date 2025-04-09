@@ -25,16 +25,16 @@
             <div class="nav flex-column nav-pills">
                 <a class="nav-link"
                    href="{% url 'accounts:dashboard' request.user.username %}"><i
-                        class="fas fa-user me-2"></i>Personal
-                    Info</a>
+                        class="fas fa-user me-2"></i>{% trans 'Personal' %}
+                    {% trans 'Info' %}</a>
                 <a class="nav-link"
                    href="{% url 'accounts:my_offers' %}"><i
-                        class="fas fa-grip me-2"></i>My offers</a>
+                        class="fas fa-grip me-2"></i>{% trans 'My offers' %}</a>
                 <a class="nav-link" href="{% url 'notifications:notification_list' %}"><i
-                        class="fas fa-bell me-2"></i>Notifications</a>
+                        class="fas fa-bell me-2"></i>{% trans 'Notifications' %}</a>
                 <a class="nav-link" href="{% url 'payments:history' %}">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    Payments
+                    {% trans 'Payments' %}
                 </a>
                   <a class="nav-link active" href="{% url 'accounts:referred_users' %}">
                     <i class="fa-solid fa-users"></i> {% trans 'Referrals' %}</a>
@@ -47,13 +47,13 @@
         <div class="p-4">
 
 
-            <h3>Users who referred by you:</h3>
+            <h3>{% trans 'Users who referred by you' %}:</h3>
             {% if referred_users %}
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">User</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">{% trans 'User' %}</th>
+                        <th scope="col">{% trans 'Status' %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,7 +66,7 @@
                     </tbody>
                 </table>
             {% else %}
-                <p>No users have referred by you.</p>
+                <p>{% trans 'No users have referred by you.' %}</p>
             {% endif %}
 
         </div>

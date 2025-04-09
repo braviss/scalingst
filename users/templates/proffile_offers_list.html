@@ -1,7 +1,7 @@
 {% extends 'dashboard.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}Список уведомлений{% endblock %}
+{% block title %}{% trans 'Profile' %}{% endblock %}
 
 {% block dashboard_content %}
 
@@ -30,20 +30,20 @@
                 <a class="nav-link"
                    href="{% url 'accounts:dashboard' request.user.username %}">
                     <i class="fas fa-user me-2"></i>
-                    Personal Info
+                    {% trans 'Personal Info' %}
                 </a>
                 <a class="nav-link active"
                    href="{% url 'accounts:my_offers' %}">
                     <i class="fas fa-grip me-2"></i>
-                    My offers
+                    {% trans 'My offers' %}
                 </a>
                 <a class="nav-link" href="{% url 'notifications:notification_list' %}">
-                    <i class="fas fa-bell me-2"></i>Notifications
+                    <i class="fas fa-bell me-2"></i>{% trans 'Notifications' %}
                 </a>
 
                 <a class="nav-link" href="{% url 'payments:history' %}">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    Payments
+                    {% trans 'Payments' %}
                 </a>
 
                  <a class="nav-link" href="{% url 'accounts:referred_users' %}">
@@ -99,13 +99,13 @@
                         {% if page_obj.has_previous %}
                             <li class="page-item">
                                 <a class="page-link" href="?page=1" aria-label="Первая">
-                                    <span aria-hidden="true">&laquo; Первая</span>
+                                    <span aria-hidden="true">&laquo; {% trans 'First' %}</span>
                                 </a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
                                    aria-label="Предыдущая">
-                                    <span aria-hidden="true">Предыдущая</span>
+                                    <span aria-hidden="true">{% trans 'Previous' %}</span>
                                 </a>
                             </li>
                         {% endif %}
@@ -126,13 +126,13 @@
                             <li class="page-item">
                                 <a class="page-link" href="?page={{ page_obj.next_page_number }}"
                                    aria-label="Следующая">
-                                    <span aria-hidden="true">Следующая</span>
+                                    <span aria-hidden="true">{% trans 'Next' %}</span>
                                 </a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"
                                    aria-label="Последняя">
-                                    <span aria-hidden="true">Последняя &raquo;</span>
+                                    <span aria-hidden="true">{% trans 'Last' %} &raquo;</span>
                                 </a>
                             </li>
                         {% endif %}
@@ -141,11 +141,10 @@
 
 
             {% else %}
-                <p>You dont have Offers</p>
+                <p>{% trans 'You dont have Offers' %}</p>
                 <div class="d-flex justify-content-between mb-4">
                     <div class="d-flex align-items-center">
-                        <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">Create you first
-                            offer</a>
+                        <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-2">{% trans 'Create you first offer' %}</a>
                     </div>
                 </div>
             {% endif %}

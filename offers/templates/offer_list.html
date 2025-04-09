@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Список предложений{% endblock %}
+{% block title %}{% trans 'Offers list' %}{% endblock %}
 
 {% load view_breadcrumbs %}
 
@@ -138,13 +138,13 @@
                     {% if page_obj.has_previous %}
                         <li class="page-item">
                             <a class="page-link" href="?page=1" aria-label="Первая">
-                                <span aria-hidden="true">&laquo; Первая</span>
+                                <span aria-hidden="true">&laquo; {% trans 'First' %}</span>
                             </a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
                                aria-label="Предыдущая">
-                                <span aria-hidden="true">Предыдущая</span>
+                                <span aria-hidden="true">{% trans 'Previous' %}</span>
                             </a>
                         </li>
                     {% endif %}
@@ -164,12 +164,12 @@
                     {% if page_obj.has_next %}
                         <li class="page-item">
                             <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
-                                <span aria-hidden="true">Следующая</span>
+                                <span aria-hidden="true">{% trans 'Next' %}</span>
                             </a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
-                                <span aria-hidden="true">Последняя &raquo;</span>
+                                <span aria-hidden="true">{% trans 'Last' %} &raquo;</span>
                             </a>
                         </li>
                     {% endif %}
@@ -183,7 +183,7 @@
             <div class="d-flex flex-column gap-3 sidebar_right p-4 rounded shadow-sm">
 
 
-                <h5><span><i class="fa-solid fa-filter"></i></span> Поиск и фильтры</h5>
+                <h5><span><i class="fa-solid fa-filter"></i></span> {% trans 'Search and filters' %}</h5>
 
                 <form method="get" class="me-2 w-100 mb-2">
                     <div class="input-group">
@@ -197,7 +197,7 @@
                     </div>
                 </form>
 
-                <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-column">
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -206,7 +206,7 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
                             </li>
                             {% for cat in categories %}
                                 <li>
@@ -217,7 +217,8 @@
                                 </li>
                             {% endfor %}
                             <li>
-                                <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">All category</a>
+                                <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">
+                                    {% trans 'All' %}{% trans 'Category' %}</a>
                             </li>
                         </ul>
                     </div>
@@ -226,11 +227,26 @@
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            {% trans 'Country' %}<i class="fa fa-arrow-down ms-2"></i>
+                            {#                            {% trans 'Country' %}#}
+
+                            {% with request.GET.country as current_country %}
+                                {% if current_country %}
+                                    {% for code, name in countries %}
+                                        {% if code == current_country %}
+                                            {{ name }}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    {% trans 'Country' %}
+                                {% endif %}
+                            {% endwith %}
+
+
+                            <i class="fa fa-arrow-down ms-2"></i>
                         </button>
                         <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
                             </li>
                             <div class="dropdown-columns">
                                 {% for code, name in countries %}
@@ -249,11 +265,26 @@
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            {% trans 'Region' %}<i class="fa fa-arrow-down ms-2"></i>
+
+                            {#                            {% trans 'Region' %}#}
+                            {% with request.GET.region as current_region %}
+                                {% if current_region %}
+                                    {% for region in regions %}
+                                        {% if region.slug == current_region %}
+                                            {{ region.name }}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    {% trans 'Region' %}
+                                {% endif %}
+                            {% endwith %}
+
+
+                            <i class="fa fa-arrow-down ms-2"></i>
                         </button>
                         <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
                             </li>
                             <div class="dropdown-columns">
                                 {% for region in regions %}
@@ -272,22 +303,24 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                             {% if offer_type == 'premium' %}
-                                Премиум
+                                {% trans 'Premium' %}
                             {% elif offer_type == 'regular' %}
-                                Обычные
+                                {% trans 'Regular' %}
                             {% else %}
-                                Все
+                                {% trans 'All' %}
                             {% endif %}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">Все</a>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=premium">Премиум</a>
+                                <a class="dropdown-item"
+                                   href="{% url 'offers:offer_list' %}?type=premium">{% trans 'Premium' %}</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}?type=regular">Обычные</a>
+                                <a class="dropdown-item"
+                                   href="{% url 'offers:offer_list' %}?type=regular">{% trans 'Regular' %}</a>
                             </li>
                         </ul>
                     </div>
@@ -300,8 +333,8 @@
 
             </div>
             <div class="sidebar_right mt-4 p-4 rounded">
-                <h5><i class="fa-solid fa-chart-simple"></i> Статистика</h5>
-                <p>Всего публикаций: <span class="badge text-bg-primary">{{ offers|length }}</span></p>
+                <h5><i class="fa-solid fa-chart-simple"></i> {% trans 'Statistic' %}</h5>
+                <p>{% trans 'Total publications' %}: <span class="badge text-bg-primary">{{ offers|length }}</span></p>
             </div>
 
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% block title %}{% trans 'Payments form' %}{% endblock %}
 {% block content %}
 
     <style>
@@ -61,8 +62,8 @@
             </span>
                 </div>
                 <h3 class="h5">{% trans 'Step' %} 1</h3>
-                <p class="text-muted">Перейти на сайт для оплаты</p>
-                <a href="https://www.livegoodtour.com/scalingst" class="btn btn-success" target="_blank">Подписаться</a>
+                <p class="text-muted">{% trans 'Go to the site for payment' %}</p>
+                <a href="https://www.livegoodtour.com/scalingst" class="btn btn-success" target="_blank">{% trans 'Subscribe' %}</a>
             </div>
         </div>
         <div class="col-md-3 mb-4 mb-md-0">
@@ -73,7 +74,7 @@
             </span>
                 </div>
                 <h3 class="h5">{% trans 'Step' %} 2</h3>
-                <p class="text-muted">Пройти регистрацию и войти в аккаунт</p>
+                <p class="text-muted">{% trans 'Register and log in to your account' %}</p>
             </div>
         </div>
         <div class="col-md-3 mb-4 mb-md-0">
@@ -84,7 +85,7 @@
             </span>
                 </div>
                 <h3 class="h5">{% trans 'Step' %} 3</h3>
-                <p class="text-muted">Совершить оплату подписки на желаемый период</p>
+                <p class="text-muted">{% trans 'Make a payment for the subscription for the desired period' %}</p>
             </div>
         </div>
         <div class="col-md-3">
@@ -95,7 +96,7 @@
             </span>
                 </div>
                 <h3 class="h5">{% trans 'Step' %} 4</h3>
-                <p class="text-muted">Заполнить форму ниже и предоставить скрин оплаты</p>
+                <p class="text-muted">{% trans 'Fill out the form below and provide a screenshot of the payment' %}</p>
             </div>
         </div>
     </div>
@@ -108,7 +109,7 @@
         <tbody>
             <tr>
                 <td class="w-50">
-                    <label for="{{ form.invite_code.id_for_label }}" class="form-label">Invite Code</label>
+                    <label for="{{ form.invite_code.id_for_label }}" class="form-label">{% trans 'Invite Code' %}</label>
                     {{ form.invite_code }}
                     {% if form.invite_code.errors %}
                         <div class="invalid-feedback">
@@ -118,12 +119,12 @@
                         </div>
                     {% endif %}
                 </td>
-                <td class="align-middle text-muted">Enter the invite code you received.</td>
+                <td class="align-middle text-muted">{% trans 'Enter the invite code you received.' %}</td>
             </tr>
 
             <tr>
                 <td>
-                    <label for="{{ form.payment_details.id_for_label }}" class="form-label">Payment Details</label>
+                    <label for="{{ form.payment_details.id_for_label }}" class="form-label">{% trans 'Payment details' %}</label>
                     {{ form.payment_details }}
                     {% if form.payment_details.errors %}
                         <div class="invalid-feedback">
@@ -133,12 +134,12 @@
                         </div>
                     {% endif %}
                 </td>
-                <td class="align-middle text-muted">Provide details of your payment (e.g., transaction ID).</td>
+                <td class="align-middle text-muted">{% trans 'Provide details of your payment (e.g., transaction ID).' %}</td>
             </tr>
 
             <tr>
                 <td>
-                    <label for="{{ form.screenshot.id_for_label }}" class="form-label">Screenshot</label>
+                    <label for="{{ form.screenshot.id_for_label }}" class="form-label">{% trans 'Screenshot' %}</label>
                     {{ form.screenshot }}
                     {% if form.screenshot.errors %}
                         <div class="invalid-feedback">
@@ -148,12 +149,12 @@
                         </div>
                     {% endif %}
                 </td>
-                <td class="align-middle text-muted">Upload a screenshot of the payment confirmation.</td>
+                <td class="align-middle text-muted">{% trans 'Upload a screenshot of the payment confirmation.' %}</td>
             </tr>
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
 </form>
 
 
