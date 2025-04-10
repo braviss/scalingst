@@ -27,10 +27,17 @@
             referrerpolicy="origin"></script>
 
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen',
-            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image | code'
+        document.addEventListener("DOMContentLoaded", function () {
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'advlist autolink lists link charmap print preview anchor searchreplace visualblocks code fullscreen', // Убираем плагин image
+                toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link code', // Убираем кнопку изображения
+                height: 300,
+                max_height: 500,
+                menubar: false,
+                statusbar: false,
+                branding: false
+            });
         });
     </script>
 

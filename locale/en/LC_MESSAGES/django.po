@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 18:57+0300\n"
+"POT-Creation-Date: 2025-04-10 18:59+0300\n"
 "PO-Revision-Date: 2025-04-09 19:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -34,100 +34,102 @@ msgstr "Сancel"
 msgid "List notifications"
 msgstr "List notifications"
 
-#: notifications/templates/notification_list.html:33
-#: payments/templates/payment_list.html:33
+#: notifications/templates/notification_list.html:48
+#: offers/templates/offer_form.html:48 payments/templates/payment_list.html:46
 msgid "Personal info"
 msgstr "Personal info"
 
-#: notifications/templates/notification_list.html:38
-#: payments/templates/payment_list.html:38 users/templates/edit_profile.html:35
-#: users/templates/proffile_offers_list.html:38 users/templates/profile.html:28
-#: users/templates/referred_users.html:32
+#: notifications/templates/notification_list.html:53
+#: offers/templates/offer_form.html:51 payments/templates/payment_list.html:51
+#: users/templates/edit_profile.html:49
+#: users/templates/proffile_offers_list.html:51 users/templates/profile.html:43
+#: users/templates/referred_users.html:50
 msgid "My offers"
 msgstr "My offers"
 
-#: notifications/templates/notification_list.html:42
-#: payments/templates/payment_list.html:42 templates/base.html:138
-#: templates/base.html:186 templates/base_2.html:118 templates/base_2.html:166
-#: users/templates/edit_profile.html:37
-#: users/templates/proffile_offers_list.html:41 users/templates/profile.html:30
-#: users/templates/referred_users.html:34
+#: notifications/templates/notification_list.html:57
+#: offers/templates/offer_form.html:53 payments/templates/payment_list.html:55
+#: templates/base.html:134 templates/base.html:184 templates/base_2.html:122
+#: templates/base_2.html:172 users/templates/edit_profile.html:51
+#: users/templates/proffile_offers_list.html:54 users/templates/profile.html:45
+#: users/templates/referred_users.html:52
 msgid "Notifications"
 msgstr "Notifications"
 
-#: notifications/templates/notification_list.html:47
-#: payments/templates/payment_list.html:4
-#: payments/templates/payment_list.html:47 users/templates/edit_profile.html:40
-#: users/templates/proffile_offers_list.html:46 users/templates/profile.html:34
-#: users/templates/referred_users.html:37
+#: notifications/templates/notification_list.html:62
+#: offers/templates/offer_form.html:57 payments/templates/payment_list.html:4
+#: payments/templates/payment_list.html:60 users/templates/edit_profile.html:54
+#: users/templates/proffile_offers_list.html:59 users/templates/profile.html:49
+#: users/templates/referred_users.html:55
 msgid "Payments"
 msgstr "Payments"
 
-#: notifications/templates/notification_list.html:50
-#: offers/templates/offer_form.html:40 payments/templates/payment_list.html:50
-#: users/templates/proffile_offers_list.html:50 users/templates/profile.html:38
-#: users/templates/referred_users.html:40
+#: notifications/templates/notification_list.html:65
+#: offers/templates/offer_form.html:61 payments/templates/payment_list.html:63
+#: users/templates/edit_profile.html:57
+#: users/templates/proffile_offers_list.html:63 users/templates/profile.html:53
+#: users/templates/referred_users.html:58
 msgid "Referrals"
 msgstr "Referrals"
 
-#: notifications/templates/notification_list.html:61
+#: notifications/templates/notification_list.html:76
 msgid "message"
 msgstr "message"
 
-#: notifications/templates/notification_list.html:62
+#: notifications/templates/notification_list.html:77
 msgid "created at"
 msgstr "created at"
 
-#: notifications/templates/notification_list.html:78 templates/base.html:154
-#: templates/base_2.html:134
+#: notifications/templates/notification_list.html:93 templates/base.html:152
+#: templates/base_2.html:140
 msgid "Mark all as read"
 msgstr "Mark all as read"
 
-#: notifications/templates/notification_list.html:83
+#: notifications/templates/notification_list.html:98
 msgid "Delete all"
 msgstr "Delete all"
 
-#: notifications/templates/notification_list.html:89
+#: notifications/templates/notification_list.html:104
 #: offers/templates/category_list.html:39 offers/templates/offer_list.html:141
 #: offers/templates/user_offer_list.html:56
 #: publication/templates/publication_list.html:35
-#: users/templates/proffile_offers_list.html:102
-#: users/templates/profile_view.html:97
+#: users/templates/proffile_offers_list.html:115
+#: users/templates/profile_view.html:115
 msgid "First"
 msgstr "First"
 
-#: notifications/templates/notification_list.html:90
+#: notifications/templates/notification_list.html:105
 #: offers/templates/category_list.html:44 offers/templates/offer_list.html:147
 #: offers/templates/user_offer_list.html:62
 #: publication/templates/publication_list.html:40
-#: users/templates/proffile_offers_list.html:108
-#: users/templates/profile_view.html:104
+#: users/templates/proffile_offers_list.html:121
+#: users/templates/profile_view.html:122
 msgid "Previous"
 msgstr "Previous"
 
-#: notifications/templates/notification_list.html:96
+#: notifications/templates/notification_list.html:111
 #: offers/templates/category_list.html:65 offers/templates/offer_list.html:167
 #: offers/templates/user_offer_list.html:83
 #: publication/templates/publication_list.html:60
-#: users/templates/proffile_offers_list.html:129
-#: users/templates/profile_view.html:125
+#: users/templates/proffile_offers_list.html:142
+#: users/templates/profile_view.html:143
 msgid "Next"
 msgstr "Next"
 
-#: notifications/templates/notification_list.html:97
+#: notifications/templates/notification_list.html:112
 #: offers/templates/category_list.html:70 offers/templates/offer_list.html:172
 #: offers/templates/user_offer_list.html:89
 #: publication/templates/publication_list.html:65
-#: users/templates/proffile_offers_list.html:135
-#: users/templates/profile_view.html:131
+#: users/templates/proffile_offers_list.html:148
+#: users/templates/profile_view.html:149
 msgid "Last"
 msgstr "Last"
 
-#: notifications/templates/notification_list.html:102
+#: notifications/templates/notification_list.html:117
 msgid "You dont have notifications"
 msgstr "You dont have notifications"
 
-#: offers/models.py:39 offers/templates/offer_form.html:53
+#: offers/models.py:39 offers/templates/offer_form.html:81
 #: publication/models.py:38
 msgid "Title"
 msgstr "Title"
@@ -148,7 +150,7 @@ msgstr "Category list"
 msgid "View"
 msgstr "View"
 
-#: offers/templates/complaint_form.html:12 offers/templates/offer_form.html:68
+#: offers/templates/complaint_form.html:12 offers/templates/offer_form.html:96
 msgid "Text"
 msgstr "Text"
 
@@ -158,21 +160,21 @@ msgid "Send"
 msgstr "Send"
 
 #: offers/templates/offer_detail.html:50 offers/templates/offer_list.html:101
-#: offers/templates/offer_list.html:275 offers/templates/offer_list.html:287
-#: offers/templates/user_offer_list.html:26 templates/base.html:86
-#: templates/base_2.html:66 templates/base_2.html:572
-#: users/templates/proffile_offers_list.html:72
-#: users/templates/profile_view.html:66
+#: offers/templates/offer_list.html:232 offers/templates/offer_list.html:245
+#: offers/templates/user_offer_list.html:26 templates/base.html:83
+#: templates/base_2.html:70 templates/base_2.html:579
+#: users/templates/proffile_offers_list.html:85
+#: users/templates/profile_view.html:84
 msgid "Premium"
 msgstr "Premium"
 
-#: offers/templates/offer_detail.html:58 offers/templates/offer_form.html:116
-#: offers/templates/offer_list.html:229
+#: offers/templates/offer_detail.html:58 offers/templates/offer_form.html:144
+#: offers/templates/offer_list.html:270
 msgid "Country"
 msgstr "Country"
 
-#: offers/templates/offer_detail.html:60 offers/templates/offer_form.html:100
-#: offers/templates/offer_list.html:204 offers/templates/offer_list.html:220
+#: offers/templates/offer_detail.html:60 offers/templates/offer_form.html:128
+#: offers/templates/offer_list.html:204 offers/templates/offer_list.html:221
 msgid "Category"
 msgstr "Category"
 
@@ -184,7 +186,7 @@ msgstr "Author"
 msgid "Author site"
 msgstr "Author site"
 
-#: offers/templates/offer_detail.html:79 offers/templates/offer_form.html:165
+#: offers/templates/offer_detail.html:79 offers/templates/offer_form.html:193
 msgid "Premium url"
 msgstr "Premium url"
 
@@ -192,8 +194,7 @@ msgstr "Premium url"
 msgid "Share"
 msgstr "Share"
 
-#: offers/templates/offer_detail.html:92 users/templates/edit_profile.html:23
-#: users/templates/profile.html:50
+#: offers/templates/offer_detail.html:92 users/templates/profile.html:65
 msgid "Edit"
 msgstr "Edit"
 
@@ -205,49 +206,49 @@ msgstr "Complaint text"
 msgid "Close"
 msgstr "Close"
 
-#: offers/templates/offer_form.html:55
+#: offers/templates/offer_form.html:83
 msgid "This text will be the title of your offer"
 msgstr "This text will be the title of your offer"
 
-#: offers/templates/offer_form.html:84
+#: offers/templates/offer_form.html:112
 msgid "Image"
 msgstr "Image"
 
-#: offers/templates/offer_form.html:94
+#: offers/templates/offer_form.html:122
 msgid "Upload an image. Supported formats: JPG, PNG, GIF."
 msgstr "Upload an image. Supported formats: JPG, PNG, GIF"
 
-#: offers/templates/offer_form.html:110
+#: offers/templates/offer_form.html:138
 msgid "The ad will be shown in this category."
 msgstr "The ad will be shown in this category."
 
-#: offers/templates/offer_form.html:126
+#: offers/templates/offer_form.html:154
 msgid "Specify the country in which the services (product) are provided."
 msgstr "Specify the country in which the services (product) are provided."
 
-#: offers/templates/offer_form.html:133 offers/templates/offer_list.html:252
+#: offers/templates/offer_form.html:161 offers/templates/offer_list.html:308
 msgid "Region"
 msgstr "Region"
 
-#: offers/templates/offer_form.html:143
+#: offers/templates/offer_form.html:171
 msgid ""
 "Specify the locality (city) in which the services (product) are provided."
 msgstr ""
 "Specify the locality (city) in which the services (product) are provided."
 
-#: offers/templates/offer_form.html:149
+#: offers/templates/offer_form.html:177
 msgid "Url"
 msgstr "Url"
 
-#: offers/templates/offer_form.html:159
+#: offers/templates/offer_form.html:187
 msgid "Please provide a link to your website (social networks)."
 msgstr "Please provide a link to your website (social networks)."
 
-#: offers/templates/offer_form.html:175
+#: offers/templates/offer_form.html:203
 msgid "Provide a link for premium users with an exclusive offer."
 msgstr "Provide a link for premium users with an exclusive offer."
 
-#: offers/templates/offer_form.html:181
+#: offers/templates/offer_form.html:209
 msgid "Save"
 msgstr "Save"
 
@@ -257,7 +258,7 @@ msgstr "Offers list"
 
 #: offers/templates/offer_list.html:180
 #: offers/templates/user_offer_list.html:16
-#: users/templates/proffile_offers_list.html:62
+#: users/templates/proffile_offers_list.html:75
 msgid "Create"
 msgstr "Create"
 
@@ -269,37 +270,41 @@ msgstr "Search and filters"
 msgid "Search"
 msgstr "Search"
 
-#: offers/templates/offer_list.html:209 offers/templates/offer_list.html:220
-#: offers/templates/offer_list.html:233 offers/templates/offer_list.html:256
-#: offers/templates/offer_list.html:279 offers/templates/offer_list.html:284
+#: offers/templates/offer_list.html:209 offers/templates/offer_list.html:221
+#: offers/templates/offer_list.html:236 offers/templates/offer_list.html:241
+#: offers/templates/offer_list.html:279 offers/templates/offer_list.html:317
 msgid "All"
 msgstr "All"
 
-#: offers/templates/offer_list.html:277 offers/templates/offer_list.html:290
+#: offers/templates/offer_list.html:234 offers/templates/offer_list.html:249
 msgid "Regular"
 msgstr "Regular"
 
-#: offers/templates/offer_list.html:297
+#: offers/templates/offer_list.html:255
+msgid "Geo"
+msgstr "Geo"
+
+#: offers/templates/offer_list.html:336
 msgid "Reset"
 msgstr "Reset"
 
-#: offers/templates/offer_list.html:303
+#: offers/templates/offer_list.html:342
 msgid "Statistic"
 msgstr "Statistic"
 
-#: offers/templates/offer_list.html:304
+#: offers/templates/offer_list.html:343
 msgid "Total publications"
 msgstr "Total publications"
 
 #: offers/templates/user_offer_list.html:98
-#: users/templates/proffile_offers_list.html:144
-#: users/templates/profile_view.html:140
+#: users/templates/proffile_offers_list.html:157
+#: users/templates/profile_view.html:158
 msgid "You dont have Offers"
 msgstr "You dont have Offers"
 
 #: offers/templates/user_offer_list.html:101
-#: users/templates/proffile_offers_list.html:147
-#: users/templates/profile_view.html:143
+#: users/templates/proffile_offers_list.html:160
+#: users/templates/profile_view.html:162
 msgid "Create you first offer"
 msgstr "Create you first offer"
 
@@ -308,9 +313,9 @@ msgid "Payments form"
 msgstr "Payments form"
 
 #: payments/templates/payment_form.html:64
-#: payments/templates/payment_form.html:76
-#: payments/templates/payment_form.html:87
-#: payments/templates/payment_form.html:98
+#: payments/templates/payment_form.html:78
+#: payments/templates/payment_form.html:89
+#: payments/templates/payment_form.html:100
 msgid "Step"
 msgstr "Step"
 
@@ -318,65 +323,64 @@ msgstr "Step"
 msgid "Go to the site for payment"
 msgstr "Go to the site for payment"
 
-#: payments/templates/payment_form.html:66
+#: payments/templates/payment_form.html:67
 msgid "Subscribe"
 msgstr "Subscribe"
 
-#: payments/templates/payment_form.html:77
+#: payments/templates/payment_form.html:79
 msgid "Register and log in to your account"
 msgstr "Register and log in to your account"
 
-#: payments/templates/payment_form.html:88
+#: payments/templates/payment_form.html:90
 msgid "Make a payment for the subscription for the desired period"
 msgstr "Make a payment for the subscription for the desired period"
 
-#: payments/templates/payment_form.html:99
+#: payments/templates/payment_form.html:101
 msgid "Fill out the form below and provide a screenshot of the payment"
 msgstr "Fill out the form below and provide a screenshot of the payment"
 
-#: payments/templates/payment_form.html:112
+#: payments/templates/payment_form.html:117
 msgid "Invite Code"
 msgstr "Invite Code"
 
-#: payments/templates/payment_form.html:122
+#: payments/templates/payment_form.html:127
 msgid "Enter the invite code you received."
 msgstr "Enter the invite code you received."
 
-#: payments/templates/payment_form.html:127
+#: payments/templates/payment_form.html:133
 msgid "Payment details"
 msgstr "Payment details"
 
-#: payments/templates/payment_form.html:137
+#: payments/templates/payment_form.html:143
 msgid "Provide details of your payment (e.g., transaction ID)."
 msgstr "Provide details of your payment (e.g., transaction ID)."
 
-#: payments/templates/payment_form.html:142
+#: payments/templates/payment_form.html:149
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: payments/templates/payment_form.html:152
+#: payments/templates/payment_form.html:159
 msgid "Upload a screenshot of the payment confirmation."
 msgstr "Upload a screenshot of the payment confirmation."
 
-#: payments/templates/payment_form.html:157
+#: payments/templates/payment_form.html:164
 msgid "Submit"
 msgstr "Submit"
 
-#: payments/templates/payment_list.html:57
-#: payments/templates/payment_list.html:78
+#: payments/templates/payment_list.html:70
 msgid "Buy premium"
 msgstr "Buy premium"
 
-#: payments/templates/payment_list.html:62
+#: payments/templates/payment_list.html:75
 msgid "Payment at"
 msgstr "Payment at"
 
-#: payments/templates/payment_list.html:63
-#: users/templates/referred_users.html:56
+#: payments/templates/payment_list.html:76
+#: users/templates/referred_users.html:74
 msgid "Status"
 msgstr "Status"
 
-#: payments/templates/payment_list.html:77
+#: payments/templates/payment_list.html:90
 msgid "You dont have Payments"
 msgstr "You dont have Payments"
 
@@ -396,39 +400,39 @@ msgstr "Article list"
 msgid "Subscription business"
 msgstr "Subscription business"
 
-#: templates/base.html:80 templates/base.html:226 templates/base_2.html:60
-#: templates/base_2.html:570 templates/base_2.html:579
+#: templates/base.html:77 templates/base.html:224 templates/base_2.html:64
+#: templates/base_2.html:577 templates/base_2.html:586
 msgid "Home"
 msgstr "Home"
 
-#: templates/base.html:83 templates/base.html:228 templates/base_2.html:63
-#: templates/base_2.html:571
+#: templates/base.html:80 templates/base.html:230 templates/base_2.html:67
+#: templates/base_2.html:578
 msgid "Offers"
 msgstr "Offers"
 
-#: templates/base.html:90 templates/base.html:231 templates/base_2.html:70
-#: templates/base_2.html:595
+#: templates/base.html:86 templates/base.html:236 templates/base_2.html:74
+#: templates/base_2.html:602
 msgid "Articles"
 msgstr "Articles"
 
-#: templates/base.html:159 templates/base.html:167 templates/base_2.html:139
-#: templates/base_2.html:147
+#: templates/base.html:157 templates/base.html:165 templates/base_2.html:145
+#: templates/base_2.html:153
 msgid "View notification history"
 msgstr "View notification history"
 
-#: templates/base.html:164 templates/base_2.html:144
+#: templates/base.html:162 templates/base_2.html:150
 msgid "No new notifications"
 msgstr "No new notifications"
 
-#: templates/base.html:182 templates/base_2.html:162
+#: templates/base.html:180 templates/base_2.html:168
 msgid "Account"
 msgstr "Account"
 
-#: templates/base.html:194 templates/base_2.html:174
+#: templates/base.html:192 templates/base_2.html:180
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:204 templates/base_2.html:184
+#: templates/base.html:202 templates/base_2.html:190
 #: users/templates/login.html:3 users/templates/login.html:5
 #: users/templates/login.html:21 users/templates/login.html:61
 #: users/templates/password_reset_form.html:17
@@ -436,74 +440,74 @@ msgstr "Logout"
 msgid "Signin"
 msgstr "Signin"
 
-#: templates/base.html:206 templates/base_2.html:186
+#: templates/base.html:204 templates/base_2.html:192
 #: users/templates/login.html:64 users/templates/password_reset_form.html:18
 #: users/templates/registration.html:3 users/templates/registration.html:5
 #: users/templates/registration.html:11 users/templates/registration.html:82
 msgid "Signup"
 msgstr "Signup"
 
-#: templates/base_2.html:205
+#: templates/base_2.html:211
 msgid "Sales"
 msgstr "Sales"
 
-#: templates/base_2.html:206
+#: templates/base_2.html:212
 msgid "scaling"
 msgstr "scaling"
 
-#: templates/base_2.html:210
+#: templates/base_2.html:216
 msgid "This is a tool to increase sales of your product"
 msgstr "This is a tool to increase sales of your product"
 
-#: templates/base_2.html:214
+#: templates/base_2.html:221
 msgid "Create first offer"
 msgstr "Create first offer"
 
-#: templates/base_2.html:218 templates/base_2.html:577
+#: templates/base_2.html:225 templates/base_2.html:584
 msgid "About Us"
 msgstr "About Us"
 
-#: templates/base_2.html:238
+#: templates/base_2.html:245
 msgid "Cabinet"
 msgstr "Cabinet"
 
-#: templates/base_2.html:239
+#: templates/base_2.html:246
 msgid "Each subscriber has their own personal account"
 msgstr "Each subscriber has their own personal account"
 
-#: templates/base_2.html:249 templates/base_2.html:464
+#: templates/base_2.html:256 templates/base_2.html:471
 msgid "Convenience"
 msgstr "Convenience"
 
-#: templates/base_2.html:250
+#: templates/base_2.html:257
 msgid "Automate the purchasing process, save time"
 msgstr "Automate the purchasing process, save time"
 
-#: templates/base_2.html:260 templates/base_2.html:472
+#: templates/base_2.html:267 templates/base_2.html:479
 msgid "Exclusivity"
 msgstr "Exclusivity"
 
-#: templates/base_2.html:261
+#: templates/base_2.html:268
 msgid "Access to exclusive products, services"
 msgstr "Access to exclusive products, services"
 
-#: templates/base_2.html:271
+#: templates/base_2.html:278
 msgid "Guarantees"
 msgstr "Guarantees"
 
-#: templates/base_2.html:272
+#: templates/base_2.html:279
 msgid "Quality guarantee and convenient return conditions"
 msgstr "Quality guarantee and convenient return conditions"
 
-#: templates/base_2.html:289
+#: templates/base_2.html:296
 msgid "More about us"
 msgstr "More about us"
 
-#: templates/base_2.html:290
+#: templates/base_2.html:297
 msgid "Sales scaling (MS)"
 msgstr "Sales scaling (MS)"
 
-#: templates/base_2.html:291
+#: templates/base_2.html:298
 msgid ""
 "It is a tool to increase the sales volume of your product. It is the process "
 "where you go from small sales to larger ones, expand your customer base and "
@@ -513,81 +517,81 @@ msgstr ""
 "where you go from small sales to larger ones, expand your customer base and "
 "increase your sales revenue."
 
-#: templates/base_2.html:296
+#: templates/base_2.html:303
 msgid "Increase sales"
 msgstr "Increase sales"
 
-#: templates/base_2.html:297
+#: templates/base_2.html:304
 msgid "Track statistics"
 msgstr "Track statistics"
 
-#: templates/base_2.html:298
+#: templates/base_2.html:305
 msgid "Reduce costs"
 msgstr "Reduce costs"
 
-#: templates/base_2.html:303
+#: templates/base_2.html:310
 msgid "Receive discounts"
 msgstr "Receive discounts"
 
-#: templates/base_2.html:304
+#: templates/base_2.html:311
 msgid "Attract partners"
 msgstr "Attract partners"
 
-#: templates/base_2.html:305
+#: templates/base_2.html:312
 msgid "Attract Partners"
-msgstr "Attract Partners"
+msgstr "Increased loyalty"
 
-#: templates/base_2.html:333
+#: templates/base_2.html:340
 msgid "Prices"
 msgstr "Prices"
 
-#: templates/base_2.html:343
+#: templates/base_2.html:350
 msgid "Basic plan"
 msgstr "Basic plan"
 
-#: templates/base_2.html:346
+#: templates/base_2.html:353
 msgid "Free"
 msgstr "Free"
 
-#: templates/base_2.html:347 templates/base_2.html:382
+#: templates/base_2.html:354 templates/base_2.html:389
 msgid "year"
 msgstr "year"
 
-#: templates/base_2.html:349
+#: templates/base_2.html:356
 msgid ""
 "A basic account for users is available after registration in the system."
 msgstr ""
 "A basic account for users is available after registration in the system."
 
-#: templates/base_2.html:351 templates/base_2.html:386
+#: templates/base_2.html:358 templates/base_2.html:393
 msgid "Includes"
 msgstr "Includes"
 
-#: templates/base_2.html:355 templates/base_2.html:390
+#: templates/base_2.html:362 templates/base_2.html:397
 msgid "Access to the search engine"
 msgstr "Access to the search engine"
 
-#: templates/base_2.html:359 templates/base_2.html:394
+#: templates/base_2.html:366 templates/base_2.html:401
 msgid "Publication of proposals"
 msgstr "Publication of proposals"
 
-#: templates/base_2.html:363 templates/base_2.html:398
+#: templates/base_2.html:370 templates/base_2.html:405
 msgid "View user suggestions"
 msgstr "View user suggestions"
 
-#: templates/base_2.html:368 templates/base_2.html:407
+#: templates/base_2.html:375 templates/base_2.html:414
 msgid "Design"
 msgstr "Design"
 
-#: templates/base_2.html:377
+#: templates/base_2.html:384
 msgid "Popular"
 msgstr "Popular"
 
-#: templates/base_2.html:378
+#: templates/base_2.html:385
 msgid "Premium plan"
 msgstr "Premium plan"
 
-#: templates/base_2.html:384
+#: templates/base_2.html:391
 msgid ""
 "A premium account will become available after you subscribe in your personal "
 "account in the system."
@@ -595,19 +599,19 @@ msgstr ""
 "A premium account will become available after you subscribe in your personal "
 "account in the system."
 
-#: templates/base_2.html:402
+#: templates/base_2.html:409
 msgid "Access to premium offers"
 msgstr "Access to premium offers"
 
-#: templates/base_2.html:426
+#: templates/base_2.html:433
 msgid "For whom?"
 msgstr "For whom?"
 
-#: templates/base_2.html:427
+#: templates/base_2.html:434
 msgid "For MP subscribers only"
 msgstr "For MP subscribers only"
 
-#: templates/base_2.html:429
+#: templates/base_2.html:436
 msgid ""
 "In the private section, each registered subscriber has their own personal "
 "account, which serves to provide information about all the news and updates "
@@ -623,11 +627,11 @@ msgstr ""
 "submit applications for points offering a variety of goods and services to "
 "be published in the search system."
 
-#: templates/base_2.html:452
+#: templates/base_2.html:459
 msgid "For consumers"
 msgstr "For consumers"
 
-#: templates/base_2.html:458
+#: templates/base_2.html:465
 msgid ""
 "The most obvious motivation is the ability to purchase goods and services at "
 "lower prices. Subscriptions often provide access to exclusive discounts, "
@@ -637,7 +641,7 @@ msgstr ""
 "lower prices. Subscriptions often provide access to exclusive discounts, "
 "promotions, and special offers."
 
-#: templates/base_2.html:466
+#: templates/base_2.html:473
 msgid ""
 "Subscription allows you to automate the purchasing process, saving time on "
 "searching for the best offers. Many services offer delivery directly to your "
@@ -647,7 +651,7 @@ msgstr ""
 "searching for the best offers. Many services offer delivery directly to your "
 "home or to a convenient location."
 
-#: templates/base_2.html:474
+#: templates/base_2.html:481
 msgid ""
 "Subscribers often get access to exclusive products, services or content that "
 "is not available to other customers."
@@ -655,11 +659,11 @@ msgstr ""
 "Subscribers often get access to exclusive products, services or content that "
 "is not available to other customers."
 
-#: templates/base_2.html:480
+#: templates/base_2.html:487
 msgid "Quality guarantees"
 msgstr "Quality guarantees"
 
-#: templates/base_2.html:482
+#: templates/base_2.html:489
 msgid ""
 "Many subscription companies guarantee the quality of their products and "
 "services, and also provide convenient return or exchange conditions."
@@ -667,11 +671,11 @@ msgstr ""
 "Many subscription companies guarantee the quality of their products and "
 "services, and also provide convenient return or exchange conditions."
 
-#: templates/base_2.html:488
+#: templates/base_2.html:495
 msgid "Social proof"
 msgstr "Social proof"
 
-#: templates/base_2.html:490
+#: templates/base_2.html:497
 msgid ""
 "Belonging to a community of subscribers can increase the self-esteem and "
 "prestige of the consumer."
@@ -679,15 +683,15 @@ msgstr ""
 "Belonging to a community of subscribers can increase the self-esteem and "
 "prestige of the consumer."
 
-#: templates/base_2.html:499
+#: templates/base_2.html:506
 msgid "For sellers"
 msgstr "For sellers"
 
-#: templates/base_2.html:503
+#: templates/base_2.html:510
 msgid "Stable income stream"
 msgstr "Stable income stream"
 
-#: templates/base_2.html:505
+#: templates/base_2.html:512
 msgid ""
 "Subscription provides predictable income, which allows you to plan your "
 "business more effectively."
@@ -695,21 +699,21 @@ msgstr ""
 "Subscription provides predictable income, which allows you to plan your "
 "business more effectively."
 
-#: templates/base_2.html:511
+#: templates/base_2.html:518
 msgid "Increased customer loyalty"
 msgstr "Increased customer loyalty"
 
-#: templates/base_2.html:513
+#: templates/base_2.html:520
 msgid ""
 "Subscribers tend to be more loyal to the brand and make repeat purchases."
 msgstr ""
 "Subscribers tend to be more loyal to the brand and make repeat purchases."
 
-#: templates/base_2.html:519
+#: templates/base_2.html:526
 msgid "Collecting customer data"
 msgstr "Collecting customer data"
 
-#: templates/base_2.html:521
+#: templates/base_2.html:528
 msgid ""
 "Subscription allows you to collect valuable information about customer "
 "behavior, which helps improve products and services."
@@ -717,11 +721,11 @@ msgstr ""
 "Subscription allows you to collect valuable information about customer "
 "behavior, which helps improve products and services."
 
-#: templates/base_2.html:527
+#: templates/base_2.html:534
 msgid "Possibility to personalize the offer"
 msgstr "Possibility to personalize the offer"
 
-#: templates/base_2.html:529
+#: templates/base_2.html:536
 msgid ""
 "Based on subscriber preference data, you can create personalized offers, "
 "increasing the effectiveness of marketing campaigns."
@@ -729,11 +733,11 @@ msgstr ""
 "Based on subscriber preference data, you can create personalized offers, "
 "increasing the effectiveness of marketing campaigns."
 
-#: templates/base_2.html:535
+#: templates/base_2.html:542
 msgid "Scaling your business"
 msgstr "Scaling your business"
 
-#: templates/base_2.html:537
+#: templates/base_2.html:544
 msgid ""
 "The subscription model makes it easy to scale your business and attract new "
 "customers."
@@ -741,35 +745,35 @@ msgstr ""
 "The subscription model makes it easy to scale your business and attract new "
 "customers."
 
-#: templates/base_2.html:568
+#: templates/base_2.html:575
 msgid "General"
 msgstr "General"
 
-#: templates/base_2.html:579
+#: templates/base_2.html:586
 msgid "Contacts"
 msgstr "Contacts"
 
-#: templates/base_2.html:584
+#: templates/base_2.html:591
 msgid "Information"
 msgstr "Information"
 
-#: templates/base_2.html:586
+#: templates/base_2.html:593
 msgid "Service rules"
 msgstr "Service rules"
 
-#: templates/base_2.html:587
+#: templates/base_2.html:594
 msgid "Public offer"
 msgstr "Public offer"
 
-#: templates/base_2.html:588
+#: templates/base_2.html:595
 msgid "Financial information"
 msgstr "Financial information"
 
-#: templates/base_2.html:593
+#: templates/base_2.html:600
 msgid "Media"
 msgstr "Media"
 
-#: templates/base_2.html:604
+#: templates/base_2.html:612
 msgid "Al Rygnts Reserved"
 msgstr "Al Rygnts Reserved"
 
@@ -801,42 +805,42 @@ msgstr "Dashboard"
 msgid "List of notifications"
 msgstr "List of notifications"
 
-#: users/templates/edit_profile.html:31 users/templates/profile.html:24
-#: users/templates/referred_users.html:28
+#: users/templates/edit_profile.html:45 users/templates/profile.html:39
+#: users/templates/referred_users.html:46
 msgid "Personal"
 msgstr "Personal"
 
-#: users/templates/edit_profile.html:32 users/templates/profile.html:25
-#: users/templates/referred_users.html:29
+#: users/templates/edit_profile.html:46 users/templates/profile.html:40
+#: users/templates/referred_users.html:47
 msgid "Info"
 msgstr "Info"
 
-#: users/templates/edit_profile.html:49
+#: users/templates/edit_profile.html:65
 msgid "Edit Personal Information"
 msgstr "Edit Personal Information"
 
-#: users/templates/edit_profile.html:55
+#: users/templates/edit_profile.html:71
 msgid "Avatar"
 msgstr "Avatar"
 
-#: users/templates/edit_profile.html:59 users/templates/profile.html:54
+#: users/templates/edit_profile.html:75 users/templates/profile.html:72
 msgid "First Name"
 msgstr "First Name"
 
-#: users/templates/edit_profile.html:63 users/templates/profile.html:57
+#: users/templates/edit_profile.html:79 users/templates/profile.html:76
 msgid "Last Name"
 msgstr "Last Name"
 
-#: users/templates/edit_profile.html:67 users/templates/profile.html:60
+#: users/templates/edit_profile.html:83 users/templates/profile.html:80
 #: users/templates/registration.html:28
 msgid "Email"
 msgstr "Email"
 
-#: users/templates/edit_profile.html:73
+#: users/templates/edit_profile.html:89
 msgid "Save Changes"
 msgstr "Save Changes"
 
-#: users/templates/edit_profile.html:75
+#: users/templates/edit_profile.html:91
 msgid "Delete account"
 msgstr "Delete account"
 
@@ -922,7 +926,7 @@ msgstr ""
 msgid "Profile"
 msgstr "Profile"
 
-#: users/templates/proffile_offers_list.html:33
+#: users/templates/proffile_offers_list.html:46
 msgid "Personal Info"
 msgstr "Personal Info"
 
@@ -930,19 +934,19 @@ msgstr "Personal Info"
 msgid "Profile view"
 msgstr "Profile view"
 
-#: users/templates/profile_view.html:48
+#: users/templates/profile_view.html:66
 msgid "Message"
 msgstr "Message"
 
-#: users/templates/referred_users.html:50
+#: users/templates/referred_users.html:68
 msgid "Users who referred by you"
 msgstr "Users who referred by you"
 
-#: users/templates/referred_users.html:55
+#: users/templates/referred_users.html:73
 msgid "User"
 msgstr "User"
 
-#: users/templates/referred_users.html:69
+#: users/templates/referred_users.html:89
 msgid "No users have referred by you."
 msgstr "No users have referred by you."
 

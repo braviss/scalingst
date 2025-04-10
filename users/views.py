@@ -68,7 +68,11 @@ class UserAccountView(LoginRequiredMixin, TemplateView, BaseBreadcrumbMixin):
         context = super().get_context_data(**kwargs)
         user = self.request.user
 
-        context['avatar'] = user.avatar.url
+        if user.avatar and hasattr(user.avatar, 'url'):
+            context['avatar'] = user.avatar.url
+        else:
+            context['avatar'] = None
+        # context['avatar'] = user.avatar.url
         context['username'] = user.username
         context['email'] = user.email
         context['is_premium'] = user.is_premium

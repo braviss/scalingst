@@ -218,11 +218,41 @@
                             {% endfor %}
                             <li>
                                 <a href="{% url 'offers:category_list' %}" class="dropdown-item bt-1">
-                                    {% trans 'All' %}{% trans 'Category' %}</a>
+                                    {% trans 'All' %} {% trans 'Category' %}</a>
                             </li>
                         </ul>
                     </div>
 
+
+
+                    <div class="dropdown flex-grow-1 mb-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if offer_type == 'premium' %}
+                                {% trans 'Premium' %}
+                            {% elif offer_type == 'regular' %}
+                                {% trans 'Regular' %}
+                            {% else %}
+                                {% trans 'All' %}
+                            {% endif %}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                   href="{% url 'offers:offer_list' %}?type=premium">{% trans 'Premium' %}</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                   href="{% url 'offers:offer_list' %}?type=regular">{% trans 'Regular' %}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                <h5><span><i class="fa-solid fa-earth-americas my-4"></i></span> {% trans 'Geo' %}</h5>
 
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -261,7 +291,7 @@
                         </ul>
                     </div>
 
-                    {#                locale#}
+
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -299,31 +329,7 @@
                         </ul>
                     </div>
 
-                    <div class="dropdown flex-grow-1 mb-2">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            {% if offer_type == 'premium' %}
-                                {% trans 'Premium' %}
-                            {% elif offer_type == 'regular' %}
-                                {% trans 'Regular' %}
-                            {% else %}
-                                {% trans 'All' %}
-                            {% endif %}
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="offerTypeDropdown">
-                            <li>
-                                <a class="dropdown-item" href="{% url 'offers:offer_list' %}">{% trans 'All' %}</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                   href="{% url 'offers:offer_list' %}?type=premium">{% trans 'Premium' %}</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                   href="{% url 'offers:offer_list' %}?type=regular">{% trans 'Regular' %}</a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
 
 

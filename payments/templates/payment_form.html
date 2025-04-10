@@ -63,9 +63,11 @@
                 </div>
                 <h3 class="h5">{% trans 'Step' %} 1</h3>
                 <p class="text-muted">{% trans 'Go to the site for payment' %}</p>
-                <a href="https://www.livegoodtour.com/scalingst" class="btn btn-success" target="_blank">{% trans 'Subscribe' %}</a>
+                <a href="https://www.livegoodtour.com/scalingst" class="btn btn-primary"
+                   target="_blank">{% trans 'Subscribe' %}</a>
             </div>
         </div>
+
         <div class="col-md-3 mb-4 mb-md-0">
             <div class="step-item text-center">
                 <div class="step-icon mb-3">
@@ -101,61 +103,68 @@
         </div>
     </div>
 
+    <div class="row justify-content-center">
 
-    <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+        <div class="col-md-6 bg-light p-4 rounded">
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <td class="w-50">
-                    <label for="{{ form.invite_code.id_for_label }}" class="form-label">{% trans 'Invite Code' %}</label>
-                    {{ form.invite_code }}
-                    {% if form.invite_code.errors %}
-                        <div class="invalid-feedback">
-                            {% for error in form.invite_code.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </td>
-                <td class="align-middle text-muted">{% trans 'Enter the invite code you received.' %}</td>
-            </tr>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class="w-50">
+                        <label for="{{ form.invite_code.id_for_label }}"
+                               class="form-label">{% trans 'Invite Code' %}</label>
+                        {{ form.invite_code }}
+                        {% if form.invite_code.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.invite_code.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="align-middle text-muted">{% trans 'Enter the invite code you received.' %}</td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="{{ form.payment_details.id_for_label }}" class="form-label">{% trans 'Payment details' %}</label>
-                    {{ form.payment_details }}
-                    {% if form.payment_details.errors %}
-                        <div class="invalid-feedback">
-                            {% for error in form.payment_details.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </td>
-                <td class="align-middle text-muted">{% trans 'Provide details of your payment (e.g., transaction ID).' %}</td>
-            </tr>
+                <tr>
+                    <td>
+                        <label for="{{ form.payment_details.id_for_label }}"
+                               class="form-label">{% trans 'Payment details' %}</label>
+                        {{ form.payment_details }}
+                        {% if form.payment_details.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.payment_details.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="align-middle text-muted">{% trans 'Provide details of your payment (e.g., transaction ID).' %}</td>
+                </tr>
 
-            <tr>
-                <td>
-                    <label for="{{ form.screenshot.id_for_label }}" class="form-label">{% trans 'Screenshot' %}</label>
-                    {{ form.screenshot }}
-                    {% if form.screenshot.errors %}
-                        <div class="invalid-feedback">
-                            {% for error in form.screenshot.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </td>
-                <td class="align-middle text-muted">{% trans 'Upload a screenshot of the payment confirmation.' %}</td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                    <td>
+                        <label for="{{ form.screenshot.id_for_label }}"
+                               class="form-label">{% trans 'Screenshot' %}</label>
+                        {{ form.screenshot }}
+                        {% if form.screenshot.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.screenshot.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="align-middle text-muted">{% trans 'Upload a screenshot of the payment confirmation.' %}</td>
+                </tr>
+                </tbody>
+            </table>
 
-    <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
-</form>
+            <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+        </form>
+        </div>
 
+    </div>
 
 {% endblock %}

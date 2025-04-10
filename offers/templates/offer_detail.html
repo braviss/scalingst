@@ -120,7 +120,7 @@
 
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="shareLink"
-                                       value="https://scalingst{{ object.get_absolute_url }}" readonly>
+                                       value="https://scalingst.com{{ object.get_absolute_url }}" readonly>
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2"
                                         onclick="copyToClipboard()">Скопировать
                                 </button>
@@ -145,7 +145,7 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(copyText.value).then(() => {
-                alert("Ссылка скопирована!");
+
             }).catch(err => {
                 console.error('Ошибка копирования: ', err);
             });

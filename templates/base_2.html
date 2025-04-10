@@ -31,6 +31,9 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
     <style>
+        .dropdown-toggle::after {
+            display: none !important;
+        }
         .signin-btn {
             margin: 0 10px;
         }
@@ -40,6 +43,7 @@
                 margin: 0 0 10px 0;
             }
         }
+
 
     </style>
 </head>
@@ -115,8 +119,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            🔔 {% trans 'Notifications' %} <span
-                                class="badge bg-danger">{{ notifications|length }}</span>
+                            🔔 {% trans 'Notifications' %}
+                            {% if notifications %}
+                                <span class="badge bg-primary">{{ notifications|length }}</span>
+                            {% endif %}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
                             {% if notifications %}
@@ -211,7 +217,8 @@
                         </p>
 
                         <div class="hero-buttons">
-                            <a href="{% url 'offers:offer_create' %}" class="btn btn-primary me-0 me-sm-2 mx-1">{% trans 'Create first offer' %}</a>
+                            <a href="{% url 'offers:offer_create' %}"
+                               class="btn btn-primary me-0 me-sm-2 mx-1">{% trans 'Create first offer' %}</a>
                             <a href="https://scalingst.com/"
                                class="btn btn-link mt-2 mt-sm-0">
                                 <i class="bi bi-info-circle"></i>
@@ -601,7 +608,8 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Scalingst</strong> <span>{% trans 'Al Rygnts Reserved' %}</span>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Scalingst</strong>
+            <span>{% trans 'Al Rygnts Reserved' %}</span>
         </p>
     </div>
 
