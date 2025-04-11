@@ -811,12 +811,12 @@ msgstr "Список уведомлений"
 #: users/templates/edit_profile.html:45 users/templates/profile.html:39
 #: users/templates/referred_users.html:46
 msgid "Personal"
-msgstr "Персональный"
+msgstr "Персональная"
 
 #: users/templates/edit_profile.html:46 users/templates/profile.html:40
 #: users/templates/referred_users.html:47
 msgid "Info"
-msgstr "Информация"
+msgstr "информация"
 
 #: users/templates/edit_profile.html:65
 msgid "Edit Personal Information"

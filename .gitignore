@@ -29,7 +29,7 @@ staticfiles/
 *.mo
 
 # Environment variables
-.env
+.env.dev
 .env.*
 
 # MyPy

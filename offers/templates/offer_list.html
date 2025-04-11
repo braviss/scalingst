@@ -78,6 +78,7 @@
 
     <div class="row">
         <div class="col-md-8">
+
             <div class="d-flex justify-content-between mb-4 rounded sidebar_right d-flex align-center p-2">
 
                 {% render_breadcrumbs %}
@@ -91,47 +92,49 @@
             </div>
 
 
-            <div id="offersContainer" class="row row-cols-1 row-cols-md-4">
-                {% for offer in offers %}
-                    <div class="col mb-4 offer-item">
-                        <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
-                            <div class="card h-100 position-relative">
-                                {% if offer.is_premium == True %}
-                                    <span class="position-absolute mt-2 mx-2 badge text-bg-success">
+            <div id="offersContainer" class="">
+                <div class="row">
+                    {% for offer in offers %}
+                        <div class="mb-4 col-sm-6 offer-item">
+                            <a href="{% url 'offers:offer_detail' slug=offer.slug %}">
+                                <div class="card h-100 position-relative">
+                                    {% if offer.is_premium == True %}
+                                        <span class="position-absolute mt-2 mx-2 badge text-bg-success">
                             {% trans 'Premium' %} <i class="fa-solid fa-star" style="color: gold"></i>
                         </span>
+                                    {% endif %}
 
-                                {% endif %}
+                                    {% if request.user == offer.author %}
+                                        <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
+                                    {% endif %}
+                                    <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
+                                    <div class="card-body">
 
-                                {% if request.user == offer.author %}
-                                    <span class="position-absolute mt-2 mx-2 end-0 badge text-bg-success bg-{{ offer.status }}">{{ offer.get_status_display }}</span>
-                                {% endif %}
-                                <img src="{{ offer.image.url }}" class="card-img-top offer-image" alt="...">
-                                <div class="card-body">
+                                        <h5 class="card-title text-dark">{{ offer.title }}</h5>
 
-                                    <h5 class="card-title text-dark">{{ offer.title }}</h5>
-
-                                    <p class="card-text pb-2 text-dark">{{ offer.body|striptags|truncatewords:10 }}</p>
-                                    <div class="card-footer px-0">
-                                        <p class="card-text">
-                                            <small class="text-body-secondary"><i
-                                                    class="fa-solid fa-clock"></i> {{ offer.created_at|timesince }}
-                                            </small>
-                                            <small class="text-body-secondary">| <i
-                                                    class="fa-solid fa-flag"></i> {{ offer.country.name }}</small>
-                                            <small class="text-body-secondary">| <i
-                                                    class="fa-solid fa-list"></i> {{ offer.category }}</small>
-                                            <small class="text-body-secondary">| <a
-                                                    href="{% url 'offers:user_offers' username=offer.author.username %}"><i
-                                                    class="fa-solid fa-at"></i> {{ offer.author }}</a></small>
-                                        </p>
+                                        <p class="card-text pb-2 text-dark">{{ offer.body|striptags|truncatewords:10 }}</p>
+                                        <div class="card-footer px-0">
+                                            <p class="card-text">
+                                                <small class="text-body-secondary"><i
+                                                        class="fa-solid fa-clock"></i> {{ offer.created_at|timesince }}
+                                                </small>
+                                                <small class="text-body-secondary">| <i
+                                                        class="fa-solid fa-flag"></i> {{ offer.country.name }}</small>
+                                                <small class="text-body-secondary">| <i
+                                                        class="fa-solid fa-list"></i> {{ offer.category }}</small>
+                                                <small class="text-body-secondary">| <a
+                                                        href="{% url 'offers:user_offers' username=offer.author.username %}"><i
+                                                        class="fa-solid fa-at"></i> {{ offer.author }}</a></small>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
 
-                    </div>
-                {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                </div>
             </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -163,19 +166,24 @@
 
                     {% if page_obj.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+                               aria-label="Следующая">
                                 <span aria-hidden="true">{% trans 'Next' %}</span>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Последняя">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"
+                               aria-label="Последняя">
                                 <span aria-hidden="true">{% trans 'Last' %} &raquo;</span>
                             </a>
                         </li>
                     {% endif %}
                 </ul>
             </nav>
+
         </div>
+
+
         <div class="col-md-4">
             <a href="{% url 'offers:offer_create' %}" class="btn create-btn btn-lg mb-4 w-100">{% trans 'Create' %}</a>
 
@@ -224,7 +232,6 @@
                     </div>
 
 
-
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="offerTypeDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -252,7 +259,7 @@
                     </div>
 
 
-                <h5><span><i class="fa-solid fa-earth-americas my-4"></i></span> {% trans 'Geo' %}</h5>
+                    <h5><span><i class="fa-solid fa-earth-americas my-4"></i></span> {% trans 'Geo' %}</h5>
 
                     <div class="dropdown flex-grow-1 mb-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -358,10 +365,10 @@
                 offerImages.forEach(img => img.style.display = 'block');
 
                 offersContainer.classList.remove('row-cols-1');
-                offersContainer.classList.add('row-cols-md-4');
+                offersContainer.classList.add('r');
                 offerItems.forEach(item => {
                     item.classList.remove('col-12');
-                    item.classList.add('col-md-6');
+                    item.classList.add('col-sm-6');
                 });
                 document.getElementById('gridView').classList.add('btn-primary');
                 document.getElementById('listView').classList.remove('btn-primary');
@@ -370,10 +377,10 @@
                 // Прячем изображения в списке
                 offerImages.forEach(img => img.style.display = 'none');
 
-                offersContainer.classList.remove('row-cols-md-4');
+                offersContainer.classList.remove('row-cols-sm-4');
                 offersContainer.classList.add('row-cols-1');
                 offerItems.forEach(item => {
-                    item.classList.remove('col-md-6');
+                    item.classList.remove('col-sm-6');
                     item.classList.add('col-12');
                 });
                 document.getElementById('listView').classList.add('btn-primary');
