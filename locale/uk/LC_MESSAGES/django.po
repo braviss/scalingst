@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-10 18:59+0300\n"
-"PO-Revision-Date: 2025-04-09 19:55+0300\n"
+"POT-Creation-Date: 2025-04-14 16:09+0000\n"
+"PO-Revision-Date: 2025-04-14 19:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -20,9 +20,58 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.6\n"
 
+#: feedback/templates/feedback_form.html:3
+msgid "Feedback Form"
+msgstr "Форма зворотного зв'язку"
+
+#: feedback/templates/feedback_form.html:15
+msgid "Name"
+msgstr "Ім'я"
+
+#: feedback/templates/feedback_form.html:27
+#: users/templates/edit_profile.html:83 users/templates/profile.html:80
+#: users/templates/registration.html:28
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: feedback/templates/feedback_form.html:39
+msgid "Type"
+msgstr "Тип"
+
+#: feedback/templates/feedback_form.html:51
+#: users/templates/profile_view.html:66
+msgid "Message"
+msgstr "Повідомлення"
+
+#: feedback/templates/feedback_form.html:63
+msgid "Captcha"
+msgstr "Капча"
+
+#: feedback/templates/feedback_form.html:74
+#: payments/templates/payment_form.html:164
+msgid "Submit"
+msgstr "Надіслати"
+
+#: feedback/templates/feedback_thanks.html:5
+msgid "Thanks"
+msgstr "Дякую"
+
+#: feedback/templates/feedback_thanks.html:6
+msgid ""
+"Your message has been sent successfully. We will contact you if necessary."
+msgstr ""
+"Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами, якщо буде "
+"потрібно."
+
+#: feedback/templates/feedback_thanks.html:7 templates/base.html:81
+#: templates/base.html:231 templates/base_2.html:70 templates/base_2.html:583
+#: templates/base_2.html:592
+msgid "Home"
+msgstr "Головна"
+
 #: notifications/templates/notification_confirm_delete.html:8
 #: offers/templates/offer_confirm_delete.html:8
-#: offers/templates/offer_detail.html:94
+#: offers/templates/offer_detail.html:97
 msgid "Delete"
 msgstr "Видалити"
 
@@ -36,12 +85,12 @@ msgid "List notifications"
 msgstr "Список сповіщень"
 
 #: notifications/templates/notification_list.html:48
-#: offers/templates/offer_form.html:48 payments/templates/payment_list.html:46
+#: offers/templates/offer_form.html:48 payments/templates/payment_list.html:47
 msgid "Personal info"
 msgstr "Персональна інформація"
 
 #: notifications/templates/notification_list.html:53
-#: offers/templates/offer_form.html:51 payments/templates/payment_list.html:51
+#: offers/templates/offer_form.html:51 payments/templates/payment_list.html:52
 #: users/templates/edit_profile.html:49
 #: users/templates/proffile_offers_list.html:51 users/templates/profile.html:43
 #: users/templates/referred_users.html:50
@@ -49,9 +98,9 @@ msgid "My offers"
 msgstr "Мої оффери"
 
 #: notifications/templates/notification_list.html:57
-#: offers/templates/offer_form.html:53 payments/templates/payment_list.html:55
-#: templates/base.html:134 templates/base.html:184 templates/base_2.html:122
-#: templates/base_2.html:172 users/templates/edit_profile.html:51
+#: offers/templates/offer_form.html:53 payments/templates/payment_list.html:56
+#: templates/base.html:141 templates/base.html:191 templates/base_2.html:128
+#: templates/base_2.html:178 users/templates/edit_profile.html:51
 #: users/templates/proffile_offers_list.html:54 users/templates/profile.html:45
 #: users/templates/referred_users.html:52
 msgid "Notifications"
@@ -59,14 +108,14 @@ msgstr "Сповіщення"
 
 #: notifications/templates/notification_list.html:62
 #: offers/templates/offer_form.html:57 payments/templates/payment_list.html:4
-#: payments/templates/payment_list.html:60 users/templates/edit_profile.html:54
+#: payments/templates/payment_list.html:61 users/templates/edit_profile.html:54
 #: users/templates/proffile_offers_list.html:59 users/templates/profile.html:49
 #: users/templates/referred_users.html:55
 msgid "Payments"
 msgstr "Платежі"
 
 #: notifications/templates/notification_list.html:65
-#: offers/templates/offer_form.html:61 payments/templates/payment_list.html:63
+#: offers/templates/offer_form.html:61 payments/templates/payment_list.html:64
 #: users/templates/edit_profile.html:57
 #: users/templates/proffile_offers_list.html:63 users/templates/profile.html:53
 #: users/templates/referred_users.html:58
@@ -81,8 +130,8 @@ msgstr "повідомлення"
 msgid "created at"
 msgstr "Створено о"
 
-#: notifications/templates/notification_list.html:93 templates/base.html:152
-#: templates/base_2.html:140
+#: notifications/templates/notification_list.html:93 templates/base.html:159
+#: templates/base_2.html:146
 msgid "Mark all as read"
 msgstr "Відмітити всі як прочитані"
 
@@ -91,7 +140,7 @@ msgid "Delete all"
 msgstr "Видалити все"
 
 #: notifications/templates/notification_list.html:104
-#: offers/templates/category_list.html:39 offers/templates/offer_list.html:141
+#: offers/templates/category_list.html:39 offers/templates/offer_list.html:144
 #: offers/templates/user_offer_list.html:56
 #: publication/templates/publication_list.html:35
 #: users/templates/proffile_offers_list.html:115
@@ -100,7 +149,7 @@ msgid "First"
 msgstr "Перша"
 
 #: notifications/templates/notification_list.html:105
-#: offers/templates/category_list.html:44 offers/templates/offer_list.html:147
+#: offers/templates/category_list.html:44 offers/templates/offer_list.html:150
 #: offers/templates/user_offer_list.html:62
 #: publication/templates/publication_list.html:40
 #: users/templates/proffile_offers_list.html:121
@@ -109,7 +158,7 @@ msgid "Previous"
 msgstr "Попередня"
 
 #: notifications/templates/notification_list.html:111
-#: offers/templates/category_list.html:65 offers/templates/offer_list.html:167
+#: offers/templates/category_list.html:65 offers/templates/offer_list.html:171
 #: offers/templates/user_offer_list.html:83
 #: publication/templates/publication_list.html:60
 #: users/templates/proffile_offers_list.html:142
@@ -118,7 +167,7 @@ msgid "Next"
 msgstr "Наступна"
 
 #: notifications/templates/notification_list.html:112
-#: offers/templates/category_list.html:70 offers/templates/offer_list.html:172
+#: offers/templates/category_list.html:70 offers/templates/offer_list.html:177
 #: offers/templates/user_offer_list.html:89
 #: publication/templates/publication_list.html:65
 #: users/templates/proffile_offers_list.html:148
@@ -160,50 +209,67 @@ msgstr "Текст"
 msgid "Send"
 msgstr "Надіслати"
 
-#: offers/templates/offer_detail.html:50 offers/templates/offer_list.html:101
-#: offers/templates/offer_list.html:232 offers/templates/offer_list.html:245
-#: offers/templates/user_offer_list.html:26 templates/base.html:83
-#: templates/base_2.html:70 templates/base_2.html:579
+#: offers/templates/offer_detail.html:50 offers/templates/offer_list.html:104
+#: offers/templates/offer_list.html:239 offers/templates/offer_list.html:252
+#: offers/templates/user_offer_list.html:26 templates/base.html:87
+#: templates/base_2.html:76 templates/base_2.html:585
 #: users/templates/proffile_offers_list.html:85
 #: users/templates/profile_view.html:84
 msgid "Premium"
 msgstr "Преміум"
 
-#: offers/templates/offer_detail.html:58 offers/templates/offer_form.html:144
-#: offers/templates/offer_list.html:270
+#: offers/templates/offer_detail.html:54 users/templates/edit_profile.html:46
+#: users/templates/profile.html:40 users/templates/referred_users.html:47
+msgid "Info"
+msgstr "Інформація"
+
+#: offers/templates/offer_detail.html:58 offers/templates/offer_detail.html:60
+#: offers/templates/offer_form.html:144 offers/templates/offer_list.html:277
 msgid "Country"
 msgstr "Країна"
 
-#: offers/templates/offer_detail.html:60 offers/templates/offer_form.html:128
-#: offers/templates/offer_list.html:204 offers/templates/offer_list.html:221
+#: offers/templates/offer_detail.html:63 offers/templates/offer_form.html:128
+#: offers/templates/offer_list.html:212 offers/templates/offer_list.html:229
 msgid "Category"
 msgstr "Котегорія"
 
-#: offers/templates/offer_detail.html:62
+#: offers/templates/offer_detail.html:65
 msgid "Author"
 msgstr "Автор"
 
-#: offers/templates/offer_detail.html:71
+#: offers/templates/offer_detail.html:74
 msgid "Author site"
 msgstr "Сайт автора"
 
-#: offers/templates/offer_detail.html:79 offers/templates/offer_form.html:193
+#: offers/templates/offer_detail.html:82 offers/templates/offer_form.html:193
 msgid "Premium url"
 msgstr "Преміум посилання"
 
-#: offers/templates/offer_detail.html:89 offers/templates/offer_detail.html:111
+#: offers/templates/offer_detail.html:90
+msgid "Actions"
+msgstr "Дії"
+
+#: offers/templates/offer_detail.html:92 offers/templates/offer_detail.html:114
 msgid "Share"
 msgstr "Поділитись"
 
-#: offers/templates/offer_detail.html:92 users/templates/profile.html:65
+#: offers/templates/offer_detail.html:95 users/templates/profile.html:65
 msgid "Edit"
 msgstr "Редагувати"
 
-#: offers/templates/offer_detail.html:99
+#: offers/templates/offer_detail.html:102
 msgid "Complain"
 msgstr "Поскаржитись"
 
-#: offers/templates/offer_detail.html:133
+#: offers/templates/offer_detail.html:119
+msgid "Share link"
+msgstr "Поділитись"
+
+#: offers/templates/offer_detail.html:128
+msgid "Copy"
+msgstr "Скопіювати"
+
+#: offers/templates/offer_detail.html:136
 msgid "Close"
 msgstr "Закрити"
 
@@ -227,7 +293,7 @@ msgstr "Оголошення буде показано в цій категор�
 msgid "Specify the country in which the services (product) are provided."
 msgstr "Вкажіть країну, в якій надаються послуги (продукт)."
 
-#: offers/templates/offer_form.html:161 offers/templates/offer_list.html:308
+#: offers/templates/offer_form.html:161 offers/templates/offer_list.html:315
 msgid "Region"
 msgstr "Регіон"
 
@@ -252,47 +318,47 @@ msgstr "Надайте посилання для преміум-користув
 msgid "Save"
 msgstr "Зберегти"
 
-#: offers/templates/offer_list.html:3
+#: offers/templates/offer_list.html:4
 msgid "Offers list"
 msgstr "Список пропозицій"
 
-#: offers/templates/offer_list.html:180
+#: offers/templates/offer_list.html:188
 #: offers/templates/user_offer_list.html:16
 #: users/templates/proffile_offers_list.html:75
 msgid "Create"
 msgstr "Створити"
 
-#: offers/templates/offer_list.html:186
+#: offers/templates/offer_list.html:194
 msgid "Search and filters"
 msgstr "Пошук і фільтри"
 
-#: offers/templates/offer_list.html:190 offers/templates/offer_list.html:194
+#: offers/templates/offer_list.html:198 offers/templates/offer_list.html:202
 msgid "Search"
 msgstr "Пошук"
 
-#: offers/templates/offer_list.html:209 offers/templates/offer_list.html:221
-#: offers/templates/offer_list.html:236 offers/templates/offer_list.html:241
-#: offers/templates/offer_list.html:279 offers/templates/offer_list.html:317
+#: offers/templates/offer_list.html:217 offers/templates/offer_list.html:229
+#: offers/templates/offer_list.html:243 offers/templates/offer_list.html:248
+#: offers/templates/offer_list.html:286 offers/templates/offer_list.html:324
 msgid "All"
 msgstr "Всі"
 
-#: offers/templates/offer_list.html:234 offers/templates/offer_list.html:249
+#: offers/templates/offer_list.html:241 offers/templates/offer_list.html:256
 msgid "Regular"
 msgstr "Регулярний"
 
-#: offers/templates/offer_list.html:255
+#: offers/templates/offer_list.html:262
 msgid "Geo"
 msgstr "Гео"
 
-#: offers/templates/offer_list.html:336
+#: offers/templates/offer_list.html:343
 msgid "Reset"
 msgstr "Скинути"
 
-#: offers/templates/offer_list.html:342
+#: offers/templates/offer_list.html:349
 msgid "Statistic"
 msgstr "Статистика"
 
-#: offers/templates/offer_list.html:343
+#: offers/templates/offer_list.html:350
 msgid "Total publications"
 msgstr "Всього публікацій"
 
@@ -363,24 +429,20 @@ msgstr "Скріншот"
 msgid "Upload a screenshot of the payment confirmation."
 msgstr "Завантажте скріншот підтвердження платежу."
 
-#: payments/templates/payment_form.html:164
-msgid "Submit"
-msgstr "Надіслати"
-
-#: payments/templates/payment_list.html:70
+#: payments/templates/payment_list.html:80
 msgid "Buy premium"
 msgstr "Придбати преміум"
 
-#: payments/templates/payment_list.html:75
+#: payments/templates/payment_list.html:85
 msgid "Payment at"
 msgstr "Оплата в"
 
-#: payments/templates/payment_list.html:76
+#: payments/templates/payment_list.html:86
 #: users/templates/referred_users.html:74
 msgid "Status"
 msgstr "Статус"
 
-#: payments/templates/payment_list.html:90
+#: payments/templates/payment_list.html:100
 msgid "You dont have Payments"
 msgstr "У тебе відсутні оплати"
 
@@ -400,39 +462,38 @@ msgstr "Список публікацій"
 msgid "Subscription business"
 msgstr "Бізнес за підпискою"
 
-#: templates/base.html:77 templates/base.html:224 templates/base_2.html:64
-#: templates/base_2.html:577 templates/base_2.html:586
-msgid "Home"
-msgstr "Головна"
-
-#: templates/base.html:80 templates/base.html:230 templates/base_2.html:67
-#: templates/base_2.html:578
+#: templates/base.html:84 templates/base.html:237 templates/base_2.html:73
+#: templates/base_2.html:584
 msgid "Offers"
 msgstr "Оффери"
 
-#: templates/base.html:86 templates/base.html:236 templates/base_2.html:74
-#: templates/base_2.html:602
+#: templates/base.html:90 templates/base.html:243 templates/base_2.html:80
+#: templates/base_2.html:608
 msgid "Articles"
 msgstr "Публікації"
 
-#: templates/base.html:157 templates/base.html:165 templates/base_2.html:145
-#: templates/base_2.html:153
+#: templates/base.html:93
+msgid "Feedback"
+msgstr "Зворотній зв'язок"
+
+#: templates/base.html:164 templates/base.html:172 templates/base_2.html:151
+#: templates/base_2.html:159
 msgid "View notification history"
 msgstr "Переглянути сповіщення"
 
-#: templates/base.html:162 templates/base_2.html:150
+#: templates/base.html:169 templates/base_2.html:156
 msgid "No new notifications"
 msgstr "Немає нових сповіщень"
 
-#: templates/base.html:180 templates/base_2.html:168
+#: templates/base.html:187 templates/base_2.html:174
 msgid "Account"
 msgstr "Обліковий запис"
 
-#: templates/base.html:192 templates/base_2.html:180
+#: templates/base.html:199 templates/base_2.html:186
 msgid "Logout"
 msgstr "Вийти"
 
-#: templates/base.html:202 templates/base_2.html:190
+#: templates/base.html:209 templates/base_2.html:196
 #: users/templates/login.html:3 users/templates/login.html:5
 #: users/templates/login.html:21 users/templates/login.html:61
 #: users/templates/password_reset_form.html:17
@@ -440,74 +501,74 @@ msgstr "Вийти"
 msgid "Signin"
 msgstr "Увійти"
 
-#: templates/base.html:204 templates/base_2.html:192
+#: templates/base.html:211 templates/base_2.html:198
 #: users/templates/login.html:64 users/templates/password_reset_form.html:18
 #: users/templates/registration.html:3 users/templates/registration.html:5
 #: users/templates/registration.html:11 users/templates/registration.html:82
 msgid "Signup"
 msgstr "Зареєструватись"
 
-#: templates/base_2.html:211
+#: templates/base_2.html:217
 msgid "Sales"
 msgstr "Масштабування"
 
-#: templates/base_2.html:212
+#: templates/base_2.html:218
 msgid "scaling"
 msgstr "продажі"
 
-#: templates/base_2.html:216
+#: templates/base_2.html:222
 msgid "This is a tool to increase sales of your product"
 msgstr "Це інструмент для збільшення продажів вашого товару"
 
-#: templates/base_2.html:221
+#: templates/base_2.html:227
 msgid "Create first offer"
 msgstr "Створити пропозицію"
 
-#: templates/base_2.html:225 templates/base_2.html:584
+#: templates/base_2.html:231 templates/base_2.html:590
 msgid "About Us"
 msgstr "Про нас"
 
-#: templates/base_2.html:245
+#: templates/base_2.html:251
 msgid "Cabinet"
 msgstr "Кабінет"
 
-#: templates/base_2.html:246
+#: templates/base_2.html:252
 msgid "Each subscriber has their own personal account"
 msgstr "Кожен абонент має свій персональний рахунок"
 
-#: templates/base_2.html:256 templates/base_2.html:471
+#: templates/base_2.html:262 templates/base_2.html:477
 msgid "Convenience"
 msgstr "Зручність"
 
-#: templates/base_2.html:257
+#: templates/base_2.html:263
 msgid "Automate the purchasing process, save time"
 msgstr "Автоматизуйте процес закупівлі, економте час"
 
-#: templates/base_2.html:267 templates/base_2.html:479
+#: templates/base_2.html:273 templates/base_2.html:485
 msgid "Exclusivity"
 msgstr "Ексклюзивність"
 
-#: templates/base_2.html:268
+#: templates/base_2.html:274
 msgid "Access to exclusive products, services"
 msgstr "Доступ до ексклюзивних продуктів, послуг"
 
-#: templates/base_2.html:278
+#: templates/base_2.html:284
 msgid "Guarantees"
 msgstr "Гарантії"
 
-#: templates/base_2.html:279
+#: templates/base_2.html:285
 msgid "Quality guarantee and convenient return conditions"
 msgstr "Гарантія якості та зручні умови повернення"
 
-#: templates/base_2.html:296
+#: templates/base_2.html:302
 msgid "More about us"
 msgstr "Детальніше про нас"
 
-#: templates/base_2.html:297
+#: templates/base_2.html:303
 msgid "Sales scaling (MS)"
 msgstr "Масштабування продажів (МП)"
 
-#: templates/base_2.html:298
+#: templates/base_2.html:304
 msgid ""
 "It is a tool to increase the sales volume of your product. It is the process "
 "where you go from small sales to larger ones, expand your customer base and "
@@ -517,82 +578,82 @@ msgstr ""
 "якому ви переходите від невеликих продажів до більших, розширюєте свою "
 "клієнтську базу та збільшуєте дохід від продажів."
 
-#: templates/base_2.html:303
+#: templates/base_2.html:309
 msgid "Increase sales"
 msgstr "Збільшення продажів"
 
-#: templates/base_2.html:304
+#: templates/base_2.html:310
 msgid "Track statistics"
 msgstr "Відстежуйте статистику"
 
-#: templates/base_2.html:305
+#: templates/base_2.html:311
 msgid "Reduce costs"
 msgstr "Знизити витрати"
 
-#: templates/base_2.html:310
+#: templates/base_2.html:316
 msgid "Receive discounts"
 msgstr "Отримуйте знижки"
 
-#: templates/base_2.html:311
+#: templates/base_2.html:317
 msgid "Attract partners"
 msgstr "Залучайте партнерів"
 
-#: templates/base_2.html:312
+#: templates/base_2.html:318
 msgid "Attract Partners"
 msgstr "Підвищення лояльності"
 
-#: templates/base_2.html:340
+#: templates/base_2.html:346
 msgid "Prices"
 msgstr "Ціни"
 
-#: templates/base_2.html:350
+#: templates/base_2.html:356
 msgid "Basic plan"
 msgstr "Базовий план"
 
-#: templates/base_2.html:353
+#: templates/base_2.html:359
 msgid "Free"
 msgstr "Безкоштовно"
 
-#: templates/base_2.html:354 templates/base_2.html:389
+#: templates/base_2.html:360 templates/base_2.html:395
 msgid "year"
 msgstr "Рік"
 
-#: templates/base_2.html:356
+#: templates/base_2.html:362
 msgid ""
 "A basic account for users is available after registration in the system."
 msgstr ""
 "Базовий обліковий запис для користувачів доступний після реєстрації в "
 "системі."
 
-#: templates/base_2.html:358 templates/base_2.html:393
+#: templates/base_2.html:364 templates/base_2.html:399
 msgid "Includes"
 msgstr "Включає в себе"
 
-#: templates/base_2.html:362 templates/base_2.html:397
+#: templates/base_2.html:368 templates/base_2.html:403
 msgid "Access to the search engine"
 msgstr "Доступ до пошукової системи"
 
-#: templates/base_2.html:366 templates/base_2.html:401
+#: templates/base_2.html:372 templates/base_2.html:407
 msgid "Publication of proposals"
 msgstr "Публікація пропозицій"
 
-#: templates/base_2.html:370 templates/base_2.html:405
+#: templates/base_2.html:376 templates/base_2.html:411
 msgid "View user suggestions"
 msgstr "Переглянути пропозиції користувачів"
 
-#: templates/base_2.html:375 templates/base_2.html:414
+#: templates/base_2.html:381 templates/base_2.html:420
 msgid "Design"
 msgstr "Оформити"
 
-#: templates/base_2.html:384
+#: templates/base_2.html:390
 msgid "Popular"
 msgstr "Популярний"
 
-#: templates/base_2.html:385
+#: templates/base_2.html:391
 msgid "Premium plan"
 msgstr "Преміум план"
 
-#: templates/base_2.html:391
+#: templates/base_2.html:397
 msgid ""
 "A premium account will become available after you subscribe in your personal "
 "account in the system."
@@ -600,19 +661,19 @@ msgstr ""
 "Преміум-акаунт стане доступним після того, як ви підпишетеся в особистому "
 "кабінеті в системі."
 
-#: templates/base_2.html:409
+#: templates/base_2.html:415
 msgid "Access to premium offers"
 msgstr "Доступ до преміальних пропозицій"
 
-#: templates/base_2.html:433
+#: templates/base_2.html:439
 msgid "For whom?"
 msgstr "Для кого?"
 
-#: templates/base_2.html:434
+#: templates/base_2.html:440
 msgid "For MP subscribers only"
 msgstr "Тільки для учасників МП"
 
-#: templates/base_2.html:436
+#: templates/base_2.html:442
 msgid ""
 "In the private section, each registered subscriber has their own personal "
 "account, which serves to provide information about all the news and updates "
@@ -628,11 +689,11 @@ msgstr ""
 "подавати заявки на пункти, що пропонують різноманітні товари та послуги, для "
 "публікації в пошуковій системі."
 
-#: templates/base_2.html:459
+#: templates/base_2.html:465
 msgid "For consumers"
 msgstr "Для споживачів"
 
-#: templates/base_2.html:465
+#: templates/base_2.html:471
 msgid ""
 "The most obvious motivation is the ability to purchase goods and services at "
 "lower prices. Subscriptions often provide access to exclusive discounts, "
@@ -642,7 +703,7 @@ msgstr ""
 "нижчими цінами. Підписка часто надає доступ до ексклюзивних знижок, акцій і "
 "спеціальних пропозицій."
 
-#: templates/base_2.html:473
+#: templates/base_2.html:479
 msgid ""
 "Subscription allows you to automate the purchasing process, saving time on "
 "searching for the best offers. Many services offer delivery directly to your "
@@ -652,7 +713,7 @@ msgstr ""
 "найкращих пропозицій. Багато служб пропонують доставку прямо додому або в "
 "зручне місце."
 
-#: templates/base_2.html:481
+#: templates/base_2.html:487
 msgid ""
 "Subscribers often get access to exclusive products, services or content that "
 "is not available to other customers."
@@ -660,11 +721,11 @@ msgstr ""
 "Передплатники часто отримують доступ до ексклюзивних продуктів, послуг або "
 "контенту, недоступних іншим клієнтам."
 
-#: templates/base_2.html:487
+#: templates/base_2.html:493
 msgid "Quality guarantees"
 msgstr "Гарантії якості"
 
-#: templates/base_2.html:489
+#: templates/base_2.html:495
 msgid ""
 "Many subscription companies guarantee the quality of their products and "
 "services, and also provide convenient return or exchange conditions."
@@ -672,11 +733,11 @@ msgstr ""
 "Багато компаній з підписки гарантують якість своїх товарів і послуг, а також "
 "надають зручні умови повернення або обміну."
 
-#: templates/base_2.html:495
+#: templates/base_2.html:501
 msgid "Social proof"
 msgstr "Соціальний доказ"
 
-#: templates/base_2.html:497
+#: templates/base_2.html:503
 msgid ""
 "Belonging to a community of subscribers can increase the self-esteem and "
 "prestige of the consumer."
@@ -684,15 +745,15 @@ msgstr ""
 "Приналежність до спільноти передплатників може підвищити самооцінку і "
 "престиж споживача."
 
-#: templates/base_2.html:506
+#: templates/base_2.html:512
 msgid "For sellers"
 msgstr "Для продавців"
 
-#: templates/base_2.html:510
+#: templates/base_2.html:516
 msgid "Stable income stream"
 msgstr "Стабільний потік доходу"
 
-#: templates/base_2.html:512
+#: templates/base_2.html:518
 msgid ""
 "Subscription provides predictable income, which allows you to plan your "
 "business more effectively."
@@ -700,22 +761,22 @@ msgstr ""
 "Підписка забезпечує прогнозований дохід, що дозволяє більш ефективно "
 "планувати свій бізнес."
 
-#: templates/base_2.html:518
+#: templates/base_2.html:524
 msgid "Increased customer loyalty"
 msgstr "Підвищення лояльності клієнтів"
 
-#: templates/base_2.html:520
+#: templates/base_2.html:526
 msgid ""
 "Subscribers tend to be more loyal to the brand and make repeat purchases."
 msgstr ""
 "Передплатники, як правило, більш лояльні до бренду та роблять повторні "
 "покупки."
 
-#: templates/base_2.html:526
+#: templates/base_2.html:532
 msgid "Collecting customer data"
 msgstr "Збір даних клієнтів"
 
-#: templates/base_2.html:528
+#: templates/base_2.html:534
 msgid ""
 "Subscription allows you to collect valuable information about customer "
 "behavior, which helps improve products and services."
@@ -723,11 +784,11 @@ msgstr ""
 "Підписка дозволяє збирати цінну інформацію про поведінку клієнтів, що "
 "допомагає покращувати продукти та послуги."
 
-#: templates/base_2.html:534
+#: templates/base_2.html:540
 msgid "Possibility to personalize the offer"
 msgstr "Можливість персоналізації пропозиції"
 
-#: templates/base_2.html:536
+#: templates/base_2.html:542
 msgid ""
 "Based on subscriber preference data, you can create personalized offers, "
 "increasing the effectiveness of marketing campaigns."
@@ -735,11 +796,11 @@ msgstr ""
 "На основі даних про переваги абонентів можна створювати персоналізовані "
 "пропозиції, підвищуючи ефективність маркетингових кампаній."
 
-#: templates/base_2.html:542
+#: templates/base_2.html:548
 msgid "Scaling your business"
 msgstr "Бізнес за підпискою"
 
-#: templates/base_2.html:544
+#: templates/base_2.html:550
 msgid ""
 "The subscription model makes it easy to scale your business and attract new "
 "customers."
@@ -747,35 +808,35 @@ msgstr ""
 "Модель підписки дозволяє легко розширити свій бізнес і залучити нових "
 "клієнтів."
 
-#: templates/base_2.html:575
+#: templates/base_2.html:581
 msgid "General"
 msgstr "Головне"
 
-#: templates/base_2.html:586
+#: templates/base_2.html:592
 msgid "Contacts"
 msgstr "Контакти"
 
-#: templates/base_2.html:591
+#: templates/base_2.html:597
 msgid "Information"
 msgstr "Інформація"
 
-#: templates/base_2.html:593
+#: templates/base_2.html:599
 msgid "Service rules"
 msgstr "Правила сервісу"
 
-#: templates/base_2.html:594
+#: templates/base_2.html:600
 msgid "Public offer"
 msgstr "Публічна оферта"
 
-#: templates/base_2.html:595
+#: templates/base_2.html:601
 msgid "Financial information"
 msgstr "Фінансова інформація"
 
-#: templates/base_2.html:600
+#: templates/base_2.html:606
 msgid "Media"
 msgstr "Медіа"
 
-#: templates/base_2.html:612
+#: templates/base_2.html:618
 msgid "Al Rygnts Reserved"
 msgstr "Al Rygnts Reserved"
 
@@ -812,11 +873,6 @@ msgstr "Список повідомлень"
 msgid "Personal"
 msgstr "Персональна"
 
-#: users/templates/edit_profile.html:46 users/templates/profile.html:40
-#: users/templates/referred_users.html:47
-msgid "Info"
-msgstr "Інформація"
-
 #: users/templates/edit_profile.html:65
 msgid "Edit Personal Information"
 msgstr "Редагувати персональну інформацію"
@@ -832,11 +888,6 @@ msgstr "Ім’я"
 #: users/templates/edit_profile.html:79 users/templates/profile.html:76
 msgid "Last Name"
 msgstr "Прізвище"
-
-#: users/templates/edit_profile.html:83 users/templates/profile.html:80
-#: users/templates/registration.html:28
-msgid "Email"
-msgstr "Електронна пошта"
 
 #: users/templates/edit_profile.html:89
 msgid "Save Changes"
@@ -938,10 +989,6 @@ msgstr "Персональна інформація"
 msgid "Profile view"
 msgstr "Переглянути профіль"
 
-#: users/templates/profile_view.html:66
-msgid "Message"
-msgstr "Повідомлення"
-
 #: users/templates/referred_users.html:68
 msgid "Users who referred by you"
 msgstr "Користувачі, яких ви направили"
@@ -1013,9 +1060,6 @@ msgstr "Надіслати повторно"
 
 #~ msgid "Village"
 #~ msgstr "Село"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
 
 #~ msgid "Locality"
 #~ msgstr "Місцевість"

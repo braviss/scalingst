@@ -59,6 +59,10 @@
                 margin: 0 0 10px 0;
             }
         }
+        .dropdown-menu {
+            min-width: auto !important;
+            width: auto !important;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +89,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'feedback:add' %}">{% trans 'Feedback' %}</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
 
@@ -102,7 +109,7 @@
                         {% if request.LANGUAGE_CODE == 'uk' %}
                             <span>UK</span>
                         {% elif request.LANGUAGE_CODE == 'en' %}
-                            <span>US</span>
+                            <span>EN</span>
                         {% else %}
                             <span>RU</span>
                         {% endif %}

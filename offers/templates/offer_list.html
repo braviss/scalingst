@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load custom_filters %}
 {% block title %}{% trans 'Offers list' %}{% endblock %}
 
 {% load view_breadcrumbs %}
@@ -112,7 +113,7 @@
 
                                         <h5 class="card-title text-dark">{{ offer.title }}</h5>
 
-                                        <p class="card-text pb-2 text-dark">{{ offer.body|striptags|truncatewords:10 }}</p>
+                                        <p class="card-text pb-2 text-dark">{{ offer.body|striptags|truncatewords:10|html_unescape }}</p>
                                         <div class="card-footer px-0">
                                             <p class="card-text">
                                                 <small class="text-body-secondary"><i
@@ -123,8 +124,7 @@
                                                 <small class="text-body-secondary">| <i
                                                         class="fa-solid fa-list"></i> {{ offer.category }}</small>
                                                 <small class="text-body-secondary">| <a
-                                                        href="{% url 'offers:user_offers' username=offer.author.username %}"><i
-                                                        class="fa-solid fa-at"></i> {{ offer.author }}</a></small>
+                                                        href="{% url 'offers:user_offers' username=offer.author.username %}">{{ offer.author }}</a></small>
                                             </p>
                                         </div>
                                     </div>
