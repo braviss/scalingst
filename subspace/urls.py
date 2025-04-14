@@ -52,6 +52,10 @@ urlpatterns += i18n_patterns(
          include(('publication.urls', 'publication'),
                  namespace='publication')),
 
+    path('feedback/',
+         include(('feedback.urls', 'feedback'),
+                 namespace='feedback')),
+
 
     path('i18n/',
          include('django.conf.urls.i18n')),
