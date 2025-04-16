@@ -9,7 +9,7 @@ from .forms import PaymentForm
 from django.contrib import messages
 
 
-class PaymentCreateView(LoginRequiredMixin, CreateView):
+class PaymentCreateView(CustomLoginRequiredMixin, LoginRequiredMixin, CreateView):
     model = Payment
     form_class = PaymentForm
     template_name = "payment_form.html"
