@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     is_premium = models.BooleanField(default=False)
     premium_since = models.DateTimeField(null=True, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default='default-avatar.png')
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     is_email_verified = models.BooleanField(default=False)
     my_invite_code = models.CharField(
         max_length=20,

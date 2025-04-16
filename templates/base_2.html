@@ -12,7 +12,11 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{% static 'icons/favicon/favicon.ico' %}" rel="icon">
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -94,7 +98,7 @@
                     <a class="nav-link dropdown-toggle" style="height: 35px;" href="#" id="navbarDropdown"
                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {% if request.LANGUAGE_CODE == 'uk' %}
-                            <span>UK</span>
+                            <span>UA</span>
                         {% elif request.LANGUAGE_CODE == 'en' %}
                             <span>EN</span>
                         {% else %}
@@ -112,13 +116,23 @@
                                     <input name="next" type="hidden" value="{{ redirect_to }}">
                                     <button type="submit" name="language" value="{{ language.code }}"
                                             class="text-uppercase {% if language.code == LANGUAGE_CODE %}selected{% else %}demo-text-black{% endif %} dropdown-item">
-                                        {{ language.code }}
+                                        {#                                        {{ language.name }}#}
+                                        {% if language.code == 'uk' %}
+                                            UA
+                                        {% elif language.code == 'en' %}
+                                            EN
+                                        {% else %}
+                                            RU
+                                        {% endif %}
+
                                     </button>
                                 </form>
                             </li>
                         {% endfor %}
                     </ul>
                 </li>
+
+
 
 
                 {% if request.user.is_authenticated %}
@@ -225,7 +239,7 @@
                         <div class="hero-buttons">
                             <a href="{% url 'offers:offer_create' %}"
                                class="btn btn-primary me-0 me-sm-2 mx-1">{% trans 'Create first offer' %}</a>
-                            <a href="https://scalingst.com/"
+                            <a href="https://scalingst.com/page/about-us/"
                                class="btn btn-link mt-2 mt-sm-0">
                                 <i class="bi bi-info-circle"></i>
                                 {% trans 'About Us' %}
@@ -355,9 +369,7 @@
                     <div class="pricing-card">
                         <h3>{% trans 'Basic plan' %}</h3>
                         <div class="price">
-                            <span class="currency">$</span>
                             <span class="amount">{% trans 'Free' %}</span>
-                            <span class="period">/ {% trans 'year' %}</span>
                         </div>
                         <p class="description">{% trans 'A basic account for users is available after registration in the system.' %}</p>
 
@@ -377,7 +389,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="{% url 'payments:create' %}" class="btn btn-primary">
                             {% trans 'Design' %}
                             <i class="bi bi-arrow-right"></i>
                         </a>
@@ -391,7 +403,7 @@
                         <h3>{% trans 'Premium plan' %}</h3>
                         <div class="price">
                             <span class="currency">$</span>
-                            <span class="amount">15.0</span>
+                            <span class="amount">99,95</span>
                             <span class="period">/ {% trans 'year' %}</span>
                         </div>
                         <p class="description">{% trans 'A premium account will become available after you subscribe in your personal account in the system.' %}</p>
@@ -415,8 +427,7 @@
                                 {% trans 'Access to premium offers' %}
                             </li>
                         </ul>
-
-                        <a href="#" class="btn btn-light">
+                        <a href="{% url 'payments:create' %}" class="btn btn-light">
                             {% trans 'Design' %}
                             <i class="bi bi-arrow-right"></i>
                         </a>
@@ -571,39 +582,36 @@
                     <span class="sitename">Scalingst</span>
                 </a>
                 <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href="https://t.me/+nIblWBB_nu0wMjMy"><i class="bi bi-telegram"></i></a>
                 </div>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>{% trans 'General' %}</h4>
+                <h4>{% trans 'About the project' %}</h4>
                 <ul>
-                    <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+                    <li><a href="https://scalingst.com/page/about-us/">{% trans 'About Us' %}</a></li>
+                    <li><a href="https://scalingst.com/page/contacts/">{% trans 'Contacts' %}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-3 footer-links">
+                <h4>{% trans 'Documents' %}</h4>
+                <ul>
+                    <li><a href="https://scalingst.com/page/rules/">{% trans 'Service rules' %}</a></li>
+                    <li><a href="https://scalingst.com/page/public-offer/">{% trans 'Public offer' %}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-3 footer-links">
+                <h4>{% trans 'Services' %}</h4>
+                <ul>
                     <li><a href="{% url 'offers:offer_list' %}">{% trans 'Offers' %}</a></li>
                     <li><a href="{% url 'payments:create' %}">{% trans 'Premium' %}</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>{% trans 'About Us' %}</h4>
-                <ul>
-                    <li><a href="{% trans 'Home' %}">{% trans 'Contacts' %}</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>{% trans 'Information' %}</h4>
-                <ul>
-                    <li><a href="">{% trans 'Service rules' %}</a></li>
-                    <li><a href="">{% trans 'Public offer' %}</a></li>
-                    <li><a href="">{% trans 'Financial information' %}</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>{% trans 'Media' %}</h4>
+                <h4>{% trans 'Materials' %}</h4>
                 <ul>
                     <li><a href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a></li>
                 </ul>

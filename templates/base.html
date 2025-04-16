@@ -89,9 +89,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'publication:article_list' %}">{% trans 'Articles' %}</a>
                 </li>
+                {% if request.user.is_authenticated %}
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'feedback:add' %}">{% trans 'Feedback' %}</a>
                 </li>
+
+                {% endif %}
+
             </ul>
             <ul class="navbar-nav ms-auto">
 
@@ -107,7 +112,7 @@
                     <a class="nav-link dropdown-toggle" style="height: 35px;" href="#" id="navbarDropdown"
                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {% if request.LANGUAGE_CODE == 'uk' %}
-                            <span>UK</span>
+                            <span>UA</span>
                         {% elif request.LANGUAGE_CODE == 'en' %}
                             <span>EN</span>
                         {% else %}

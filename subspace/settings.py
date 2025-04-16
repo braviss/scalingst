@@ -87,6 +87,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'notifications.context_processors.unread_notifications',
+
+
             ],
         },
     },
@@ -140,9 +142,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('uk', 'Ukrainian'),
-    ('ru', 'Russian'),
+    ('en', 'EN'),
+    ('uk', 'UA'),
+    ('ru', 'RU'),
 ]
 
 LANGUAGE_CODE = 'uk'
