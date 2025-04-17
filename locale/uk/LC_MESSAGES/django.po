@@ -190,7 +190,7 @@ msgstr "Коментар адміністратора"
 
 #: offers/templates/category_list.html:3
 msgid "Category list"
-msgstr "Список котегорій"
+msgstr "Список категорій"
 
 #: offers/templates/category_list.html:22
 msgid "View"
@@ -227,7 +227,7 @@ msgstr "Країна"
 #: offers/templates/offer_detail.html:63 offers/templates/offer_form.html:128
 #: offers/templates/offer_list.html:212 offers/templates/offer_list.html:229
 msgid "Category"
-msgstr "Котегорія"
+msgstr "Категорія"
 
 #: offers/templates/offer_detail.html:65
 msgid "Author"

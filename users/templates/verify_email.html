@@ -31,29 +31,44 @@
 </div>
 
 <script>
-    let resendTimer = 120;
+    let initialTime = 120;
+    let timeLeft = initialTime;
     let resendButton = document.getElementById('resend-btn');
     let timerDisplay = document.getElementById('timer');
+    let intervalId = null;
+
+    function updateTimerDisplay() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
 
     function startResendTimer() {
         resendButton.disabled = true;
+        updateTimerDisplay();
 
-        let interval = setInterval(function() {
-            let minutes = Math.floor(resendTimer / 60);
-            let seconds = resendTimer % 60;
+        intervalId = setInterval(function () {
+            timeLeft--;
 
-            timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-            if (resendTimer === 0) {
-                clearInterval(interval);
+            if (timeLeft <= 0) {
+                clearInterval(intervalId);
                 resendButton.disabled = false;
+                timerDisplay.textContent = "0:00";
             } else {
-                resendTimer--;
+                updateTimerDisplay();
             }
         }, 1000);
     }
 
     function resendCode() {
+        // Если кнопка неактивна, ничего не делаем
+        if (resendButton.disabled) return;
+
+        resendButton.disabled = true;
+        timeLeft = initialTime;
+        updateTimerDisplay();
+        startResendTimer();
+
         fetch('/send-verification-code/', {
             method: 'POST',
             headers: {
@@ -72,13 +87,64 @@
                 alert('Ошибка при отправке кода.');
             }
         })
-        .catch(error => console.error('Ошибка:', error));
-
-        resendTimer = 120;
-        startResendTimer();
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при попытке повторной отправки.');
+        });
     }
 
-    startResendTimer();
+    document.addEventListener("DOMContentLoaded", startResendTimer);
 </script>
+
+{#<script>#}
+{#    let resendTimer = 120;#}
+{#    let resendButton = document.getElementById('resend-btn');#}
+{#    let timerDisplay = document.getElementById('timer');#}
+{##}
+{#    function startResendTimer() {#}
+{#        resendButton.disabled = true;#}
+{##}
+{#        let interval = setInterval(function() {#}
+{#            let minutes = Math.floor(resendTimer / 60);#}
+{#            let seconds = resendTimer % 60;#}
+{##}
+{#            timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;#}
+{##}
+{#            if (resendTimer === 0) {#}
+{#                clearInterval(interval);#}
+{#                resendButton.disabled = false;#}
+{#            } else {#}
+{#                resendTimer--;#}
+{#            }#}
+{#        }, 1000);#}
+{#    }#}
+{##}
+{#    function resendCode() {#}
+{#        fetch('/send-verification-code/', {#}
+{#            method: 'POST',#}
+{#            headers: {#}
+{#                'Content-Type': 'application/json',#}
+{#                'X-CSRFToken': '{{ csrf_token }}'#}
+{#            },#}
+{#            body: JSON.stringify({#}
+{#                user_id: {{ user.id }}#}
+{#            })#}
+{#        })#}
+{#        .then(response => response.json())#}
+{#        .then(data => {#}
+{#            if (data.success) {#}
+{#                alert('Новый код подтверждения был отправлен на вашу почту.');#}
+{#            } else {#}
+{#                alert('Ошибка при отправке кода.');#}
+{#            }#}
+{#        })#}
+{#        .catch(error => console.error('Ошибка:', error));#}
+{##}
+{#        resendTimer = 120;#}
+{#        startResendTimer();#}
+{#    }#}
+{##}
+{#    startResendTimer();#}
+{#</script>#}
 
 {% endblock %}
