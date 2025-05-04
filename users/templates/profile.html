@@ -58,7 +58,6 @@
 
     <div class="col-lg-9">
         <div class="p-4">
-
             <div class="col-12 mb-4">
                 <div class="mb-4">
                     <a class="btn btn-primary mb-2" href="{% url 'accounts:edit_profile' %}">
@@ -86,7 +85,9 @@
                     </div>
                 </div>
             </div>
-
+            <a href="{% url 'account_change_password' %}" class="btn btn-primary mb-2">{% trans 'Change password' %}</a>
         </div>
+
+
     </div>
 {% endblock %}

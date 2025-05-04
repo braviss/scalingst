@@ -41,6 +41,15 @@ CSRF_TRUSTED_ORIGINS = ['https://scalingst.com', 'https://www.scalingst.com']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+
+
+    'allauth',
+    'allauth.account',
+
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -70,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'subspace.urls'
@@ -224,3 +234,35 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 CITIES_LIGHT_TRANSLATION_LANGUAGES = ['uk', 'en']  # Языки, на которых будут переведены данные
 CITIES_LIGHT_INCLUDE_COUNTRIES = ['UA']  # Для Украины
 CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT']
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '',
+            'secret': '',
+            'key': ''
+        }
+    }
+}
+
+
+
+ACCOUNT_LOGIN_BY_CODE_ENABLED = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION_BY_CODE_ENABLED = True
+ACCOUNT_LOGIN_METHOD = "username"
+ACCOUNT_PASSWORD_RESET_BY_CODE_ENABLED = True
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
+ACCOUNT_ALLOW_ACCOUNT_DELETION = True
+
+
+MFA_SUPPORTED_TYPES = [
+    "totp",  # Поддержка TOTP
+    "recovery_codes",  # Восстановительные коды
+]
+MFA_PASSKEY_LOGIN_ENABLED = True
+MFA_PASSKEY_SIGNUP_ENABLED = True

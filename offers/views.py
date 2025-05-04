@@ -42,7 +42,7 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
 
-class OfferListView(CustomLoginRequiredMixin, ListBreadcrumbMixin, ListView):
+class OfferListView(LoginRequiredMixin, ListBreadcrumbMixin, ListView):
     model = Offer
     template_name = 'offer_list.html'
     context_object_name = 'offers'
@@ -120,7 +120,7 @@ class OfferDetailView(LoginRequiredMixin,
 
 
 
-class OfferCreateView(CustomLoginRequiredMixin,
+class OfferCreateView(LoginRequiredMixin,
                         CreateBreadcrumbMixin,
                         CreateView):
     model = Offer

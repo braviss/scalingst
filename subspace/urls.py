@@ -28,6 +28,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('tinymce/', include('tinymce.urls')),
+
+    path('accounts/', include('allauth.urls')),
+
+
+
+
     path('get_cities/<str:country_code>/', get_cities, name='get_cities'),
 ]+ static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)
