@@ -195,7 +195,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <form method="post" action="{% url 'accounts:logout' %}">
+                                    <form method="post" action="{% url 'account_logout' %}">
                                         {% csrf_token %}
                                         <input type="submit" value="{% trans 'Logout' %}" class="dropdown-item">
                                     </form>
@@ -206,9 +206,9 @@
                     </li>
 
                 {% else %}
-                    <a href="{% url 'accounts:signin' %}" class="btn btn-primary signin-btn"><i
+                    <a href="{% url 'account_login' %}" class="btn btn-primary signin-btn"><i
                             class="fa-solid fa-right-to-bracket"></i> {% trans 'Signin' %}</a>
-                    <a href="{% url 'accounts:signup' %}" class="btn btn-primary"><i
+                    <a href="{% url 'account_signup' %}" class="btn btn-primary"><i
                             class="fa-solid fa-user-plus"></i> {% trans 'Signup' %}</a>
                 {% endif %}
             </ul>

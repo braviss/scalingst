@@ -28,3 +28,6 @@ django_recaptcha
 psycopg[binary]
 python-decouple>=3.5
 geoip2
+django-allauth=65.7.0
+cryptography=44.0.2
+django-otp=1.6.0

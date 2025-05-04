@@ -5,68 +5,71 @@
 {% block page_title %}{% trans 'Signin' %}{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-{% if messages %}
-    <div class="alert alert-danger">
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-    </div>
-{% endif %}
-    {% if user.is_authenticated %}
-        <h2 class="text-center mt-3">{% trans 'You are already logged in' %}</h2>
-    {% else %}
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center mb-4">{% trans 'Signin' %}</h2>
-                <form method="post" class="needs-validation" novalidate>
-                    {% csrf_token %}
+    <div class="container mt-5">
+        {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <h2 class="text-center mt-3">{% trans 'You are already logged in' %}</h2>
+        {% else %}
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">{% trans 'Signin' %}</h2>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
 
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger" role="alert">
-                            {% for error in form.non_field_errors %}
-                                {{ error }}
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">{% trans 'Username' %}:</label>
+                            <input type="text" name="username"
+                                   class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+                                   id="id_username" required>
+                            {% for error in form.username.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
                             {% endfor %}
                         </div>
-                    {% endif %}
 
-                    <div class="mb-3">
-                        <label for="id_username" class="form-label">{% trans 'Username' %}:</label>
-                        <input type="text" name="username" class="form-control {% if form.username.errors %}is-invalid{% endif %}"
-                               id="id_username" required>
-                        {% for error in form.username.errors %}
-                            <div class="invalid-feedback">
-                                {{ error }}
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="id_password" class="form-label">{% trans 'Password' %}:</label>
-                        <input type="password" name="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}"
-                               id="id_password" required>
-                        {% for error in form.password.errors %}
-                            <div class="invalid-feedback">
-                                {{ error }}
-                            </div>
-                        {% endfor %}
-                    </div>
-
-                    {% if form.captcha %}
                         <div class="mb-3">
-                            {{ form.captcha }}
+                            <label for="id_password" class="form-label">{% trans 'Password' %}:</label>
+                            <input type="password" name="password"
+                                   class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+                                   id="id_password" required>
+                            {% for error in form.password.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
                         </div>
-                    {% endif %}
 
-                    <button type="submit" class="btn btn-primary w-100">{% trans 'Signin' %}</button>
+                        {% if form.captcha %}
+                            <div class="mb-3">
+                                {{ form.captcha }}
+                            </div>
+                        {% endif %}
 
-                    <div class="d-flex justify-content-between mt-3">
-                        <a href="{% url 'accounts:signup' %}" class="text-decoration-none">{% trans 'Signup' %}</a>
-                        <a href="{% url 'accounts:password_reset' %}" class="text-decoration-none">{% trans 'Forgot password' %}</a>
-                    </div>
-                </form>
+                        <button type="submit" class="btn btn-primary w-100">{% trans 'Signin' %}</button>
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="{% url 'accounts:signup' %}" class="text-decoration-none">{% trans 'Signup' %}</a>
+                            <a href="{% url 'accounts:password_reset' %}"
+                               class="text-decoration-none">{% trans 'Forgot password' %}</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    {% endif %}
-</div>
+        {% endif %}
+    </div>
 {% endblock %}

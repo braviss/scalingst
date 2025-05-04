@@ -21,41 +21,41 @@ from users.forms import ProfileForm
 from django.shortcuts import render, redirect, get_object_or_404
 
 
-class RegistrationView(CreateView):
-    model = CustomUser
-    form_class = RegistrationForm
-    template_name = 'registration.html'
-    success_url = reverse_lazy('home')
+# class RegistrationView(CreateView):
+#     model = CustomUser
+#     form_class = RegistrationForm
+#     template_name = 'registration.html'
+#     success_url = reverse_lazy('home')
+#
+#     def form_valid(self, form):
+#         response = super().form_valid(form)
+#         send_verification_email(self.object)
+#         return redirect('accounts:verify_email', user_id=self.object.id)
+#
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        send_verification_email(self.object)
-        return redirect('accounts:verify_email', user_id=self.object.id)
-
-
-class CustomLoginView(LoginView):
-    template_name = 'login.html'
-    form_class = CustomLoginForm
-
-    def form_valid(self, form):
-        user = form.get_user()
-
-        if not user.is_email_verified:
-            messages.error(self.request, "Пожалуйста, подтвердите ваш email.")
-            return redirect('accounts:verify_email', user_id=user.id)
-
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        next_url = self.request.GET.get('next')
-        if next_url and url_has_allowed_host_and_scheme(
-                url=next_url,
-                allowed_hosts={self.request.get_host()},
-                require_https=self.request.is_secure(),
-        ):
-            return next_url
-
-        return reverse_lazy('home')
+# class CustomLoginView(LoginView):
+#     template_name = 'login.html'
+#     form_class = CustomLoginForm
+#
+#     def form_valid(self, form):
+#         user = form.get_user()
+#
+#         if not user.is_email_verified:
+#             messages.error(self.request, "Пожалуйста, подтвердите ваш email.")
+#             return redirect('accounts:verify_email', user_id=user.id)
+#
+#         return super().form_valid(form)
+#
+#     def get_success_url(self):
+#         next_url = self.request.GET.get('next')
+#         if next_url and url_has_allowed_host_and_scheme(
+#                 url=next_url,
+#                 allowed_hosts={self.request.get_host()},
+#                 require_https=self.request.is_secure(),
+#         ):
+#             return next_url
+#
+#         return reverse_lazy('home')
 
 
 
@@ -123,92 +123,92 @@ class EditProfileView(LoginRequiredMixin, FormView):
 
 
 
-def send_verification_email(user):
-    code, created = EmailVerificationCode.objects.get_or_create(
-        user=user,
-        defaults={"code": EmailVerificationCode.generate_code(), "created_at": now()}
-    )
-
-    if not created:
-        code.code = EmailVerificationCode.generate_code()
-        code.created_at = now()
-        code.save()
-
-    send_mail(
-        "Подтверждение почты",
-        f"Ваш код подтверждения: {code.code}",
-        "noreply@scalingst.com",
-        [user.email],
-        fail_silently=False,
-    )
-
-
-
-class VerifyEmailView(FormView):
-    template_name = "verify_email.html"
-    form_class = EmailVerificationForm
-
-    def dispatch(self, request, *args, **kwargs):
-        self.user = get_object_or_404(CustomUser, id=kwargs['user_id'])
-        return super().dispatch(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        code = form.cleaned_data['code']
-        verification = EmailVerificationCode.objects.filter(user=self.user, code=code).first()
-
-        if verification and not verification.is_expired():
-            self.user.is_active = True
-            self.user.is_email_verified = True
-            self.user.save()
-            verification.delete()
-            login(self.request, self.user)
-            return super().form_valid(form)
-        else:
-            messages.error(self.request, "Неверный или просроченный код. Новый код был отправлен на ваш email.")
-            return self.form_invalid(form)
-
-    def get_success_url(self):
-        return reverse_lazy("home")
+# def send_verification_email(user):
+#     code, created = EmailVerificationCode.objects.get_or_create(
+#         user=user,
+#         defaults={"code": EmailVerificationCode.generate_code(), "created_at": now()}
+#     )
+#
+#     if not created:
+#         code.code = EmailVerificationCode.generate_code()
+#         code.created_at = now()
+#         code.save()
+#
+#     send_mail(
+#         "Подтверждение почты",
+#         f"Ваш код подтверждения: {code.code}",
+#         "noreply@scalingst.com",
+#         [user.email],
+#         fail_silently=False,
+#     )
+#
 
 
-class ResendVerificationCodeView(View):
-    def post(self, request, *args, **kwargs):
-        try:
-            user_id = request.json().get('user_id')
-            user = CustomUser.objects.get(id=user_id)
-            send_verification_email(user)
-            return JsonResponse({"success": True})
-        except CustomUser.DoesNotExist:
-            return JsonResponse({"success": False, "message": "Пользователь не найден."})
+# class VerifyEmailView(FormView):
+#     template_name = "verify_email.html"
+#     form_class = EmailVerificationForm
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         self.user = get_object_or_404(CustomUser, id=kwargs['user_id'])
+#         return super().dispatch(request, *args, **kwargs)
+#
+#     def form_valid(self, form):
+#         code = form.cleaned_data['code']
+#         verification = EmailVerificationCode.objects.filter(user=self.user, code=code).first()
+#
+#         if verification and not verification.is_expired():
+#             self.user.is_active = True
+#             self.user.is_email_verified = True
+#             self.user.save()
+#             verification.delete()
+#             login(self.request, self.user)
+#             return super().form_valid(form)
+#         else:
+#             messages.error(self.request, "Неверный или просроченный код. Новый код был отправлен на ваш email.")
+#             return self.form_invalid(form)
+#
+#     def get_success_url(self):
+#         return reverse_lazy("home")
 
 
-
-
-class PasswordResetView(BasePasswordResetView):
-    email_template_name = 'password_reset_email.txt'
-    html_email_template_name = 'password_reset_email.html'
-    template_name = 'password_reset_form.html'
-    success_url = reverse_lazy('accounts:password_reset_done')
+# class ResendVerificationCodeView(View):
+#     def post(self, request, *args, **kwargs):
+#         try:
+#             user_id = request.json().get('user_id')
+#             user = CustomUser.objects.get(id=user_id)
+#             send_verification_email(user)
+#             return JsonResponse({"success": True})
+#         except CustomUser.DoesNotExist:
+#             return JsonResponse({"success": False, "message": "Пользователь не найден."})
+#
 
 
 
+# class PasswordResetView(BasePasswordResetView):
+#     email_template_name = 'password_reset_email.txt'
+#     html_email_template_name = 'password_reset_email.html'
+#     template_name = 'password_reset_form.html'
+#     success_url = reverse_lazy('accounts:password_reset_done')
+#
+#
+#
+#
+# class PasswordResetConfirmView(BasePasswordResetConfirmView):
+#     success_url = reverse_lazy('accounts:password_reset_complete')
+#     template_name = 'password_reset_confirm.html'
 
-class PasswordResetConfirmView(BasePasswordResetConfirmView):
-    success_url = reverse_lazy('accounts:password_reset_complete')
-    template_name = 'password_reset_confirm.html'
 
 
-
-class UserDeleteView(DeleteView):
-    model = CustomUser
-    success_url = reverse_lazy('home')
-    template_name = 'user_confirm_delete.html'
-
-    def get_object(self, queryset=None):
-        return self.request.user
-
-    def delete(self, request, *args, **kwargs):
-        user = self.get_object()
-        logout(request)
-        user.delete()
-        return redirect(self.success_url)
+# class UserDeleteView(DeleteView):
+#     model = CustomUser
+#     success_url = reverse_lazy('home')
+#     template_name = 'user_confirm_delete.html'
+#
+#     def get_object(self, queryset=None):
+#         return self.request.user
+#
+#     def delete(self, request, *args, **kwargs):
+#         user = self.get_object()
+#         logout(request)
+#         user.delete()
+#         return redirect(self.success_url)
