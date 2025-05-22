@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'rest_framework',
     'rest_framework_simplejwt',
     'django_recaptcha',
@@ -242,14 +243,18 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '',
-            'secret': '',
+            'client_id': '486608855149-gijru674d0chavt69gkac11fg6g2pdkt.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
 }
 
+SITE_ID = 1
 
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
 
 ACCOUNT_LOGIN_BY_CODE_ENABLED = False
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -259,6 +264,7 @@ ACCOUNT_PASSWORD_RESET_BY_CODE_ENABLED = True
 ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 ACCOUNT_ALLOW_ACCOUNT_DELETION = True
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://scalingst.com/accounts/google/login/callback/'
 
 MFA_SUPPORTED_TYPES = [
     "totp",  # Поддержка TOTP

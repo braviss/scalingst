@@ -29,6 +29,7 @@ class OfferAdmin(admin.ModelAdmin):
               'region',
               'locality',
               'url',
+              'premium_url',
               'is_premium',
               'premium_at',
               'created_at')

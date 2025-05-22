@@ -23,6 +23,15 @@ from offers.views import HomePageView
 from offers.views import external_link_warning
 from offers.views import get_cities
 
+from django.contrib.sitemaps.views import sitemap
+from publication.sitemaps import ArticleSitemap
+from django.views.generic.base import TemplateView
+
+
+sitemaps = {
+    'articles' : ArticleSitemap,
+}
+
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
@@ -31,7 +40,8 @@ urlpatterns = [
 
     path('accounts/', include('allauth.urls')),
 
-
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 
 
     path('get_cities/<str:country_code>/', get_cities, name='get_cities'),
